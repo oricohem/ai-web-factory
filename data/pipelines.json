@@ -1,0 +1,68 @@
+[
+  {
+    "id": "pl-ingest-clean",
+    "name": "Ingest → Clean → Embed",
+    "description": "Pull documents from connectors, normalize text, chunk, and embed into the vector index with deduplication.",
+    "category": "RAG",
+    "status": "stable",
+    "score": 92,
+    "includes": ["ConnectorIngest", "TextNormalize", "Chunker", "EmbedOpenAI", "VectorUpsert"],
+    "dependencies": ["blob-store", "queue", "embeddings-api"],
+    "lastRunAt": "2026-05-01T14:22:00Z"
+  },
+  {
+    "id": "pl-eval-harness",
+    "name": "Eval Harness (Golden Set)",
+    "description": "Runs prompts against a frozen golden set, captures latency and token usage, and scores answers with rubrics.",
+    "category": "Quality",
+    "status": "stable",
+    "score": 89,
+    "includes": ["DatasetLoader", "PromptRunner", "JudgeModel", "ReportHTML"],
+    "dependencies": ["eval-db", "llm-router"],
+    "lastRunAt": "2026-04-30T09:10:00Z"
+  },
+  {
+    "id": "pl-release-notes",
+    "name": "Release Notes Generator",
+    "description": "Summarizes merged PRs and issues into customer-facing notes with tone controls and safety filters.",
+    "category": "Content",
+    "status": "beta",
+    "score": 84,
+    "includes": ["GitHubFetch", "Summarize", "BrandVoice", "MarkdownExport"],
+    "dependencies": ["github-app", "llm-router"],
+    "lastRunAt": "2026-04-28T16:45:00Z"
+  },
+  {
+    "id": "pl-support-triage",
+    "name": "Support Ticket Triage",
+    "description": "Classifies tickets, suggests macros, and routes to teams with confidence scores and escalation rules.",
+    "category": "Ops",
+    "status": "beta",
+    "score": 81,
+    "includes": ["TicketIngest", "Classifier", "MacroSuggest", "RouteRules"],
+    "dependencies": ["zendesk-api", "feature-flags"],
+    "lastRunAt": null
+  },
+  {
+    "id": "pl-schema-mapper",
+    "name": "Schema Mapper (CSV → JSON)",
+    "description": "Infer column types, propose JSON schema, and validate sample rows before import jobs.",
+    "category": "Data",
+    "status": "draft",
+    "score": 70,
+    "includes": ["CSVProbe", "TypeInfer", "JSONSchemaGen", "Validator"],
+    "dependencies": ["object-storage"],
+    "lastRunAt": null
+  },
+  {
+    "id": "pl-code-review-assist",
+    "name": "Code Review Assist",
+    "description": "Surfaces risky diffs, suggests tests, and links to internal style guides for each language detected.",
+    "category": "DevEx",
+    "status": "draft",
+    "score": 66,
+    "includes": ["DiffParse", "RiskHeuristics", "TestIdeas", "StyleGuideRAG"],
+    "dependencies": ["git-provider", "vector-index"],
+    "lastRunAt": null
+  }
+]

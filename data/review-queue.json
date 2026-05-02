@@ -1,0 +1,62 @@
+[
+  {
+    "id": "rq-1042",
+    "title": "Promote CommandPalette to stable",
+    "type": "component",
+    "category": "Navigation",
+    "status": "in_review",
+    "score": 88,
+    "submittedAt": "2026-05-01T11:05:00Z",
+    "author": "A. Park"
+  },
+  {
+    "id": "rq-1041",
+    "title": "Support Ticket Triage — routing rules",
+    "type": "pipeline",
+    "category": "Ops",
+    "status": "pending",
+    "score": 81,
+    "submittedAt": "2026-05-01T08:40:00Z",
+    "author": "M. Singh"
+  },
+  {
+    "id": "rq-1038",
+    "title": "FormWizard accessibility audit",
+    "type": "component",
+    "category": "Forms",
+    "status": "changes_requested",
+    "score": 72,
+    "submittedAt": "2026-04-29T15:22:00Z",
+    "author": "J. Ortiz"
+  },
+  {
+    "id": "rq-1035",
+    "title": "Eval Harness — rubric v2",
+    "type": "pipeline",
+    "category": "Quality",
+    "status": "approved",
+    "score": 89,
+    "submittedAt": "2026-04-27T09:00:00Z",
+    "author": "L. Chen"
+  },
+  {
+    "id": "rq-1032",
+    "title": "MetricTiles — empty state copy",
+    "type": "component",
+    "category": "Data",
+    "status": "pending",
+    "score": 68,
+    "submittedAt": "2026-04-26T18:10:00Z",
+    "author": "R. Kim"
+  },
+  {
+    "id": "rq-1029",
+    "title": "Release Notes Generator — tone presets",
+    "type": "pipeline",
+    "category": "Content",
+    "status": "in_review",
+    "score": 84,
+    "submittedAt": "2026-04-25T13:45:00Z",
+    "author": "N. Brooks"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cmp-hero-split",
+    "name": "HeroSplit",
+    "description": "Two-column hero with headline, subcopy, and primary CTA. Tuned for conversion landing pages.",
+    "category": "Marketing",
+    "status": "stable",
+    "score": 94,
+    "tags": ["hero", "cta", "responsive"],
+    "updatedAt": "2026-04-28"
+  },
+  {
+    "id": "cmp-data-table",
+    "name": "DataTablePro",
+    "description": "Sortable table with sticky header, row selection, and empty states. Works with large virtualized lists.",
+    "category": "Data",
+    "status": "stable",
+    "score": 91,
+    "tags": ["table", "a11y", "virtual"],
+    "updatedAt": "2026-04-30"
+  },
+  {
+    "id": "cmp-command-palette",
+    "name": "CommandPalette",
+    "description": "⌘K-style command surface with fuzzy search, recent actions, and keyboard-first navigation.",
+    "category": "Navigation",
+    "status": "beta",
+    "score": 88,
+    "tags": ["keyboard", "search"],
+    "updatedAt": "2026-05-01"
+  },
+  {
+    "id": "cmp-chart-shell",
+    "name": "ChartShell",
+    "description": "Responsive chart container with legend slots, tooltip theming, and skeleton loading.",
+    "category": "Visualization",
+    "status": "beta",
+    "score": 86,
+    "tags": ["charts", "loading"],
+    "updatedAt": "2026-04-22"
+  },
+  {
+    "id": "cmp-form-wizard",
+    "name": "FormWizard",
+    "description": "Multi-step form with validation summaries, stepper, and save-as-draft affordances.",
+    "category": "Forms",
+    "status": "draft",
+    "score": 72,
+    "tags": ["forms", "validation"],
+    "updatedAt": "2026-04-15"
+  },
+  {
+    "id": "cmp-toast-stack",
+    "name": "ToastStack",
+    "description": "Global toast region with priority lanes for errors vs. confirmations and swipe-to-dismiss on mobile.",
+    "category": "Feedback",
+    "status": "stable",
+    "score": 93,
+    "tags": ["toast", "mobile"],
+    "updatedAt": "2026-04-29"
+  },
+  {
+    "id": "cmp-sidebar-app",
+    "name": "AppSidebar",
+    "description": "Collapsible application sidebar with section headers, badges, and nested routes.",
+    "category": "Navigation",
+    "status": "stable",
+    "score": 90,
+    "tags": ["layout", "sidebar"],
+    "updatedAt": "2026-04-27"
+  },
+  {
+    "id": "cmp-metric-tiles",
+    "name": "MetricTiles",
+    "description": "KPI tiles with trend sparkline placeholders, delta badges, and comparison periods.",
+    "category": "Data",
+    "status": "draft",
+    "score": 68,
+    "tags": ["kpi", "metrics"],
+    "updatedAt": "2026-04-10"
+  }
+]
