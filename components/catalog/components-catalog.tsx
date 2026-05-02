@@ -35,7 +35,7 @@ export function ComponentsCatalog({
   }, [items, q, cat]);
 
   return (
-    <div className="mx-auto max-w-6xl space-y-5 px-4 py-6 sm:space-y-6 sm:px-8 sm:py-8">
+    <div className="mx-auto max-w-6xl space-y-4 px-4 py-6 sm:space-y-5 sm:px-8 sm:py-7">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <SearchInput
           id="components-search"
@@ -43,14 +43,14 @@ export function ComponentsCatalog({
           onChange={setQ}
           placeholder="Search components, tags, categories…"
         />
-        <div className="text-sm text-zinc-400">
+        <div className="text-sm text-[color:var(--factory-text-muted)]">
           Showing{" "}
-          <span className="font-mono text-zinc-100">{filtered.length}</span> of{" "}
-          <span className="font-mono text-zinc-100">{items.length}</span>
+          <span className="font-mono text-[color:var(--factory-text)]">{filtered.length}</span> of{" "}
+          <span className="font-mono text-[color:var(--factory-text)]">{items.length}</span>
         </div>
       </div>
 
-      <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+      <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0 factory-scrollbar">
         <div className="flex min-w-max items-center gap-2 pb-1">
           <CategoryPill
             label="All categories"
@@ -75,7 +75,7 @@ export function ComponentsCatalog({
       </div>
 
       {filtered.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-white/15 bg-white/[0.02] px-4 py-8 text-center text-sm text-zinc-400">
+        <p className="rounded-xl border border-dashed border-[color:color-mix(in_srgb,var(--factory-border)_74%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface)_66%,transparent)] px-4 py-8 text-center text-sm text-[color:var(--factory-text-subtle)]">
           No components match your filters. Try clearing search or pick another
           category.
         </p>

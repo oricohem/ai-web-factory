@@ -11,8 +11,9 @@ export default function ComponentsPage() {
   return (
     <>
       <PageHeader
+        eyebrow="Component inventory"
         title="Component catalog"
-        description="Production-ready UI blocks with quality scores, lifecycle status, and quick scanning by category."
+        description="Inspection-ready UI artifacts with calibration score, lifecycle status, and compact metadata for fast reuse decisions."
       />
       <ComponentsCatalog
         items={uiComponents}

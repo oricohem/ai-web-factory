@@ -11,8 +11,9 @@ export default function PipelinesPage() {
   return (
     <>
       <PageHeader
+        eyebrow="Pipeline registry"
         title="AI pipelines"
-        description="Composable stages, explicit dependencies, and run signals — designed for operators and builders alike."
+        description="Production lines with explicit dependencies, readiness signals, and run history for operator triage."
       />
       <PipelinesCatalog
         items={pipelines}

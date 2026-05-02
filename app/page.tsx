@@ -8,6 +8,7 @@ export default function Home() {
       <PageHeader
         title="Factory overview"
         description="A single place to browse reusable UI, operationalize AI pipelines, and move work through review with clear quality signals."
+        eyebrow="Production floor"
       />
       <HomeDashboard
         components={uiComponents}

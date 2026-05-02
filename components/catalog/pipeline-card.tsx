@@ -14,19 +14,19 @@ function ChipList({
 }) {
   const accent =
     variant === "includes"
-      ? "border-emerald-500/25 bg-emerald-500/5"
-      : "border-sky-500/25 bg-sky-500/5";
+      ? "border-[color:color-mix(in_srgb,var(--factory-green)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-green)_12%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-green)_85%,white)]"
+      : "border-[color:color-mix(in_srgb,var(--factory-cyan)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-cyan)_12%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-cyan)_84%,white)]";
 
   return (
     <div className="space-y-2">
-      <div className="text-[11px] font-semibold uppercase tracking-wide text-zinc-400">
+      <div className="factory-kicker">
         {title}
       </div>
       <ul className="flex flex-wrap gap-1.5">
         {items.map((x) => (
           <li key={x}>
             <span
-              className={`inline-flex rounded-md border px-2 py-0.5 font-mono text-[11px] text-zinc-200 ${accent}`}
+              className={`inline-flex rounded-md border px-2 py-0.5 font-mono text-[11px] ${accent}`}
             >
               {x}
             </span>
@@ -46,12 +46,16 @@ export function PipelineCard({ item }: { item: PipelineEntry }) {
     : "Never";
 
   return (
-    <article className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] transition hover:border-sky-300/25 hover:bg-white/[0.04] sm:p-5">
+    <article className="factory-panel factory-panel-hover group flex flex-col rounded-2xl p-4 sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0 space-y-2">
-          <h3 className="text-base font-semibold tracking-tight text-white group-hover:text-sky-100 sm:text-lg">
+          <p className="factory-kicker">Pipeline</p>
+          <h3 className="text-base font-semibold tracking-tight text-[color:var(--factory-text)] sm:text-lg">
             {item.name}
           </h3>
+          <p className="font-mono text-[11px] text-[color:var(--factory-text-subtle)]">
+            {item.id}
+          </p>
           <div className="flex flex-wrap items-center gap-2">
             <CategoryPill label={item.category} />
             <StatusBadge status={item.status} />
@@ -59,19 +63,23 @@ export function PipelineCard({ item }: { item: PipelineEntry }) {
         </div>
         <ScoreBadge score={item.score} />
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+      <p className="mt-3 text-sm leading-relaxed text-[color:var(--factory-text-muted)]">
         {item.description}
       </p>
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4">
-        <ChipList title="Includes" items={item.includes} variant="includes" />
-        <ChipList
-          title="Dependencies"
-          items={item.dependencies}
-          variant="deps"
-        />
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl border border-[color:color-mix(in_srgb,var(--factory-border)_72%,transparent)] bg-black/20 p-3">
+          <ChipList title={`Includes · ${item.includes.length}`} items={item.includes.slice(0, 3)} variant="includes" />
+        </div>
+        <div className="rounded-xl border border-[color:color-mix(in_srgb,var(--factory-border)_72%,transparent)] bg-black/20 p-3">
+          <ChipList
+            title={`Dependencies · ${item.dependencies.length}`}
+            items={item.dependencies}
+            variant="deps"
+          />
+        </div>
       </div>
-      <div className="mt-4 border-t border-white/10 pt-3 text-xs text-zinc-400">
-        Last run: <span className="text-zinc-200">{ran}</span>
+      <div className="mt-4 border-t border-[color:color-mix(in_srgb,var(--factory-border)_74%,transparent)] pt-3 text-xs text-[color:var(--factory-text-subtle)]">
+        Last run: <span className="text-[color:var(--factory-text-muted)]">{ran}</span>
       </div>
     </article>
   );

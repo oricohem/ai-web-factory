@@ -11,8 +11,9 @@ export default function ReviewQueuePage() {
   return (
     <>
       <PageHeader
+        eyebrow="Queue triage"
         title="Review queue"
-        description="What is waiting for a decision — filter by status, scan scores, and keep releases predictable."
+        description="Operational triage board for promotion decisions, risk, and quality scoring."
       />
       <ReviewQueueView items={reviewQueue} />
     </>

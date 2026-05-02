@@ -17,7 +17,7 @@ export function SearchInput({
         Search
       </label>
       <span
-        className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-zinc-500"
+        className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-[color:var(--factory-text-subtle)]"
         aria-hidden
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -40,7 +40,7 @@ export function SearchInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-10 w-full rounded-xl border border-white/12 bg-white/[0.04] py-2 pl-9 pr-3 text-sm text-zinc-100 placeholder:text-zinc-400 outline-none ring-sky-300/45 transition focus:border-sky-400/45 focus:ring-2"
+        className="h-10 w-full rounded-xl border border-[color:color-mix(in_srgb,var(--factory-border)_74%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface)_66%,transparent)] py-2 pl-9 pr-3 text-sm text-[color:var(--factory-text)] placeholder:text-[color:var(--factory-text-subtle)] outline-none ring-[color:color-mix(in_srgb,var(--factory-amber)_48%,transparent)] transition focus:border-[color:color-mix(in_srgb,var(--factory-amber)_54%,transparent)] focus:ring-2"
       />
     </div>
   );

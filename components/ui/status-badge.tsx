@@ -4,21 +4,22 @@ type Status = CatalogStatus | ReviewStatus;
 
 const catalogStyles: Record<CatalogStatus, string> = {
   stable:
-    "border-emerald-500/30 bg-emerald-500/10 text-emerald-300 ring-1 ring-inset ring-emerald-500/20",
-  beta: "border-amber-500/30 bg-amber-500/10 text-amber-200 ring-1 ring-inset ring-amber-500/20",
+    "border-[color:color-mix(in_srgb,var(--factory-green)_62%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-green)_16%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-green)_84%,white)]",
+  beta:
+    "border-[color:color-mix(in_srgb,var(--factory-amber)_56%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-amber)_14%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-amber)_86%,white)]",
   draft:
-    "border-zinc-500/40 bg-zinc-500/10 text-zinc-300 ring-1 ring-inset ring-zinc-500/20",
+    "border-[color:color-mix(in_srgb,var(--factory-border-strong)_80%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface)_74%,transparent)] text-[color:var(--factory-text-muted)]",
 };
 
 const reviewStyles: Partial<Record<ReviewStatus, string>> = {
   pending:
-    "border-sky-500/30 bg-sky-500/10 text-sky-200 ring-1 ring-inset ring-sky-500/20",
+    "border-[color:color-mix(in_srgb,var(--factory-cyan)_55%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-cyan)_14%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-cyan)_86%,white)]",
   in_review:
-    "border-cyan-500/35 bg-cyan-500/10 text-cyan-200 ring-1 ring-inset ring-cyan-500/25",
+    "border-[color:color-mix(in_srgb,var(--factory-amber)_58%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-amber)_14%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-amber)_86%,white)]",
   approved:
-    "border-emerald-500/30 bg-emerald-500/10 text-emerald-300 ring-1 ring-inset ring-emerald-500/20",
+    "border-[color:color-mix(in_srgb,var(--factory-green)_62%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-green)_15%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-green)_84%,white)]",
   changes_requested:
-    "border-rose-500/35 bg-rose-500/10 text-rose-200 ring-1 ring-inset ring-rose-500/25",
+    "border-[color:color-mix(in_srgb,var(--factory-red)_66%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-red)_17%,var(--factory-surface-raised))] text-[color:color-mix(in_srgb,var(--factory-red)_86%,white)]",
 };
 
 const catalogLabel: Record<CatalogStatus, string> = {
@@ -55,7 +56,7 @@ export function StatusBadge({
 
   return (
     <span
-      className={`inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide ${className}`}
+      className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] ${className}`}
       title={variant === "review" ? `Review: ${label}` : `Status: ${label}`}
     >
       {label}
