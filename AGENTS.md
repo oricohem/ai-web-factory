@@ -17,6 +17,7 @@ Commands are defined in `package.json`:
 - **Dev server:** `npm run dev` — starts on `localhost:3000`
 - **Lint:** `npm run lint` (runs `eslint`)
 - **Build:** `npm run build` (runs `next build`)
+- **QA:** `npm run qa` (runs `npm run lint`)
 - **No test framework** is configured — there are no automated tests in this codebase.
 
 ### Routes
@@ -24,3 +25,15 @@ Commands are defined in `package.json`:
 - `/components` — UI component catalog
 - `/pipelines` — AI pipeline catalog
 - `/review-queue` — Review queue for promotions/audits
+
+## Design Skills
+
+Project-local design skills live in `.agents/skills/` and are documented in `docs/design-skills.md`.
+
+- Before visual UI work, use Taste Skill guidance, especially `design-taste-frontend`, `high-end-visual-design`, and related Taste Skill references.
+- Before approving UI, use Impeccable-style review for visual hierarchy, interaction quality, responsive behavior, accessibility, and craft.
+- Do not approve generic SaaS UI or default AI-generated visual patterns.
+- Do not overuse purple gradients, glassmorphism, random glow effects, bounce easing, or cramped padding.
+- Always run `npm run qa` after visual changes.
+- Use Playwright screenshots for both desktop and mobile review before approving visual UI work.
+- The human owner is the only one who can mark something Featured.
