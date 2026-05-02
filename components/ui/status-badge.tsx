@@ -14,7 +14,7 @@ const reviewStyles: Partial<Record<ReviewStatus, string>> = {
   pending:
     "border-sky-500/30 bg-sky-500/10 text-sky-200 ring-1 ring-inset ring-sky-500/20",
   in_review:
-    "border-violet-500/35 bg-violet-500/10 text-violet-200 ring-1 ring-inset ring-violet-500/25",
+    "border-cyan-500/35 bg-cyan-500/10 text-cyan-200 ring-1 ring-inset ring-cyan-500/25",
   approved:
     "border-emerald-500/30 bg-emerald-500/10 text-emerald-300 ring-1 ring-inset ring-emerald-500/20",
   changes_requested:

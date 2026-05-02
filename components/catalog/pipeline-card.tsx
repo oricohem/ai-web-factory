@@ -19,14 +19,14 @@ function ChipList({
 
   return (
     <div className="space-y-2">
-      <div className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+      <div className="text-[11px] font-semibold uppercase tracking-wide text-zinc-400">
         {title}
       </div>
       <ul className="flex flex-wrap gap-1.5">
         {items.map((x) => (
           <li key={x}>
             <span
-              className={`inline-flex rounded-md border px-2 py-0.5 font-mono text-[10px] text-zinc-300 ${accent}`}
+              className={`inline-flex rounded-md border px-2 py-0.5 font-mono text-[11px] text-zinc-200 ${accent}`}
             >
               {x}
             </span>
@@ -46,10 +46,10 @@ export function PipelineCard({ item }: { item: PipelineEntry }) {
     : "Never";
 
   return (
-    <article className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] transition hover:border-fuchsia-500/25 hover:bg-white/[0.04]">
+    <article className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] transition hover:border-sky-300/25 hover:bg-white/[0.04] sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0 space-y-2">
-          <h3 className="text-lg font-semibold tracking-tight text-white group-hover:text-fuchsia-100">
+          <h3 className="text-base font-semibold tracking-tight text-white group-hover:text-sky-100 sm:text-lg">
             {item.name}
           </h3>
           <div className="flex flex-wrap items-center gap-2">
@@ -59,10 +59,10 @@ export function PipelineCard({ item }: { item: PipelineEntry }) {
         </div>
         <ScoreBadge score={item.score} />
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+      <p className="mt-3 text-sm leading-relaxed text-zinc-300">
         {item.description}
       </p>
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-4">
         <ChipList title="Includes" items={item.includes} variant="includes" />
         <ChipList
           title="Dependencies"
@@ -70,8 +70,8 @@ export function PipelineCard({ item }: { item: PipelineEntry }) {
           variant="deps"
         />
       </div>
-      <div className="mt-5 border-t border-white/10 pt-4 text-xs text-zinc-500">
-        Last run: <span className="text-zinc-400">{ran}</span>
+      <div className="mt-4 border-t border-white/10 pt-3 text-xs text-zinc-400">
+        Last run: <span className="text-zinc-200">{ran}</span>
       </div>
     </article>
   );
