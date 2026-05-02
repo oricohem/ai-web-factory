@@ -2,37 +2,38 @@ export function StatCard({
   label,
   value,
   hint,
-  accent = "sky",
+  accent = "cyan",
 }: {
   label: string;
   value: string | number;
   hint?: string;
-  accent?: "sky" | "emerald" | "amber" | "slate";
+  accent?: "amber" | "green" | "cyan" | "neutral";
 }) {
-  const ring =
-    accent === "sky"
-      ? "from-sky-400/20 to-cyan-400/10"
-      : accent === "emerald"
-        ? "from-emerald-500/30 to-teal-500/20"
-        : accent === "amber"
-          ? "from-amber-500/30 to-orange-500/20"
-          : "from-zinc-500/30 to-zinc-400/20";
+  const meter =
+    accent === "amber"
+      ? "bg-[linear-gradient(90deg,color-mix(in_srgb,var(--factory-amber)_84%,white),color-mix(in_srgb,var(--factory-amber)_58%,transparent))]"
+      : accent === "green"
+        ? "bg-[linear-gradient(90deg,color-mix(in_srgb,var(--factory-green)_82%,white),color-mix(in_srgb,var(--factory-green)_58%,transparent))]"
+        : accent === "cyan"
+          ? "bg-[linear-gradient(90deg,color-mix(in_srgb,var(--factory-cyan)_84%,white),color-mix(in_srgb,var(--factory-cyan)_58%,transparent))]"
+          : "bg-[linear-gradient(90deg,color-mix(in_srgb,var(--factory-text-muted)_74%,white),color-mix(in_srgb,var(--factory-text-subtle)_58%,transparent))]";
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] sm:p-5">
-      <div
-        className={`pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${ring} blur-xl`}
-        aria-hidden
-      />
-      <div className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
+    <div className="factory-panel relative overflow-hidden rounded-2xl p-4 sm:p-5">
+      <div className="factory-kicker">
         {label}
       </div>
-      <div className="mt-2 font-mono text-2xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">
+      <div className="mt-2 font-mono text-2xl font-semibold tabular-nums tracking-tight text-[color:var(--factory-text)] sm:text-3xl">
         {value}
       </div>
       {hint ? (
-        <p className="mt-2 text-xs leading-relaxed text-zinc-400">{hint}</p>
+        <p className="mt-1.5 text-xs leading-relaxed text-[color:var(--factory-text-muted)]">
+          {hint}
+        </p>
       ) : null}
+      <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-black/35">
+        <div className={`h-full w-2/3 rounded-full ${meter}`} />
+      </div>
     </div>
   );
 }
