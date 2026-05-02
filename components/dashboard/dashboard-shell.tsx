@@ -55,7 +55,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex min-h-full flex-1 bg-[color:var(--factory-canvas)] text-[color:var(--factory-text)]">
+    <div className="factory-atmosphere-root flex min-h-full flex-1 bg-[color:var(--factory-canvas)] text-[color:var(--factory-text)]">
       {/* Mobile overlay */}
       {open ? (
         <button
@@ -66,13 +66,14 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         />
       ) : null}
 
-      <aside
-        id="sidebar"
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--factory-rail)_94%,black),color-mix(in_srgb,var(--factory-rail)_88%,transparent))] px-4 py-5 transition-transform duration-200 lg:static lg:translate-x-0 ${
-          open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        }`}
-      >
-        <div className="mb-6 rounded-2xl border border-[color:color-mix(in_srgb,var(--factory-border-strong)_58%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface)_66%,transparent)] p-3">
+      <div className="factory-shell-stage flex min-h-full flex-1 bg-[color:var(--factory-canvas)] text-[color:var(--factory-text)]">
+        <aside
+          id="sidebar"
+          className={`factory-sidebar-rail fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--factory-rail)_94%,black),color-mix(in_srgb,var(--factory-rail)_88%,transparent))] px-4 py-5 transition-transform duration-200 lg:static lg:translate-x-0 ${
+            open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+          }`}
+        >
+          <div className="mb-6 rounded-2xl border border-[color:color-mix(in_srgb,var(--factory-border-strong)_58%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface)_66%,transparent)] p-3">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[color:color-mix(in_srgb,var(--factory-amber)_65%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-amber)_11%,transparent)]">
               <span className="font-mono text-sm font-semibold text-[color:color-mix(in_srgb,var(--factory-amber)_80%,white)]">
@@ -100,69 +101,70 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               </p>
             </div>
           </div>
-        </div>
-
-        <nav className="flex flex-1 flex-col gap-1.5" aria-label="Primary">
-          {nav.map((item) => (
-            <NavLink
-              key={item.href}
-              href={item.href}
-              label={item.label}
-              code={item.code}
-              active={
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname === item.href || pathname.startsWith(`${item.href}/`)
-              }
-              onNavigate={() => setOpen(false)}
-            />
-          ))}
-        </nav>
-
-        <div className="mt-auto rounded-xl border border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface)_70%,transparent)] p-3 text-xs">
-          <div className="mb-2 flex items-center justify-between">
-            <p className="factory-kicker">Factory state</p>
-            <span className="rounded-md border border-[color:color-mix(in_srgb,var(--factory-green)_40%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-green)_15%,transparent)] px-1.5 py-0.5 font-mono text-[10px] text-[color:color-mix(in_srgb,var(--factory-green)_82%,white)]">
-              nominal
-            </span>
           </div>
-          <p className="leading-relaxed text-[color:var(--factory-text-subtle)]">
-            Local catalog only, production services disconnected.
-          </p>
-        </div>
-      </aside>
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-canvas)_95%,black)] px-4 lg:hidden">
-          <button
-            type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[color:color-mix(in_srgb,var(--factory-border)_70%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface-raised)_72%,transparent)] text-[color:var(--factory-text-muted)]"
-            onClick={() => setOpen(true)}
-            aria-expanded={open}
-            aria-controls="sidebar"
-          >
-            <span className="sr-only">Open menu</span>
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden
-            >
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-          <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-[color:var(--factory-text)]">
-              AI Web Factory
+          <nav className="flex flex-1 flex-col gap-1.5" aria-label="Primary">
+            {nav.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                code={item.code}
+                active={
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname === item.href || pathname.startsWith(`${item.href}/`)
+                }
+                onNavigate={() => setOpen(false)}
+              />
+            ))}
+          </nav>
+
+          <div className="mt-auto rounded-xl border border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface)_70%,transparent)] p-3 text-xs">
+            <div className="mb-2 flex items-center justify-between">
+              <p className="factory-kicker">Factory state</p>
+              <span className="rounded-md border border-[color:color-mix(in_srgb,var(--factory-green)_40%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-green)_15%,transparent)] px-1.5 py-0.5 font-mono text-[10px] text-[color:color-mix(in_srgb,var(--factory-green)_82%,white)]">
+                nominal
+              </span>
+            </div>
+            <p className="leading-relaxed text-[color:var(--factory-text-subtle)]">
+              Local catalog only, production services disconnected.
             </p>
-            <p className="factory-kicker mt-0.5">Control workspace</p>
           </div>
-        </header>
+        </aside>
 
-        <div className="flex-1">{children}</div>
+        <div className="factory-content-stage flex min-w-0 flex-1 flex-col">
+          <header className="factory-mobile-header sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-canvas)_95%,black)] px-4 lg:hidden">
+            <button
+              type="button"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[color:color-mix(in_srgb,var(--factory-border)_70%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-surface-raised)_72%,transparent)] text-[color:var(--factory-text-muted)]"
+              onClick={() => setOpen(true)}
+              aria-expanded={open}
+              aria-controls="sidebar"
+            >
+              <span className="sr-only">Open menu</span>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold text-[color:var(--factory-text)]">
+                AI Web Factory
+              </p>
+              <p className="factory-kicker mt-0.5">Control workspace</p>
+            </div>
+          </header>
+
+          <div className="flex-1">{children}</div>
+        </div>
       </div>
     </div>
   );
