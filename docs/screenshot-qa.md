@@ -4,18 +4,24 @@ AI Web Factory uses Playwright to capture repeatable screenshots of the main pro
 
 ## Run screenshots
 
-Install dependencies, then run:
+Install dependencies and download the Playwright browser before first local use:
 
 ```bash
-npm run screenshots
+npx playwright install
 ```
 
-The command starts the Next.js app with Playwright and writes screenshots to `screenshots/`.
-
-To run the full QA check, including a production build first:
+Then run the full QA check to build the app and generate fresh screenshots:
 
 ```bash
 npm run qa
+```
+
+The QA command starts the Next.js app with Playwright and writes screenshots to `screenshots/`. Screenshots are generated locally or in CI so each review can inspect current output.
+
+To capture screenshots without running a production build first:
+
+```bash
+npm run screenshots
 ```
 
 ## Screenshots for design review
@@ -32,7 +38,7 @@ Each route is captured at two viewports:
 - Desktop: `1440x1000`
 - Mobile: `390x844`
 
-Reviewers can compare the generated files in `screenshots/` against the intended layout, spacing, content hierarchy, and responsive behavior. Commit updated screenshots only when the visual change is intentional and reviewed.
+Reviewers can compare the generated files in `screenshots/` against the intended layout, spacing, content hierarchy, and responsive behavior. Generated screenshot PNGs normally should not be committed; regenerate them with `npm run qa` when reviewing a change.
 
 ## Visual failures
 
