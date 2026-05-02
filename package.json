@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+         "qa": "npm run lint"
     "screenshots": "playwright test tests/screenshots.spec.ts",
     "qa": "npm run build && npm run screenshots"
   },
