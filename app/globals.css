@@ -241,57 +241,62 @@ body::after {
   body {
     background:
       radial-gradient(
-        72% 64% at 14% -20%,
-        color-mix(in srgb, var(--factory-amber) 26%, transparent),
-        transparent 66%
+        84% 76% at 11% -26%,
+        color-mix(in srgb, var(--factory-amber) 34%, transparent),
+        transparent 63%
       ),
       radial-gradient(
-        62% 56% at 108% -10%,
-        color-mix(in srgb, var(--factory-cyan) 19%, transparent),
-        transparent 64%
+        70% 62% at 110% -12%,
+        color-mix(in srgb, var(--factory-cyan) 24%, transparent),
+        transparent 62%
       ),
       radial-gradient(
-        55% 52% at 72% 124%,
-        color-mix(in srgb, var(--factory-green) 14%, transparent),
-        transparent 70%
+        68% 58% at 70% 128%,
+        color-mix(in srgb, var(--factory-green) 17%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        72% 86% at 50% 52%,
+        rgba(9, 10, 8, 0) 34%,
+        rgba(7, 8, 6, 0.65) 100%
       ),
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--factory-canvas) 81%, #1a1c17) 0%,
-        var(--factory-canvas) 38%,
-        var(--factory-canvas-deep) 100%
+        color-mix(in srgb, var(--factory-canvas) 75%, #21241e) 0%,
+        color-mix(in srgb, var(--factory-canvas) 86%, #131511) 42%,
+        color-mix(in srgb, var(--factory-canvas-deep) 92%, #060705) 100%
       );
     background-attachment: fixed;
   }
 
   body::before {
-    opacity: 0.46;
+    opacity: 0.62;
   }
 
   body::after {
     background:
       radial-gradient(
-        82% 120% at 50% -34%,
-        rgba(0, 0, 0, 0) 34%,
-        rgba(0, 0, 0, 0.52) 100%
+        92% 132% at 50% -36%,
+        rgba(0, 0, 0, 0) 30%,
+        rgba(0, 0, 0, 0.58) 100%
       ),
       radial-gradient(
-        100% 88% at 50% 132%,
-        rgba(0, 0, 0, 0.48) 0%,
-        rgba(0, 0, 0, 0) 58%
+        110% 94% at 50% 134%,
+        rgba(0, 0, 0, 0.52) 0%,
+        rgba(0, 0, 0, 0) 56%
       ),
       linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0) 15%,
-        rgba(0, 0, 0, 0) 85%,
-        rgba(0, 0, 0, 0.3) 100%
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.06) 14%,
+        rgba(0, 0, 0, 0.06) 86%,
+        rgba(0, 0, 0, 0.4) 100%
       );
   }
 
   .factory-atmosphere-root {
     isolation: isolate;
-    padding: clamp(0.95rem, 1.8vw, 1.85rem);
+    padding: clamp(1.1rem, 2.05vw, 2.15rem);
   }
 
   .factory-atmosphere-root::before {
@@ -303,24 +308,24 @@ body::after {
     z-index: 0;
     background:
       radial-gradient(
-        92% 72% at 9% 4%,
-        color-mix(in srgb, var(--factory-amber) 14%, transparent),
-        transparent 68%
+        94% 76% at 8% 2%,
+        color-mix(in srgb, var(--factory-amber) 19%, transparent),
+        transparent 66%
       ),
       radial-gradient(
-        78% 62% at 96% 6%,
-        color-mix(in srgb, var(--factory-cyan) 11%, transparent),
-        transparent 72%
+        84% 68% at 98% 4%,
+        color-mix(in srgb, var(--factory-cyan) 15%, transparent),
+        transparent 70%
       ),
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--factory-canvas) 88%, #151611) 0%,
-        color-mix(in srgb, var(--factory-canvas-deep) 90%, #0a0b08) 100%
+        color-mix(in srgb, var(--factory-canvas) 80%, #1f221c) 0%,
+        color-mix(in srgb, var(--factory-canvas-deep) 91%, #080907) 100%
       );
     box-shadow:
-      inset 0 1px 0 rgba(240, 229, 203, 0.04),
-      inset 0 -28px 44px -44px rgba(0, 0, 0, 0.9),
-      0 36px 88px -62px rgba(0, 0, 0, 0.95);
+      inset 0 1px 0 rgba(240, 229, 203, 0.06),
+      inset 0 -34px 58px -46px rgba(0, 0, 0, 0.94),
+      0 44px 104px -58px rgba(0, 0, 0, 0.98);
   }
 
   .factory-atmosphere-root::after {
@@ -332,42 +337,48 @@ body::after {
     z-index: 0;
     border: 1px solid color-mix(in srgb, var(--factory-border-strong) 38%, transparent);
     box-shadow:
-      inset 0 0 0 1px rgba(0, 0, 0, 0.24),
-      inset 0 1px 0 rgba(238, 226, 201, 0.04);
+      inset 0 0 0 1px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(238, 226, 201, 0.06);
   }
 
   .factory-shell-stage {
     min-height: calc(100dvh - clamp(1.8rem, 3.6vw, 3.7rem));
-    border: 1px solid color-mix(in srgb, var(--factory-border-strong) 62%, transparent);
-    border-radius: 1.45rem;
+    border: 1px solid color-mix(in srgb, var(--factory-border-strong) 70%, transparent);
+    border-radius: 1.6rem;
     background:
       radial-gradient(
-        74% 58% at 3% -12%,
-        color-mix(in srgb, var(--factory-amber) 13%, transparent),
-        transparent 66%
+        80% 64% at 1% -12%,
+        color-mix(in srgb, var(--factory-amber) 16%, transparent),
+        transparent 62%
       ),
       radial-gradient(
-        62% 54% at 102% -16%,
-        color-mix(in srgb, var(--factory-cyan) 12%, transparent),
-        transparent 64%
+        70% 62% at 103% -16%,
+        color-mix(in srgb, var(--factory-cyan) 14%, transparent),
+        transparent 62%
+      ),
+      radial-gradient(
+        120% 82% at 50% 112%,
+        rgba(6, 7, 5, 0.62) 0%,
+        rgba(6, 7, 5, 0) 62%
       ),
       linear-gradient(rgba(224, 213, 187, 0.025) 1px, transparent 1px),
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--factory-canvas) 93%, #181a16) 0%,
-        color-mix(in srgb, var(--factory-canvas-deep) 94%, #090a08) 100%
+        color-mix(in srgb, var(--factory-canvas) 88%, #1c1f19) 0%,
+        color-mix(in srgb, var(--factory-canvas-deep) 94%, #080907) 100%
       );
     background-size:
+      100% 100%,
       100% 100%,
       100% 100%,
       100% 5px,
       100% 100%;
     box-shadow:
-      inset 0 1px 0 rgba(238, 226, 201, 0.06),
-      inset 0 0 0 1px rgba(0, 0, 0, 0.22),
-      inset 0 -34px 56px -54px rgba(0, 0, 0, 0.84),
-      0 44px 98px -62px rgba(0, 0, 0, 0.98),
-      0 0 0 1px rgba(0, 0, 0, 0.25);
+      inset 0 1px 0 rgba(238, 226, 201, 0.08),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.27),
+      inset 0 -42px 64px -52px rgba(0, 0, 0, 0.9),
+      0 54px 116px -58px rgba(0, 0, 0, 0.99),
+      0 0 0 1px rgba(0, 0, 0, 0.28);
     overflow: clip;
   }
 
@@ -379,14 +390,14 @@ body::after {
     z-index: 0;
     background:
       radial-gradient(
-        112% 86% at -10% -18%,
-        color-mix(in srgb, var(--factory-amber) 13%, transparent),
-        transparent 60%
+        118% 92% at -12% -20%,
+        color-mix(in srgb, var(--factory-amber) 17%, transparent),
+        transparent 58%
       ),
       radial-gradient(
-        96% 78% at 108% 116%,
-        color-mix(in srgb, var(--factory-cyan) 11%, transparent),
-        transparent 68%
+        108% 86% at 108% 116%,
+        color-mix(in srgb, var(--factory-cyan) 14%, transparent),
+        transparent 66%
       );
   }
 
@@ -399,17 +410,17 @@ body::after {
     background:
       linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.34) 0%,
+        rgba(0, 0, 0, 0.42) 0%,
         rgba(0, 0, 0, 0) 13%,
         rgba(0, 0, 0, 0) 87%,
-        rgba(0, 0, 0, 0.31) 100%
+        rgba(0, 0, 0, 0.38) 100%
       ),
       linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.26) 0%,
+        rgba(0, 0, 0, 0.34) 0%,
         rgba(0, 0, 0, 0) 22%,
         rgba(0, 0, 0, 0) 72%,
-        rgba(0, 0, 0, 0.28) 100%
+        rgba(0, 0, 0, 0.36) 100%
       );
   }
 
@@ -418,30 +429,30 @@ body::after {
       linear-gradient(
         180deg,
         color-mix(in srgb, var(--factory-rail) 95%, black) 0%,
-        color-mix(in srgb, var(--factory-rail) 90%, transparent) 62%,
-        color-mix(in srgb, var(--factory-rail) 85%, transparent) 100%
+        color-mix(in srgb, var(--factory-rail) 91%, transparent) 52%,
+        color-mix(in srgb, var(--factory-rail) 84%, transparent) 100%
       );
     box-shadow:
-      inset -1px 0 0 rgba(238, 226, 201, 0.045),
-      24px 0 50px -34px rgba(0, 0, 0, 0.96);
+      inset -1px 0 0 rgba(238, 226, 201, 0.055),
+      28px 0 58px -34px rgba(0, 0, 0, 0.98);
   }
 
   .factory-content-stage {
     background:
       radial-gradient(
-        78% 62% at 86% -18%,
-        color-mix(in srgb, var(--factory-cyan) 9%, transparent),
-        transparent 62%
+        88% 70% at 88% -18%,
+        color-mix(in srgb, var(--factory-cyan) 12%, transparent),
+        transparent 60%
       ),
       radial-gradient(
-        52% 42% at 3% 112%,
-        color-mix(in srgb, var(--factory-amber) 8%, transparent),
-        transparent 72%
+        64% 48% at 2% 114%,
+        color-mix(in srgb, var(--factory-amber) 10%, transparent),
+        transparent 70%
       ),
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--factory-canvas) 95%, #131410) 0%,
-        color-mix(in srgb, var(--factory-canvas-deep) 94%, #0d0d0b) 100%
+        color-mix(in srgb, var(--factory-canvas) 92%, #181b15) 0%,
+        color-mix(in srgb, var(--factory-canvas-deep) 94%, #0b0c0a) 100%
       );
   }
 }
