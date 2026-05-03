@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brief Builder — AI Web Factory</title>
+    <link rel="stylesheet" href="shared.css" />
+  </head>
+  <body data-page="brief-builder">
+    <div class="shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a class="brand" href="index.html">
+            <span class="brand-dot" aria-hidden="true"></span>
+            <span>AI Web Factory</span>
+          </a>
+          <nav class="nav">
+            <a href="index.html">Overview</a>
+            <a aria-current="page" href="brief-builder.html">Brief Builder</a>
+            <a href="result-preview.html">Generated Brief</a>
+            <a href="examples.html">Examples</a>
+            <a href="pricing.html">Pricing</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero section">
+          <div class="container">
+            <div class="builder-intro">
+              <div>
+                <p class="eyebrow">Guided Intake Prototype</p>
+                <h1>Define the business before generation.</h1>
+                <p class="lead">
+                  This intake flow captures strategy, conversion priorities, trust intent, visual
+                  risk, and package scope so the future agent gets a strong Launch Brief contract.
+                </p>
+              </div>
+              <aside class="signal-panel">
+                <h3>Flow steps</h3>
+                <ol class="step-nav">
+                  <li><span>1</span> Business context</li>
+                  <li><span>2</span> Conversion and offer</li>
+                  <li><span>3</span> Audience and trust</li>
+                  <li><span>4</span> Visual controls</li>
+                  <li><span>5</span> Outputs and constraints</li>
+                  <li><span>6</span> Preferences and exclusions</li>
+                  <li><span>7</span> Brief preview and handoff</li>
+                </ol>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container builder-grid">
+            <article class="card intake-surface">
+              <h2>Launch Brief Intake</h2>
+
+              <div class="step-block">
+                <h3>Step 1 — Business context</h3>
+                <div class="field-grid">
+                  <label class="field">
+                    <span>Industry selector</span>
+                    <select id="industry" data-required>
+                      <option value="">Select industry</option>
+                      <option>Real estate</option>
+                      <option>Healthcare</option>
+                      <option>Legal</option>
+                      <option>Ecommerce</option>
+                      <option>B2B SaaS</option>
+                      <option>Local services</option>
+                      <option>Education</option>
+                    </select>
+                  </label>
+                  <label class="field">
+                    <span>Business maturity selector</span>
+                    <select id="business-maturity" data-required>
+                      <option value="">Select maturity</option>
+                      <option>Idea</option>
+                      <option>New business</option>
+                      <option>Existing business</option>
+                      <option>Rebrand</option>
+                      <option>Launch campaign</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="field-grid mt-16">
+                  <label class="field">
+                    <span>Business type selector</span>
+                    <select id="business-type" data-required>
+                      <option value="">Select business type</option>
+                      <option>Solo founder</option>
+                      <option>Small business</option>
+                      <option>Startup team</option>
+                      <option>Agency</option>
+                      <option>Creator-led business</option>
+                      <option>Established company</option>
+                    </select>
+                  </label>
+                  <label class="field">
+                    <span>Primary audience selector</span>
+                    <input
+                      id="audience"
+                      data-required
+                      type="text"
+                      placeholder="Example: Owners with 2-10 employee service teams"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div class="step-block">
+                <h3>Step 2 — Conversion and offer strategy</h3>
+                <p class="muted">Primary conversion goal selector</p>
+                <div class="chip-group" data-chip-group="conversion-goal">
+                  <button type="button" class="chip">Book demo</button>
+                  <button type="button" class="chip">Start trial</button>
+                  <button type="button" class="chip">Collect leads</button>
+                  <button type="button" class="chip">Sell product</button>
+                  <button type="button" class="chip">Sell service</button>
+                  <button type="button" class="chip">WhatsApp/contact</button>
+                  <button type="button" class="chip">Waitlist</button>
+                  <button type="button" class="chip">App download</button>
+                </div>
+
+                <div class="field-grid mt-16">
+                  <label class="field">
+                    <span>Offer type selector</span>
+                    <select id="offer-type" data-required>
+                      <option value="">Select offer type</option>
+                      <option>Service</option>
+                      <option>SaaS</option>
+                      <option>Ecommerce product</option>
+                      <option>Local business</option>
+                      <option>Creator product</option>
+                      <option>Course</option>
+                      <option>Agency offer</option>
+                      <option>Real estate/listing</option>
+                      <option>Personal brand</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div class="step-block">
+                <h3>Step 3 — Audience and trust signals</h3>
+                <div class="field-grid">
+                  <label class="field">
+                    <span>Trust priority selector</span>
+                    <select id="trust-priority" data-required>
+                      <option value="">Select trust priority</option>
+                      <option>Credibility</option>
+                      <option>Speed</option>
+                      <option>Luxury</option>
+                      <option>Clarity</option>
+                      <option>Authority</option>
+                      <option>Friendliness</option>
+                      <option>Technical confidence</option>
+                    </select>
+                  </label>
+                  <label class="field">
+                    <span>Budget/urgency selector</span>
+                    <select id="budget-urgency" data-required>
+                      <option value="">Select budget and urgency</option>
+                      <option>Lean budget / immediate</option>
+                      <option>Moderate budget / 30 days</option>
+                      <option>Growth budget / 60-90 days</option>
+                      <option>Premium budget / campaign window</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div class="step-block">
+                <h3>Step 4 — Visual direction controls</h3>
+                <label class="field">
+                  <span>Visual Boldness Level</span>
+                  <input id="boldness-range" type="range" min="1" max="5" value="3" data-required />
+                  <small id="boldness-label">Level 3 — Bold/memorable</small>
+                </label>
+                <label class="field mt-16">
+                  <span>Optional Motion/3D layer</span>
+                  <select id="motion-layer" data-required>
+                    <option value="">Select motion/3D level</option>
+                    <option>None</option>
+                    <option>Subtle motion</option>
+                    <option>Premium motion</option>
+                    <option>3D product/object scenes</option>
+                    <option>Cinematic interactive experience</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="step-block">
+                <h3>Step 5 — Output package and desired outputs</h3>
+                <label class="field">
+                  <span>Output package selector</span>
+                  <select id="output-package" data-required>
+                    <option value="">Select package</option>
+                    <option>Website only</option>
+                    <option>Website + copy pack</option>
+                    <option>Launch kit</option>
+                    <option>Growth kit</option>
+                    <option>Agency/client handoff kit</option>
+                  </select>
+                </label>
+                <label class="field mt-16">
+                  <span>Desired outputs selector</span>
+                  <textarea
+                    id="desired-outputs"
+                    data-required
+                    placeholder="Example: Website, copy pack, pricing model, ad copy set, QA notes"
+                  ></textarea>
+                </label>
+              </div>
+
+              <div class="step-block">
+                <h3>Step 6 — Preferences and exclusions</h3>
+                <div class="field-grid">
+                  <label class="field">
+                    <span>Reference preference (examples they like)</span>
+                    <textarea
+                      id="reference-like"
+                      data-required
+                      placeholder="Brands or pages they like and why"
+                    ></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Reference preference (examples they dislike)</span>
+                    <textarea
+                      id="reference-dislike"
+                      data-required
+                      placeholder="Examples to avoid and why"
+                    ></textarea>
+                  </label>
+                </div>
+                <div class="field-grid mt-16">
+                  <label class="field">
+                    <span>Must-have sections</span>
+                    <textarea
+                      id="must-have-sections"
+                      data-required
+                      placeholder="Example: pricing, proof, FAQ, campaign plan"
+                    ></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Must-avoid styles</span>
+                    <textarea
+                      id="must-avoid-styles"
+                      data-required
+                      placeholder="Example: generic SaaS gradients, dark admin look"
+                    ></textarea>
+                  </label>
+                </div>
+              </div>
+
+              <footer class="builder-actions">
+                <a class="btn btn-secondary" href="index.html">Back to overview</a>
+                <a class="btn btn-primary" href="result-preview.html">Preview generated Launch Brief</a>
+              </footer>
+            </article>
+
+            <aside class="card completion-panel">
+              <h2>Launch Brief completeness</h2>
+              <div class="meter">
+                <div class="meter-fill" id="completeness-fill"></div>
+              </div>
+              <p class="muted" id="completeness-text">0% complete — begin selecting core inputs.</p>
+              <ul class="checklist" id="completeness-list">
+                <li data-check="industry">Industry selected</li>
+                <li data-check="business-maturity">Business maturity selected</li>
+                <li data-check="conversion-goal">Primary conversion goal selected</li>
+                <li data-check="offer-type">Offer type selected</li>
+                <li data-check="reference-dislike">Reference dislikes captured</li>
+              </ul>
+
+              <div class="preview-snippet">
+                <h3>Generated brief preview</h3>
+                <p><strong>Industry:</strong> <span id="preview-industry">Not set</span></p>
+                <p><strong>Maturity:</strong> <span id="preview-maturity">Not set</span></p>
+                <p><strong>Goal:</strong> <span id="preview-goal">Not set</span></p>
+                <p><strong>Offer:</strong> <span id="preview-offer">Not set</span></p>
+                <p><strong>Trust priority:</strong> <span id="preview-trust">Not set</span></p>
+                <p><strong>Boldness:</strong> <span id="preview-boldness">Level 3 — Bold/memorable</span></p>
+                <p><strong>Motion layer:</strong> <span id="preview-motion">Not set</span></p>
+                <p><strong>Output package:</strong> <span id="preview-package">Not set</span></p>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="shared.js"></script>
+  </body>
+</html>
