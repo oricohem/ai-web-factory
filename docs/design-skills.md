@@ -7,11 +7,13 @@ AI Web Factory keeps design guidance local so agents can improve UI quality with
 - **Taste Skill:** Use the Taste Skill set to avoid generic AI output, choose stronger visual direction, check spacing and typography decisions, and keep frontend implementation aligned with premium product UI standards.
 - **Impeccable:** Use Impeccable-style review to critique, audit, polish, and approve frontend interfaces with stricter attention to hierarchy, responsive behavior, accessibility, interaction states, copy, and visual craft.
 - **AI Factory Design Intelligence:** Use `ai-factory-design-intelligence` before AI Web Factory-specific dashboard, catalog, review, card, shell, or atmosphere work. It defines the product's operator-grade style taxonomy, palette and typography reasoning, density rules, motion/3D readiness, anti-patterns, acceptance criteria, screenshot QA, and before/after proof requirements.
+- **AI Factory Taste Engine:** Use `ai-factory-taste-engine` before non-trivial visual UI work to run a modern premium taste gate, compare 2-3 materially different directions, score each direction, and reject generic dark-dashboard regressions before implementation.
 - **Visual Research and Atmosphere:** Use `visual-research-and-atmosphere` before app-shell, background, lighting, depth, or material passes. It requires reference research, direction synthesis, anti-repetition checks, desktop/mobile screenshots, build and QA validation, and a self-critique so future atmosphere passes stay varied instead of repeating the same dark-gradient treatment.
 
 ## Builder agents
 
 - Use Taste Skill guidance before visual UI work, including dashboards, component catalog updates, pipeline views, review queue changes, empty states, and visual states.
+- Use `ai-factory-taste-engine` before non-trivial visual UI work to enforce premium product taste, anti-generic filtering, and direction scoring before coding.
 - Use `ai-factory-design-intelligence` to choose a product-specific direction before changing AI Web Factory dashboards, catalogs, review surfaces, cards, app shell, or atmosphere.
 - Use it to pick a clear design direction, reduce generic SaaS defaults, and avoid reflexive purple gradients, glassmorphism, random glow, bounce easing, and cramped padding.
 - Use `visual-research-and-atmosphere` when the work changes the app's environmental feel: global backgrounds, page atmosphere, shell framing, lighting, texture, material quality, or route-level visual depth.
@@ -23,6 +25,7 @@ AI Web Factory keeps design guidance local so agents can improve UI quality with
 ## Reviewer agents
 
 - Use Impeccable-style review before approving UI changes.
+- Confirm submitted work includes the taste score and that weak-scoring directions were rejected.
 - Review screenshots at desktop and mobile widths with Playwright.
 - Reject UI that looks like a generic AI SaaS template, even if it technically works.
 - Confirm the component is reusable, the purpose is obvious, the typography hierarchy is clear, and spacing is consistent.
