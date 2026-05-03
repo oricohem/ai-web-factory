@@ -6,117 +6,52 @@
     <title>C7D · Poster Luminous Campaign</title>
     <link rel="stylesheet" href="./shared.css" />
     <style>
-      body {
-        background:
-          radial-gradient(circle at 16% 18%, rgba(111, 147, 251, 0.46), transparent 30%),
-          radial-gradient(circle at 82% 24%, rgba(116, 224, 197, 0.42), transparent 35%),
-          radial-gradient(circle at 54% 80%, rgba(255, 191, 121, 0.46), transparent 40%),
-          linear-gradient(160deg, #f0f5ff, #e5fff4 52%, #fff4de);
-        color: #102136;
-      }
-
       .hero {
-        width: min(1240px, 94vw);
-        margin: 0 auto;
-        min-height: 100dvh;
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-        gap: 2rem;
+        background: rgba(245, 250, 255, 0.62);
       }
 
-      h1 {
-        margin: 0;
-        font-size: clamp(3.2rem, 6.3vw, 6.1rem);
-        line-height: 0.9;
-        letter-spacing: -0.05em;
-        max-width: 10.6ch;
-      }
-
-      p {
-        margin: 1rem 0 0;
-        max-width: 49ch;
-        color: #2a3d5a;
-      }
-
-      .cta {
-        margin-top: 1.5rem;
-        display: flex;
-        gap: 0.8rem;
-      }
-
-      .btn {
-        border-radius: 999px;
-        border: 1px solid rgba(31, 52, 86, 0.24);
-        padding: 0.82rem 1.2rem;
-        font-weight: 600;
-      }
-
-      .btn.primary {
-        background: #1b3157;
-        color: #f5f9ff;
-      }
-
-      .poster {
-        border: 1px solid rgba(25, 43, 73, 0.24);
+      .poster-panel {
+        position: absolute;
+        inset: 12% 12% 14%;
+        border: 1px solid rgba(39, 60, 98, 0.24);
         border-radius: 1rem;
-        min-height: 66dvh;
-        background:
-          radial-gradient(circle at 38% 30%, rgba(111, 148, 252, 0.42), transparent 34%),
-          radial-gradient(circle at 78% 34%, rgba(118, 227, 202, 0.38), transparent 36%),
-          radial-gradient(circle at 56% 80%, rgba(255, 190, 116, 0.4), transparent 36%),
-          rgba(247, 251, 255, 0.68);
-        position: relative;
-        overflow: hidden;
       }
 
-      .poster::before {
-        content: "";
-        position: absolute;
-        inset: 8% 9%;
-        border: 1px solid rgba(40, 61, 99, 0.22);
-        border-radius: 0.9rem;
-      }
-
-      .poster strong {
-        position: absolute;
-        bottom: 12%;
-        left: 13%;
-        font-size: 0.8rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #284162;
-      }
-
-      @media (max-width: 960px) {
-        .hero {
-          grid-template-columns: 1fr;
-          padding: 2rem 0;
-        }
-
-        .poster {
-          min-height: 46dvh;
-        }
+      .proof {
+        background: rgba(239, 246, 255, 0.9);
       }
     </style>
   </head>
-  <body>
-    <main class="hero">
-      <section>
-        <p class="kicker">C7D · Poster / Abstract light field · 8.5</p>
-        <h1>Launch your next AI web system with campaign-grade energy.</h1>
-        <p>
-          Poster composition creates memorability through bold typography and controlled luminous atmosphere.
-          Product proof remains a support signal, not a dashboard wall.
-        </p>
-        <div class="cta">
-          <span class="btn primary">Start launch cycle</span>
-          <span class="btn">See campaign proof</span>
-        </div>
+  <body class="mood-light comp-poster anchor-field">
+    <main class="shell">
+      <header class="topbar">
+        <p class="brand">AI Web Factory · Finalist C7D</p>
+        <p class="meta">Poster campaign × abstract light field · 8.5</p>
+      </header>
+      <section class="hero">
+        <article class="copy">
+          <h1>Launch your next AI web system with campaign-grade energy.</h1>
+          <p>
+            Poster composition now occupies the viewport decisively, balancing bold type,
+            luminous atmosphere, and clear conversion priority.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#">Start launch cycle</a>
+            <a class="btn secondary" href="#">See campaign proof</a>
+          </div>
+          <aside class="proof">
+            <h2>Campaign proof</h2>
+            <ul>
+              <li><span>Launch campaigns</span><strong>27</strong></li>
+              <li><span>Memorability test</span><strong>8.9</strong></li>
+              <li><span>Buyer clarity score</span><strong>8.7</strong></li>
+            </ul>
+          </aside>
+        </article>
+        <section class="visual">
+          <div class="anchor"><div class="poster-panel"></div></div>
+        </section>
       </section>
-      <aside class="poster">
-        <strong>AI Web Factory · Campaign Release</strong>
-      </aside>
     </main>
   </body>
 </html>

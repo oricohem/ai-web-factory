@@ -3,125 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C4B Editorial Object Ledger</title>
+    <title>C4B · Editorial Object Ledger</title>
     <link rel="stylesheet" href="./shared.css" />
     <style>
-      body {
-        background:
-          radial-gradient(circle at 80% 14%, rgba(140, 118, 77, 0.14), transparent 38%),
-          linear-gradient(160deg, #101217, #0b0e13);
-      }
       .hero {
-        min-height: 100dvh;
-        width: min(1300px, 94vw);
-        margin: 0 auto;
-        padding: 2rem 0;
-        display: grid;
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: 2rem;
-        align-items: center;
+        background: linear-gradient(170deg, rgba(28, 35, 50, 0.9), rgba(16, 21, 31, 0.94));
       }
-      .left {
-        display: grid;
-        gap: 1rem;
+
+      .anchor {
+        background: linear-gradient(164deg, rgba(45, 35, 24, 0.72), rgba(16, 21, 31, 0.8));
       }
-      .hero h1 {
-        margin: 0;
-        font-size: clamp(3rem, 5.2vw, 5rem);
-        line-height: 0.9;
-      }
-      .left p {
-        margin: 0;
-        color: #bbc4d8;
-        max-width: 44ch;
-      }
-      .visual {
-        border: 1px solid rgba(208, 190, 155, 0.24);
-        border-radius: 1.2rem;
-        padding: 1rem;
-        background: linear-gradient(170deg, rgba(41, 33, 25, 0.4), rgba(18, 22, 33, 0.62));
-        display: grid;
-        grid-template-columns: 0.72fr 1.28fr;
-        gap: 0.8rem;
-      }
-      .ledger,
-      .artifact {
-        border: 1px solid rgba(205, 187, 157, 0.24);
-        border-radius: 0.85rem;
-      }
+
       .ledger {
-        padding: 0.8rem;
-        background: rgba(20, 24, 33, 0.72);
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        width: 27%;
+        bottom: 1rem;
+        border-radius: 0.85rem;
+        border: 1px solid rgba(208, 190, 158, 0.32);
+        background: rgba(17, 23, 33, 0.74);
+        padding: 0.68rem;
         display: grid;
-        gap: 0.55rem;
+        gap: 0.42rem;
       }
-      .ledger .line {
+
+      .line {
         height: 8px;
         border-radius: 999px;
-        background: rgba(220, 204, 172, 0.34);
+        background: rgba(216, 199, 170, 0.36);
       }
+
       .artifact {
-        position: relative;
-        overflow: hidden;
-        background:
-          radial-gradient(circle at 68% 26%, rgba(255, 224, 178, 0.27), transparent 44%),
-          linear-gradient(168deg, rgba(74, 58, 41, 0.86), rgba(24, 20, 16, 0.78));
+        position: absolute;
+        left: 31%;
+        right: 1rem;
+        top: 1rem;
+        bottom: 1rem;
+        border-radius: 0.95rem;
+        border: 1px solid rgba(227, 205, 171, 0.34);
       }
+
       .artifact::before {
         content: "";
         position: absolute;
         inset: 16% 15%;
-        border: 1px solid rgba(232, 214, 184, 0.46);
         border-radius: 0.75rem;
-      }
-      .cta-row {
-        display: flex;
-        gap: 0.7rem;
-      }
-      .btn {
-        border-radius: 999px;
-        padding: 0.8rem 1.2rem;
-        text-decoration: none;
-        font-weight: 600;
-      }
-      .btn.main {
-        background: #dfc192;
-        color: #2b1f12;
-      }
-      .btn.alt {
-        border: 1px solid rgba(198, 175, 140, 0.4);
-        color: #e5d8c0;
-      }
-      @media (max-width: 980px) {
-        .hero {
-          grid-template-columns: 1fr;
-        }
+        border: 1px solid rgba(232, 214, 184, 0.46);
       }
     </style>
   </head>
-  <body>
-    <main class="hero">
-      <section class="left">
-        <div class="eyebrow">Finalist C4B · Editorial Object Ledger · Score 8.9</div>
-        <h1>Run a premium asset ledger with editorial authority.</h1>
-        <p>
-          This asymmetric hero pairs a narrow narrative rail with a large object-led stage so the
-          page reads like a high-end product statement instead of dashboard software.
-        </p>
-        <div class="cta-row">
-          <a class="btn main" href="#">Open Brand Ledger</a>
-          <a class="btn alt" href="#">Audit Release Standard</a>
-        </div>
-      </section>
-      <section class="visual">
-        <div class="ledger">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line" style="width: 80%"></div>
-          <div class="line"></div>
-          <div class="line" style="width: 65%"></div>
-        </div>
-        <div class="artifact"></div>
+  <body class="mood-dark">
+    <main class="shell comp-editorial anchor-object">
+      <header class="topbar">
+        <p class="brand">AI Web Factory · Finalist C4B</p>
+        <p class="meta">Editorial asymmetric × premium object artifact · 8.9</p>
+      </header>
+      <section class="hero">
+        <article class="copy">
+          <h1>Run a premium asset ledger with editorial authority.</h1>
+          <p>
+            Asymmetric narrative rail plus enlarged object stage creates a homepage that feels
+            curated, commercial, and productized rather than operationally panelized.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#">Open brand ledger</a>
+            <a class="btn secondary" href="#">Audit release standard</a>
+          </div>
+          <div class="proof-grid">
+            <div class="proof-item"><span>Selected assets</span><strong>182</strong></div>
+            <div class="proof-item"><span>Approval yield</span><strong>94.4%</strong></div>
+            <div class="proof-item"><span>Enterprise clients</span><strong>41</strong></div>
+          </div>
+        </article>
+        <section class="visual">
+          <div class="anchor">
+            <div class="ledger">
+              <div class="line"></div>
+              <div class="line"></div>
+              <div class="line" style="width:82%"></div>
+              <div class="line"></div>
+              <div class="line" style="width:66%"></div>
+              <div class="line"></div>
+            </div>
+            <div class="artifact"></div>
+          </div>
+          <aside class="proof">
+            <h2>Ledger proof</h2>
+            <ul>
+              <li><span>Editorial release tracks</span><strong>22</strong></li>
+              <li><span>Artifact integrity</span><strong>95.8%</strong></li>
+              <li><span>Review latency</span><strong>-29%</strong></li>
+            </ul>
+          </aside>
+        </section>
       </section>
     </main>
   </body>

@@ -6,86 +6,46 @@
     <title>C3E · Immersive Architectural Environment</title>
     <link rel="stylesheet" href="./shared.css" />
     <style>
-      body {
-        background:
-          radial-gradient(circle at 10% 16%, rgba(97, 128, 198, 0.26), transparent 42%),
-          linear-gradient(165deg, #0d1320, #0a1019);
-      }
       .hero {
-        min-height: 100dvh;
-        display: grid;
-        place-items: center;
-      }
-      .scene {
-        width: min(1280px, 95vw);
-        min-height: 86vh;
-        border-radius: 1.8rem;
-        border: 1px solid rgba(170, 190, 228, 0.34);
         background:
-          repeating-linear-gradient(90deg, rgba(188, 204, 239, 0.12) 0 2px, transparent 2px 14px),
-          linear-gradient(170deg, rgba(40, 55, 82, 0.84), rgba(19, 28, 44, 0.9));
-        position: relative;
-        overflow: hidden;
+          repeating-linear-gradient(90deg, rgba(188, 204, 239, 0.1) 0 2px, transparent 2px 14px),
+          linear-gradient(170deg, rgba(36, 51, 76, 0.9), rgba(18, 27, 43, 0.92));
       }
-      .scene::after {
+
+      .anchor::after {
         content: "";
         position: absolute;
         inset: 14% 14%;
         border: 1px solid rgba(198, 216, 255, 0.44);
         border-radius: 1rem;
       }
-      .copy {
-        position: absolute;
-        left: 3rem;
-        bottom: 3rem;
-        max-width: 42ch;
-      }
-      h1 {
-        margin: 0 0 1rem;
-        font-size: clamp(3rem, 5.3vw, 5.4rem);
-        line-height: 0.92;
-      }
-      p {
-        margin: 0 0 1.4rem;
-        color: #cfdbf6;
-        line-height: 1.56;
-      }
-      .cta-row {
-        display: flex;
-        gap: 0.7rem;
-      }
-      .btn.main {
-        background: #dde8ff;
-        color: #10223f;
-      }
-      .proof {
-        position: absolute;
-        top: 2.1rem;
-        right: 2.1rem;
-        width: min(300px, 30vw);
-      }
     </style>
   </head>
-  <body>
-    <main class="hero">
-      <section class="scene">
-        <div class="copy">
+  <body class="mood-dark comp-immersive anchor-architecture">
+    <main class="shell">
+      <header class="topbar">
+        <p class="brand">AI Web Factory · Finalist C3E</p>
+        <p class="meta">Fullscreen immersive × architectural staged space · 8.8</p>
+      </header>
+      <section class="hero">
+        <div class="visual"><div class="anchor"></div></div>
+        <article class="copy">
           <h1>Operate inside one architectural AI release environment.</h1>
           <p>
-            Immersive architecture-first composition turns spatial credibility into a core brand signal.
-            It feels like a premium product world, not a panelized admin shell.
+            Full-viewport spatial composition creates premium environmental presence
+            while preserving clear action hierarchy and product relevance.
           </p>
           <div class="cta-row">
-            <a class="btn main" href="#">Enter Environment</a>
-            <a class="btn ghost" href="#">See System Blueprint</a>
+            <a class="btn primary" href="#">Enter environment</a>
+            <a class="btn secondary" href="#">See stage architecture</a>
           </div>
-        </div>
+        </article>
         <aside class="proof">
-          <h2>Proof Layer</h2>
+          <h2>Environment proof</h2>
           <ul>
             <li><span>Design systems onboarded</span><strong>31</strong></li>
-            <li><span>Hero cohesion score</span><strong>9.0</strong></li>
             <li><span>Cross-team trust</span><strong>94%</strong></li>
+            <li><span>Spatial cohesion score</span><strong>9.0</strong></li>
           </ul>
         </aside>
       </section>

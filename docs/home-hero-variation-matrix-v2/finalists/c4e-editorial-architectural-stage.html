@@ -6,27 +6,8 @@
     <title>C4E · Editorial Architectural Stage</title>
     <link rel="stylesheet" href="./shared.css" />
     <style>
-      body {
-        background:
-          linear-gradient(120deg, rgba(35, 46, 69, 0.96) 0 36%, rgba(13, 17, 27, 0.95) 36% 72%, rgba(47, 58, 83, 0.94) 72%),
-          #0d1119;
-      }
-
       .hero {
-        grid-template-columns: 0.9fr 1.1fr;
-      }
-
-      .kicker {
-        color: #b4caec;
-      }
-
-      .panel {
-        background: linear-gradient(170deg, rgba(29, 37, 52, 0.88), rgba(17, 22, 32, 0.9));
-      }
-
-      .visual {
-        border-radius: 2rem;
-        overflow: hidden;
+        background: linear-gradient(120deg, rgba(35, 46, 69, 0.96) 0 36%, rgba(13, 17, 27, 0.95) 36% 72%, rgba(47, 58, 83, 0.94) 72%);
       }
 
       .beam {
@@ -37,15 +18,9 @@
         background: linear-gradient(to bottom, rgba(191, 216, 255, 0.66), transparent 58%);
       }
 
-      .b1 {
-        left: 30%;
-      }
-      .b2 {
-        left: 54%;
-      }
-      .b3 {
-        left: 77%;
-      }
+      .b1 { left: 30%; }
+      .b2 { left: 54%; }
+      .b3 { left: 77%; }
 
       .atrium {
         position: absolute;
@@ -66,19 +41,22 @@
       }
     </style>
   </head>
-  <body>
-    <main class="page">
+  <body class="mood-dark comp-editorial anchor-architecture">
+    <main class="shell">
+      <header class="topbar">
+        <p class="brand">AI Web Factory · Finalist C4E</p>
+        <p class="meta">Editorial asymmetric × architectural staged space · 8.9</p>
+      </header>
       <section class="hero">
-        <article class="panel">
-          <p class="kicker">C4E · Editorial + Architectural · 8.9</p>
+        <article class="copy">
           <h1>Frame AI production as a premium editorial environment.</h1>
-          <p class="lead">
-            Use asymmetric editorial rhythm with staged architectural depth so the
-            homepage feels like a product world, not a dashboard shell.
+          <p>
+            Offset narrative rhythm and oversized staged architecture improve screen presence,
+            readability, and premium credibility for above-the-fold judging.
           </p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#">Open Editorial Buildflow</a>
-            <a class="btn btn-ghost" href="#">Inspect Stage Logic</a>
+            <a class="btn primary" href="#">Open editorial buildflow</a>
+            <a class="btn secondary" href="#">Inspect stage logic</a>
           </div>
           <div class="proof-grid">
             <div class="proof-item"><span>Artifact quality confidence</span><strong>95.8%</strong></div>
@@ -86,12 +64,22 @@
             <div class="proof-item"><span>Client-grade environments</span><strong>14</strong></div>
           </div>
         </article>
-        <article class="visual">
-          <div class="beam b1"></div>
-          <div class="beam b2"></div>
-          <div class="beam b3"></div>
-          <div class="atrium"></div>
-        </article>
+        <section class="visual">
+          <div class="anchor">
+            <div class="beam b1"></div>
+            <div class="beam b2"></div>
+            <div class="beam b3"></div>
+            <div class="atrium"></div>
+          </div>
+          <aside class="proof">
+            <h2>Architectural proof</h2>
+            <ul>
+              <li><span>Decision confidence</span><strong>9.2</strong></li>
+              <li><span>Release path integrity</span><strong>96%</strong></li>
+              <li><span>Operator scan speed</span><strong>+24%</strong></li>
+            </ul>
+          </aside>
+        </section>
       </section>
     </main>
   </body>

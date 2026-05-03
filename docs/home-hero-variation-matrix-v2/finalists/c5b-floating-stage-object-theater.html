@@ -8,83 +8,93 @@
     <style>
       body {
         background:
-          radial-gradient(circle at 18% 14%, rgba(221, 170, 103, 0.2), transparent 36%),
-          linear-gradient(155deg, #15120f, #1b1814 48%, #121418);
+          radial-gradient(circle at 16% 10%, rgba(220, 170, 102, 0.24), transparent 34%),
+          linear-gradient(156deg, #17120d, #1d1812 48%, #12141a);
       }
+
       .hero {
-        background: linear-gradient(160deg, rgba(37, 30, 24, 0.86), rgba(17, 20, 27, 0.86));
+        background: linear-gradient(164deg, rgba(39, 31, 23, 0.9), rgba(15, 19, 28, 0.9));
       }
+
       .anchor {
-        border: 1px solid rgba(217, 183, 132, 0.34);
+        border: 1px solid rgba(218, 184, 132, 0.38);
       }
-      .stage {
+
+      .stage-plane {
         position: absolute;
         left: 50%;
-        top: 57%;
-        width: 76%;
-        height: 34%;
+        top: 60%;
         transform: translate(-50%, -50%);
+        width: 82%;
+        height: 40%;
         border-radius: 1.2rem;
-        border: 1px solid rgba(216, 183, 132, 0.3);
-        background: linear-gradient(165deg, rgba(114, 87, 53, 0.44), rgba(48, 40, 30, 0.28));
+        border: 1px solid rgba(217, 184, 133, 0.35);
+        background: linear-gradient(165deg, rgba(114, 88, 54, 0.45), rgba(45, 37, 29, 0.3));
       }
+
       .block {
         position: absolute;
         border-radius: 0.9rem;
-        border: 1px solid rgba(234, 205, 164, 0.5);
-        background: linear-gradient(150deg, rgba(225, 196, 150, 0.75), rgba(126, 93, 52, 0.64));
+        border: 1px solid rgba(233, 206, 165, 0.5);
+        background: linear-gradient(150deg, rgba(227, 198, 153, 0.76), rgba(127, 94, 54, 0.62));
       }
+
       .b1 {
-        width: 38%;
-        height: 38%;
-        top: 24%;
-        left: 24%;
+        width: 40%;
+        height: 40%;
+        left: 22%;
+        top: 23%;
       }
+
       .b2 {
-        width: 26%;
-        height: 24%;
+        width: 28%;
+        height: 26%;
+        right: 18%;
         top: 35%;
-        right: 20%;
       }
-      .proof {
-        position: absolute;
-        right: 1rem;
-        bottom: 1rem;
-        width: 34%;
-        border: 1px solid rgba(220, 192, 146, 0.32);
-        border-radius: 0.7rem;
-        padding: 0.55rem;
-        background: rgba(31, 26, 21, 0.62);
-        font-size: 0.72rem;
-        color: var(--ink-1);
+
+      .comp-floating .anchor {
+        width: min(760px, 92%);
+      }
+
+      .comp-floating .proof {
+        width: min(500px, 92%);
       }
     </style>
   </head>
-  <body>
-    <main class="shell">
-      <section class="meta-bar">
-        <span>C5B</span>
-        <span>Product artifact floating stage × 3D object artifact</span>
-        <span>Taste score: 9.0</span>
-      </section>
+  <body class="mood-dark">
+    <main class="shell comp-floating anchor-object">
+      <header class="topbar">
+        <p class="brand">AI Web Factory · Finalist C5B</p>
+        <p class="meta">Floating stage × premium object · 9.0</p>
+      </header>
       <section class="hero">
-        <div class="copy">
-          <h1>Ship premium AI assets from a staged object theater.</h1>
+        <article class="copy">
+          <h1>Ship premium AI assets from a true launch-stage object theater.</h1>
           <p>
-            Position AI Web Factory as a high-trust production brand where artifacts are built,
-            inspected, and released through one premium launch stage.
+            The hero treats artifact release as a high-trust event with strong product presence,
+            large-scale spatial staging, and compact proof that supports the narrative.
           </p>
           <div class="cta-row">
-            <a href="#">Launch production stage</a>
-            <a href="#">Review object pipeline</a>
+            <a class="btn primary" href="#">Launch production stage</a>
+            <a class="btn secondary" href="#">Review object protocol</a>
           </div>
-        </div>
-        <div class="anchor">
-          <div class="stage"></div>
-          <div class="block b1"></div>
-          <div class="block b2"></div>
-          <div class="proof">Proof layer: approval confidence 96.2% · median release 8h 42m</div>
-        </div>
+        </article>
+        <section class="visual">
+          <div class="anchor">
+            <div class="stage-plane"></div>
+            <div class="block b1"></div>
+            <div class="block b2"></div>
+          </div>
+          <aside class="proof">
+            <h2>Proof layer</h2>
+            <ul>
+              <li><span>Approval confidence</span><strong>96.2%</strong></li>
+              <li><span>Median release cycle</span><strong>8h 42m</strong></li>
+              <li><span>Enterprise programs</span><strong>58</strong></li>
+            </ul>
+          </aside>
+        </section>
       </section>
     </main>
   </body>
