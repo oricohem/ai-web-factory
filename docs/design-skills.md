@@ -2,6 +2,83 @@
 
 AI Web Factory keeps design guidance local so agents can improve UI quality without redesigning the product by default. The installed skills live in `.agents/skills/`, with Taste Skill guidance from `Leonxlnx/taste-skill` and Impeccable from `pbakaus/impeccable`.
 
+## Skill orchestration cleanup v1 (routing and precedence)
+
+Canonical orchestration reference: `docs/skill-orchestration-cleanup-v1.md`.
+
+For full-site, landing-page, launch-kit site, front-door, and multi-page website scopes:
+
+1. `ai-full-site-builder-workflow` (top-level controller)
+2. `ai-website-architecture-prompt-composer`
+3. `ai-launch-kit-generator`
+4. `ai-external-ui-design-stack-integration`
+5. `ai-factory-taste-engine`
+6. `ai-factory-design-research-corpus`
+
+Rule: the Full Site Builder Workflow controls sequencing. Supporting engines must not be mixed out of order.
+
+Conflict precedence for orchestration overlap:
+
+1. User prompt (unless unsafe or impossible)
+2. `AGENTS.md` project rules
+3. Full Site Builder Workflow process control
+4. Website Architecture Composer structure/archetype control
+5. Launch Kit Generator business-output scope control
+6. External UI Stack optional execution support control
+7. Taste Engine quality/anti-pattern gates
+8. Design Research Corpus principle/reference guidance
+9. Older experiment docs as reference-only
+
+Task routing examples:
+
+- "Create a full website" -> run Full Site Builder Workflow first.
+- "Create a landing page" -> run Full Site Builder Workflow first.
+- "Create a launch kit" -> run Launch Kit Generator, and run Full Site Builder Workflow if a site is included.
+- "Improve visual quality" -> run Taste Engine + External UI Stack.
+- "Choose site structure" -> run Website Architecture Composer.
+- "Research visual directions" -> run Design Research Corpus.
+- "Small copy edit" -> no full workflow needed.
+- "Single component fix" -> no full workflow needed.
+
+Skill overload prevention:
+
+- Do not read every long design doc unless the task requires it.
+- Use the top-level workflow to decide supporting docs.
+- Skip optional or older experiment docs unless directly relevant.
+- Do not create new skills for every issue; update orchestration docs or existing skills first.
+- Do not run Browser/Playwright unless visual QA is explicitly required by task scope.
+
+Docs/skill-only change gate:
+
+- Confirm changed-file scope.
+- Run `npm run build`.
+- Confirm no production UI/app/component/data/lib/package/dependency changes.
+- Explain what changed and why.
+- Label guidance as must-use or reference-only.
+
+Front Door Concept v1 status:
+
+- Not a customer-facing visual target.
+- May be used only as intake/schema/result-preview reference.
+- Do not copy its visual style as a target.
+- Rejected reason: internal spec/wireframe feel, weak commercial homepage quality, empty visual language.
+
+Human feedback classification:
+
+When direction feedback arrives, classify as one of:
+
+- accepted
+- revise
+- rejected as visual target but useful as reference
+- archive/close
+
+Then record:
+
+- mistake
+- cause
+- new rule
+- future gate
+
 ## What each skill is for
 
 - **Taste Skill:** Use the Taste Skill set to avoid generic AI output, choose stronger visual direction, check spacing and typography decisions, and keep frontend implementation aligned with premium product UI standards.

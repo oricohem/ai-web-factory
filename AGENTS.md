@@ -30,6 +30,11 @@ Commands are defined in `package.json`:
 
 Project-local design skills live in `.agents/skills/` and are documented in `docs/design-skills.md`.
 
+- Skill orchestration reference: `docs/skill-orchestration-cleanup-v1.md`.
+- For full-site, landing-page, launch-kit site, front-door, and multi-page website scopes, treat the following order as canonical: (1) `ai-full-site-builder-workflow` (controller), (2) `ai-website-architecture-prompt-composer`, (3) `ai-launch-kit-generator`, (4) `ai-external-ui-design-stack-integration`, (5) `ai-factory-taste-engine`, (6) `ai-factory-design-research-corpus`.
+- For those scopes, agents must not mix supporting skills out of order; `ai-full-site-builder-workflow` controls sequence.
+- Conflict order for overlapping guidance: user prompt (unless unsafe/impossible) -> `AGENTS.md` -> full-site workflow process control -> architecture/archetype control -> launch-kit output scope -> external-stack execution support -> taste quality gates -> research corpus principle inputs -> older experiment docs as reference-only.
+
 - Before any new visual UI implementation, read and align with `docs/design-learning-report-v1.md`.
 - Treat `docs/design-learning-report-v1.md` as a mandatory anti-loop quality gate for direction selection and final approval.
 - Before non-trivial visual UI implementation, use `ai-factory-taste-engine` as the mandatory taste and quality gate (anchors, anti-pattern checks, scoring rubric, and direction selection) before coding.
