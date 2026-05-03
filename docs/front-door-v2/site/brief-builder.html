@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Web Factory - Guided Business Brief</title>
+  <link rel="stylesheet" href="./shared.css" />
+  <script defer src="./shared.js"></script>
+</head>
+<body class="page">
+  <header class="topbar container">
+    <a class="brand" href="./index.html">
+      <span class="brand-mark"></span>
+      <span>AI Web Factory</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a class="chip-link" href="./index.html">Home</a>
+      <a class="chip-link" href="./brief-preview.html">Launch Brief Preview</a>
+    </nav>
+    <a class="btn btn-ghost" href="./brief-preview.html">Preview Brief</a>
+  </header>
+
+  <main class="container">
+    <section class="page-title">
+      <div>
+        <p class="eyebrow">Step 1 of 2</p>
+        <h1 class="headline">Guided business brief</h1>
+        <p class="subhead">Answer practical launch questions grouped by strategy, trust, and creative direction. The system summarizes what an agent needs next.</p>
+      </div>
+    </section>
+
+    <section class="progress-panel">
+      <div class="progress-head">
+        <strong>Progress</strong>
+        <span class="muted" data-role="progress-label">0/4 sections complete</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" data-role="progress-bar" style="--fill: 0%;"></div>
+      </div>
+    </section>
+
+    <section class="builder-layout">
+      <form class="form-grid" data-role="brief-form" data-total-points="100">
+        <article class="group" data-section="business">
+          <h3>Business essentials</h3>
+          <p>Define what you sell and who buys it so output stays business-specific.</p>
+          <div class="control-grid">
+            <div class="field">
+              <label for="businessCategory">Business type / category</label>
+              <select id="businessCategory" name="businessCategory">
+                <option value="">Select one</option>
+                <option>B2B SaaS product</option>
+                <option>Productized service</option>
+                <option>Agency / studio</option>
+                <option>Ecommerce brand</option>
+                <option>Creator / education</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="offerDescription">Product or service description</label>
+              <textarea id="offerDescription" name="offerDescription" placeholder="Describe the offer and the business outcome buyers want."></textarea>
+            </div>
+            <div class="field">
+              <label for="targetCustomer">Target customer</label>
+              <input id="targetCustomer" name="targetCustomer" type="text" placeholder="Who is the primary buyer?" />
+            </div>
+          </div>
+        </article>
+
+        <article class="group" data-section="conversion">
+          <h3>Conversion and trust</h3>
+          <p>Capture action goals and friction so the launch brief can sequence proof correctly.</p>
+          <div class="control-grid">
+            <div class="field">
+              <label for="conversionGoal">Primary conversion goal</label>
+              <select id="conversionGoal" name="conversionGoal">
+                <option value="">Select one</option>
+                <option>Start intake call</option>
+                <option>Book consultation</option>
+                <option>Request proposal</option>
+                <option>Join waitlist</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="offerType">Offer type</label>
+              <select id="offerType" name="offerType">
+                <option value="">Select one</option>
+                <option>Single core offer</option>
+                <option>Tiered packages</option>
+                <option>Custom engagement</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="trustProblem">Trust problem</label>
+              <textarea id="trustProblem" name="trustProblem" placeholder="What hesitation blocks action today?"></textarea>
+            </div>
+          </div>
+        </article>
+
+        <article class="group" data-section="creative">
+          <h3>Creative direction and output scope</h3>
+          <p>Set visual ambition and output requirements before generation starts.</p>
+          <div class="control-grid">
+            <div class="field">
+              <label for="visualAmbition">Visual ambition level</label>
+              <select id="visualAmbition" name="visualAmbition">
+                <option value="">Select one</option>
+                <option>Level 2 - Premium polish</option>
+                <option>Level 3 - Bold and memorable</option>
+                <option>Level 4 - Campaign-grade</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="motionPreference">Motion / 3D preference</label>
+              <select id="motionPreference" name="motionPreference">
+                <option value="">Select one</option>
+                <option>Minimal motion</option>
+                <option>Subtle micro-motion</option>
+                <option>Selective cinematic motion</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="avoidStyles">Must-avoid styles</label>
+              <input id="avoidStyles" name="avoidStyles" type="text" placeholder="Example: generic SaaS cards, glow-heavy dashboards." />
+            </div>
+            <div class="field">
+              <label for="referenceLikes">Reference likes/dislikes</label>
+              <input id="referenceLikes" name="referenceLikes" type="text" placeholder="Example: likes editorial clarity, dislikes hype copy." />
+            </div>
+          </div>
+        </article>
+
+        <article class="group" data-section="outputs">
+          <h3>Desired outputs and constraints</h3>
+          <p>Select deliverables and must-have sections for launch-kit generation.</p>
+          <div class="control-grid">
+            <div class="field">
+              <label>Desired outputs</label>
+              <label><input type="checkbox" name="desiredOutputs" value="Website direction" /> Website direction</label>
+              <label><input type="checkbox" name="desiredOutputs" value="Conversion structure" /> Conversion structure</label>
+              <label><input type="checkbox" name="desiredOutputs" value="Launch copy pack" /> Launch copy pack</label>
+              <label><input type="checkbox" name="desiredOutputs" value="Campaign angle matrix" /> Campaign angle matrix</label>
+              <label><input type="checkbox" name="desiredOutputs" value="Proof and QA notes" /> Proof and QA notes</label>
+            </div>
+            <div class="field">
+              <label>Must-have sections</label>
+              <label><input type="checkbox" name="mustHaveSections" value="Premium hero" /> Premium hero</label>
+              <label><input type="checkbox" name="mustHaveSections" value="How it works path" /> How it works path</label>
+              <label><input type="checkbox" name="mustHaveSections" value="Output artifact preview" /> Output artifact preview</label>
+              <label><input type="checkbox" name="mustHaveSections" value="Strong CTA" /> Strong CTA</label>
+            </div>
+            <div class="field">
+              <label for="budgetUrgency">Budget / urgency level</label>
+              <select id="budgetUrgency" name="budgetUrgency">
+                <option value="">Select one</option>
+                <option>Lean + urgent</option>
+                <option>Balanced + near-term</option>
+                <option>Premium + strategic</option>
+              </select>
+              <p class="tip">Helpful microcopy: more specific constraints produce a sharper launch brief with fewer retries.</p>
+            </div>
+          </div>
+        </article>
+      </form>
+
+      <aside class="summary-box">
+        <h2 class="summary-title">Generated summary</h2>
+        <p class="score-pill">Completeness score <strong data-role="score">0%</strong></p>
+        <div class="mini-bar" data-role="score-bar" style="--fill: 0%;"><div class="mini-fill"></div></div>
+        <ul class="summary-list" data-role="summary">
+          <li><span>Category</span><strong>No input yet</strong></li>
+          <li><span>Offer</span><strong>No input yet</strong></li>
+          <li><span>Target customer</span><strong>No input yet</strong></li>
+          <li><span>Primary conversion</span><strong>No input yet</strong></li>
+          <li><span>Main trust problem</span><strong>No input yet</strong></li>
+        </ul>
+        <p class="muted">Preview shows how this intake becomes launch architecture, copy outputs, campaign assets, and agent handoff guidance.</p>
+        <a class="btn btn-primary" data-role="preview-link" href="./brief-preview.html">View Launch Brief Preview</a>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

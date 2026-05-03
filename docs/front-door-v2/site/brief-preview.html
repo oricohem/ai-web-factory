@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Front Door v2 — Launch Brief Preview</title>
+    <link rel="stylesheet" href="./shared.css" />
+  </head>
+<body data-page="preview">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark">AWF</span>
+          <span>AI Web Factory</span>
+        </a>
+        <nav class="nav-links">
+          <a href="./index.html">Home</a>
+          <a href="./brief-builder.html">Business Brief</a>
+          <a href="./brief-preview.html">Launch Brief Preview</a>
+        </nav>
+        <a class="btn btn-secondary" href="./brief-builder.html">Edit Brief Inputs</a>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="container page-intro">
+        <span class="eyebrow">Launch Brief Output</span>
+        <h1>This is the structured brief an agent receives.</h1>
+        <p>
+          It combines business context, architecture choices, launch outputs, and quality gates so production can begin with
+          fewer blind spots.
+        </p>
+      </section>
+
+      <section class="container preview-grid">
+        <article class="preview-card">
+          <h2>Product Summary</h2>
+          <p>
+            <span id="preview-business">HarborLane Accounting</span> is launching
+            "<span id="preview-product">Finance Ops in a Week package for founder-led ecommerce teams that need clean books and cashflow visibility before growth campaigns.</span>"
+          </p>
+        </article>
+
+        <article class="preview-card">
+          <h2>Target Audience</h2>
+          <p id="preview-audience">Bootstrapped and early-scale ecommerce founders with 3-15 person teams, $300k-$3M annual revenue, and no in-house CFO.</p>
+        </article>
+
+        <article class="preview-card">
+          <h2>Primary Conversion Goal</h2>
+          <p id="preview-goal">Start a business brief consult to qualify fit and trigger a launch-kit production run.</p>
+        </article>
+
+        <article class="preview-card">
+          <h2>Selected Website Archetype</h2>
+          <p>
+            Guided intake/productized service (primary), with AI/SaaS product support cues for operational credibility and handoff
+            clarity.
+          </p>
+        </article>
+
+        <article class="preview-card wide">
+          <h2>Recommended Page Architecture</h2>
+          <ul>
+            <li>Home (promise + launch brief engine + proof artifact + CTA)</li>
+            <li>Business Brief Builder (guided intake with completeness and summary)</li>
+            <li>Launch Brief Preview (agent handoff output)</li>
+          </ul>
+        </article>
+
+        <article class="preview-card wide">
+          <h2>Section Sequence</h2>
+          <ol>
+            <li>Outcome-first hero with product-specific anchor</li>
+            <li>How it works path (business brief -> launch brief -> launch kit)</li>
+            <li>What AI Web Factory creates (outputs matrix)</li>
+            <li>Why this beats prompt-only builders</li>
+            <li>Artifact preview + final conversion CTA</li>
+          </ol>
+        </article>
+
+        <article class="preview-card">
+          <h2>Visual Direction</h2>
+          <p id="preview-visual">Signal-to-Launch Command Surface: premium dark-neutral foundation, warm action accent, precise hierarchy, composed depth.</p>
+        </article>
+
+        <article class="preview-card">
+          <h2>External UI Stack Recommendation</h2>
+          <p>UI/UX reference + component quality patterns + internal anti-loop memory. Principle extraction only, no copied code. Motion preference: <strong id="preview-motion">Subtle micro-motion</strong>.</p>
+        </article>
+
+        <article class="preview-card wide">
+          <h2>Launch Kit Outputs</h2>
+          <ul>
+            <li>Website direction and page architecture</li>
+            <li>Conversion structure and section jobs</li>
+            <li>Launch copy pack with CTA and objection handling</li>
+            <li>Campaign angle matrix by channel</li>
+            <li>Proof and QA checklist for claim credibility</li>
+            <li>Agent-ready production prompt excerpt</li>
+          </ul>
+          <p><strong>Builder-selected outputs:</strong> <span id="preview-outputs">Website direction, conversion structure, launch copy pack, campaign angle matrix, proof and QA notes</span></p>
+        </article>
+
+        <article class="preview-card">
+          <h2>Copy Assets to Generate</h2>
+          <ul>
+            <li>3 hero headlines + one-line positioning</li>
+            <li>Primary and secondary CTA options</li>
+            <li>Offer and process microcopy</li>
+            <li>FAQ and objection-response copy</li>
+          </ul>
+        </article>
+
+        <article class="preview-card">
+          <h2>Campaign Assets to Generate</h2>
+          <ul>
+            <li>Founder launch post sequence</li>
+            <li>Email announcement draft</li>
+            <li>Paid social creative angles</li>
+            <li>Partner outreach pitch variant</li>
+          </ul>
+        </article>
+
+        <article class="preview-card">
+          <h2>Proof/QA Notes</h2>
+          <ul>
+            <li>Claims must map to documented deliverables and trust risk: <strong id="preview-trust">Fear of generic output that does not fit the business.</strong></li>
+            <li>No fake metrics or synthetic customer logos.</li>
+            <li>Trust language must stay plain and specific.</li>
+            <li>Every CTA has a next-step expectation label.</li>
+          </ul>
+        </article>
+
+        <article class="preview-card">
+          <h2>Anti-Generic Gates</h2>
+          <ul>
+            <li>Hero includes launch brief engine, not text+cards.</li>
+            <li>Workflow outcome is visible in first screen.</li>
+            <li>No dashboard-wall or prompt-to-page framing.</li>
+            <li>Launch outputs include campaign/copy/QA scope.</li>
+          </ul>
+        </article>
+
+        <article class="preview-card wide prompt-block">
+          <h2>Agent Production Prompt Excerpt</h2>
+          <p>
+            "Generate a launch-kit prototype for HarborLane Accounting that begins with a founder-facing front door. Use guided
+            intake as the primary conversion action. Show one concrete launch brief artifact before discussing technical features.
+            Deliver website direction, conversion sequence, launch copy variants, campaign angle matrix, and claim QA notes. Keep
+            tone practical, premium, and non-hype."
+          </p>
+        </article>
+
+        <article class="preview-card wide next-step">
+          <h2>Next-Step Recommendation</h2>
+          <p>
+            Run a production iteration that wires this intake flow to persisted brief data and agent execution states, while keeping
+            this same conversion-first front-door narrative.
+          </p>
+          <a class="btn btn-primary" href="./brief-builder.html">Refine Brief Inputs</a>
+        </article>
+      </section>
+    </main>
+
+    <script defer src="./shared.js"></script>
+  </body>
+</html>
