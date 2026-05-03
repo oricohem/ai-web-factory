@@ -257,6 +257,23 @@ p {
   transform: translate(-50%, -45%);
 }
 
+.cutaway-object::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 49.2%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(132, 97, 64, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 250, 242, 0.38);
+  opacity: 0.16;
+  pointer-events: none;
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 900ms
+      cubic-bezier(0.2, 0.8, 0.2, 1), border-color 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
 .vessel-shell {
   position: absolute;
   inset: 0;
@@ -265,7 +282,8 @@ p {
   box-shadow: var(--shell-shadow), inset 0 1px 0 rgba(255, 247, 235, 0.55),
     inset 0 -6px 14px rgba(160, 119, 82, 0.34);
   border: 1px solid rgba(130, 97, 64, 0.27);
-  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 900ms
+      cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .vessel-grain {
@@ -290,7 +308,8 @@ p {
   border: 1px solid rgba(127, 97, 70, 0.34);
   box-shadow: inset 0 1px 0 rgba(255, 247, 235, 0.64), inset 0 -8px 12px rgba(158, 126, 96, 0.25),
     0 12px 24px -18px rgba(103, 74, 48, 0.6);
-  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 900ms
+      cubic-bezier(0.2, 0.8, 0.2, 1), border-color 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .insert-core {
@@ -332,11 +351,23 @@ p {
 .cutaway-wrap:hover .vessel-shell,
 .cutaway-wrap:focus-within .vessel-shell {
   transform: translateY(-1px);
+  box-shadow: 0 46px 60px -35px rgba(114, 87, 57, 0.62), inset 0 1px 0 rgba(255, 247, 235, 0.62),
+    inset 0 -6px 14px rgba(160, 119, 82, 0.36);
 }
 
 .cutaway-wrap:hover .vessel-insert,
 .cutaway-wrap:focus-within .vessel-insert {
   transform: translate(-50%, calc(-50% + 1px));
+  border-color: rgba(121, 93, 66, 0.46);
+  box-shadow: inset 0 1px 0 rgba(255, 247, 235, 0.72), inset 0 -8px 12px rgba(158, 126, 96, 0.3),
+    0 17px 26px -17px rgba(103, 74, 48, 0.66);
+}
+
+.cutaway-wrap:hover .cutaway-object::after,
+.cutaway-wrap:focus-within .cutaway-object::after {
+  transform: translate(-50%, calc(-50% + 1px));
+  opacity: 0.5;
+  border-color: rgba(132, 97, 64, 0.28);
 }
 
 .section-head {
