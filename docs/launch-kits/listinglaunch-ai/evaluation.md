@@ -59,6 +59,9 @@ The system reads as one brand and one product, not five disconnected pages.
 - Expand proof with benchmark-style "before vs after launch cycle" visual summaries.
 - Create a second iteration of customers stories with deeper objections and edge-case outcomes.
 
+## Recommended next step (single)
+Convert the `docs/launch-kits/listinglaunch-ai/site/` prototype into production implementation after validating messaging with 3-5 real listing teams.
+
 ## Whether the AI Launch Kit Generator skill worked
 Yes. The skill workflow (brief -> three materially different directions -> scoring -> winner -> full five-page site -> launch copy -> evaluation) was successfully executed.
 
