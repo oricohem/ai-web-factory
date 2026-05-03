@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Web Factory Home Hero Variation Matrix v1</title>
+    <style>
+      :root {
+        --bg: #0d111a;
+        --surface: #141b2a;
+        --surface-2: #1b2438;
+        --line: rgba(146, 164, 202, 0.26);
+        --ink-0: #eef3ff;
+        --ink-1: #b6c0db;
+        --ink-2: #8e9ab8;
+        --ok: #7fd29c;
+        --warn: #e4c27a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Inter", sans-serif;
+        color: var(--ink-0);
+        background:
+          radial-gradient(circle at 12% 8%, rgba(85, 115, 190, 0.2), transparent 34%),
+          radial-gradient(circle at 86% 12%, rgba(74, 112, 168, 0.14), transparent 38%),
+          linear-gradient(160deg, #0b1019, var(--bg));
+      }
+
+      .page {
+        width: min(1340px, 94vw);
+        margin: 0 auto;
+        padding: 2rem 0 2.5rem;
+      }
+
+      .intro {
+        margin-bottom: 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        padding: 1.1rem 1.2rem;
+        background: rgba(20, 27, 42, 0.74);
+      }
+
+      .intro h1 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        letter-spacing: -0.02em;
+      }
+
+      .intro p {
+        margin: 0;
+        color: var(--ink-1);
+        line-height: 1.5;
+      }
+
+      .legend {
+        margin-top: 0.95rem;
+        display: grid;
+        gap: 0.45rem;
+      }
+
+      .legend small {
+        color: var(--ink-2);
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.9rem;
+      }
+
+      .concept-card {
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: linear-gradient(170deg, rgba(23, 31, 50, 0.94), rgba(17, 23, 38, 0.96));
+        padding: 0.9rem;
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 0.7rem;
+      }
+
+      .concept-id {
+        margin: 0;
+        color: var(--ink-2);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.66rem;
+      }
+
+      .concept-name {
+        margin: 0.12rem 0 0;
+        font-size: 0.96rem;
+        line-height: 1.25;
+      }
+
+      .score {
+        border: 1px solid rgba(157, 193, 255, 0.34);
+        border-radius: 999px;
+        padding: 0.3rem 0.62rem;
+        font-size: 0.71rem;
+        white-space: nowrap;
+      }
+
+      .score.high {
+        color: var(--ok);
+        border-color: rgba(127, 210, 156, 0.45);
+      }
+
+      .score.mid {
+        color: var(--warn);
+        border-color: rgba(228, 194, 122, 0.45);
+      }
+
+      .meta {
+        display: grid;
+        gap: 0.32rem;
+      }
+
+      .meta span {
+        font-size: 0.7rem;
+        color: var(--ink-2);
+        letter-spacing: 0.04em;
+      }
+
+      .headline {
+        margin: 0;
+        font-size: 0.79rem;
+        color: var(--ink-0);
+        line-height: 1.4;
+      }
+
+      .difference {
+        margin: 0;
+        color: var(--ink-1);
+        font-size: 0.74rem;
+        line-height: 1.42;
+      }
+
+      .mini {
+        position: relative;
+        height: 132px;
+        border-radius: 0.78rem;
+        border: 1px solid rgba(164, 181, 218, 0.2);
+        overflow: hidden;
+      }
+
+      .mini::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+      }
+
+      .mini.anchor-core {
+        background:
+          radial-gradient(circle at 68% 42%, rgba(124, 152, 233, 0.48), transparent 50%),
+          linear-gradient(145deg, #171f31, #11182a);
+      }
+
+      .mini.anchor-object {
+        background:
+          radial-gradient(circle at 24% 14%, rgba(212, 168, 98, 0.36), transparent 44%),
+          linear-gradient(145deg, #2d261c, #17120d);
+      }
+
+      .mini.anchor-scene {
+        background:
+          linear-gradient(170deg, rgba(28, 36, 52, 0.88), rgba(66, 50, 35, 0.92)),
+          linear-gradient(90deg, #251f17, #101720);
+      }
+
+      .mini.anchor-field {
+        background:
+          radial-gradient(circle at 26% 26%, rgba(115, 148, 247, 0.5), transparent 40%),
+          radial-gradient(circle at 80% 20%, rgba(112, 210, 190, 0.45), transparent 44%),
+          radial-gradient(circle at 56% 88%, rgba(255, 189, 109, 0.42), transparent 46%),
+          linear-gradient(150deg, #dde9ff, #dcfff2 52%, #fff4db);
+      }
+
+      .copy-a,
+      .copy-b,
+      .cta-pill {
+        position: absolute;
+        border-radius: 999px;
+        background: rgba(232, 240, 255, 0.72);
+      }
+
+      .anchor-shape {
+        position: absolute;
+      }
+
+      .stage-ellipse {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 64%;
+        height: 18px;
+        bottom: 8px;
+        border-radius: 50%;
+        background: rgba(198, 212, 245, 0.26);
+        border: 1px solid rgba(220, 231, 255, 0.28);
+      }
+
+      .mini.comp-centered .copy-a {
+        top: 14px;
+        left: 20%;
+        width: 60%;
+        height: 7px;
+      }
+
+      .mini.comp-centered .copy-b {
+        top: 27px;
+        left: 25%;
+        width: 50%;
+        height: 6px;
+      }
+
+      .mini.comp-centered .cta-pill {
+        top: 38px;
+        left: 40%;
+        width: 20%;
+        height: 7px;
+        background: rgba(220, 232, 255, 0.85);
+      }
+
+      .mini.comp-centered .anchor-shape {
+        left: 50%;
+        top: 60%;
+        width: 62px;
+        height: 62px;
+        transform: translate(-50%, -50%);
+      }
+
+      .mini.comp-split .copy-a {
+        top: 18px;
+        left: 8px;
+        width: 42%;
+        height: 7px;
+      }
+
+      .mini.comp-split .copy-b {
+        top: 32px;
+        left: 8px;
+        width: 35%;
+        height: 6px;
+      }
+
+      .mini.comp-split .cta-pill {
+        top: 45px;
+        left: 8px;
+        width: 24%;
+        height: 8px;
+      }
+
+      .mini.comp-split .anchor-shape {
+        right: 9px;
+        top: 14px;
+        width: 45%;
+        height: 76%;
+      }
+
+      .mini.comp-fullscreen .copy-a {
+        bottom: 30px;
+        left: 10px;
+        width: 48%;
+        height: 7px;
+      }
+
+      .mini.comp-fullscreen .copy-b {
+        bottom: 19px;
+        left: 10px;
+        width: 37%;
+        height: 6px;
+      }
+
+      .mini.comp-fullscreen .cta-pill {
+        bottom: 9px;
+        left: 10px;
+        width: 24%;
+        height: 7px;
+      }
+
+      .mini.comp-fullscreen .anchor-shape {
+        inset: 0;
+      }
+
+      .mini.comp-editorial .copy-a {
+        top: 12px;
+        left: 8px;
+        width: 30%;
+        height: 7px;
+      }
+
+      .mini.comp-editorial .copy-b {
+        top: 26px;
+        left: 8px;
+        width: 20%;
+        height: 6px;
+      }
+
+      .mini.comp-editorial .cta-pill {
+        top: 39px;
+        left: 8px;
+        width: 16%;
+        height: 7px;
+      }
+
+      .mini.comp-editorial .anchor-shape {
+        right: 8px;
+        top: 8px;
+        width: 56%;
+        height: 84%;
+      }
+
+      .mini.comp-floating .copy-a {
+        top: 12px;
+        left: 11px;
+        width: 44%;
+        height: 7px;
+      }
+
+      .mini.comp-floating .copy-b {
+        top: 25px;
+        left: 11px;
+        width: 35%;
+        height: 6px;
+      }
+
+      .mini.comp-floating .cta-pill {
+        top: 37px;
+        left: 11px;
+        width: 21%;
+        height: 7px;
+      }
+
+      .mini.comp-floating .anchor-shape {
+        left: 50%;
+        top: 64%;
+        width: 58px;
+        height: 58px;
+        transform: translate(-50%, -50%);
+      }
+
+      .mini.comp-floating .stage-ellipse {
+        display: block;
+      }
+
+      .mini:not(.comp-floating) .stage-ellipse {
+        display: none;
+      }
+
+      .anchor-core .anchor-shape {
+        border-radius: 50%;
+        border: 1px solid rgba(202, 217, 255, 0.55);
+        box-shadow: inset 0 0 0 10px rgba(130, 157, 228, 0.25);
+      }
+
+      .anchor-core .anchor-shape::before,
+      .anchor-core .anchor-shape::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .anchor-core .anchor-shape::before {
+        inset: 10px;
+        border: 1px solid rgba(214, 225, 252, 0.62);
+      }
+
+      .anchor-core .anchor-shape::after {
+        width: 8px;
+        height: 8px;
+        right: 6px;
+        top: 8px;
+        background: #eaf1ff;
+      }
+
+      .anchor-object .anchor-shape {
+        border-radius: 10px;
+        background:
+          linear-gradient(145deg, rgba(231, 204, 161, 0.66), rgba(127, 90, 46, 0.54)),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+        border: 1px solid rgba(230, 201, 157, 0.58);
+      }
+
+      .anchor-object .anchor-shape::before,
+      .anchor-object .anchor-shape::after {
+        content: "";
+        position: absolute;
+        border-radius: 8px;
+      }
+
+      .anchor-object .anchor-shape::before {
+        width: 58%;
+        height: 58%;
+        right: -10%;
+        top: -10%;
+        background: rgba(240, 214, 176, 0.34);
+        border: 1px solid rgba(241, 213, 170, 0.52);
+      }
+
+      .anchor-object .anchor-shape::after {
+        width: 48%;
+        height: 48%;
+        left: -8%;
+        bottom: -11%;
+        background: rgba(117, 85, 48, 0.42);
+        border: 1px solid rgba(209, 169, 108, 0.45);
+      }
+
+      .anchor-scene .anchor-shape {
+        border-radius: 8px;
+        border: 1px solid rgba(229, 205, 165, 0.42);
+        background:
+          radial-gradient(circle at 70% 24%, rgba(254, 223, 164, 0.5), transparent 32%),
+          linear-gradient(170deg, rgba(39, 53, 76, 0.84), rgba(67, 49, 33, 0.9));
+      }
+
+      .anchor-scene .anchor-shape::before {
+        content: "";
+        position: absolute;
+        inset: auto 8px 8px 8px;
+        height: 26%;
+        border-radius: 5px;
+        background: linear-gradient(90deg, rgba(216, 189, 145, 0.62), rgba(98, 73, 44, 0.44));
+      }
+
+      .anchor-field .anchor-shape {
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(126, 160, 255, 0.65), transparent 46%),
+          radial-gradient(circle at 75% 38%, rgba(122, 223, 202, 0.63), transparent 52%),
+          radial-gradient(circle at 48% 75%, rgba(255, 190, 114, 0.58), transparent 56%);
+        border: 1px solid rgba(112, 134, 181, 0.38);
+      }
+
+      .anchor-field .copy-a,
+      .anchor-field .copy-b {
+        background: rgba(21, 33, 57, 0.5);
+      }
+
+      .anchor-field .cta-pill {
+        background: rgba(21, 33, 57, 0.72);
+      }
+
+      @media (max-width: 1280px) {
+        .gallery {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 920px) {
+        .gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <h1>Home Hero Variation Matrix v1</h1>
+        <p>
+          20 compact hero explorations generated from 5 composition types x 4 visual anchor
+          types. Each card is a unique structural+anchor pairing used for breadth discovery,
+          not production implementation.
+        </p>
+        <div class="legend">
+          <small>Composition types: centered, split, fullscreen, editorial asymmetric, floating stage.</small>
+          <small>Anchor types: AI core, 3D artifact, cinematic material scene, abstract light field.</small>
+          <small>Hard rule enforced: each card has a unique composition + anchor combination.</small>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery"></section>
+    </main>
+
+    <script>
+      const compositionMap = {
+        centered: "Centered hero",
+        split: "Split left text / right visual",
+        fullscreen: "Fullscreen visual background",
+        editorial: "Editorial asymmetric layout",
+        floating: "Product artifact floating stage",
+      };
+
+      const anchorMap = {
+        core: "AI particle/core",
+        object: "3D object/product artifact",
+        scene: "Cinematic photo/material scene",
+        field: "Abstract gradient/light field",
+      };
+
+      const concepts = [
+        { id: "C1A", name: "Centered Core Beacon", composition: "centered", anchor: "core", headline: "Coordinate every asset through one measured core.", different: "Strict centered hierarchy with an ownable system nucleus instead of side-by-side module framing.", score: 8.3 },
+        { id: "C1B", name: "Centered Artifact Monolith", composition: "centered", anchor: "object", headline: "Publish from a single calibrated artifact stack.", different: "Center composition uses a monolithic object anchor to convey confidence and release discipline.", score: 8.6 },
+        { id: "C1C", name: "Centered Material Horizon", composition: "centered", anchor: "scene", headline: "Make quality visible before anything ships.", different: "Photographic-material anchor drives premium mood while text remains compact and central.", score: 8.2 },
+        { id: "C1D", name: "Centered Lumen Field", composition: "centered", anchor: "field", headline: "Build in a bright field tuned for AI output.", different: "Centered stack over luminous field favors clarity and emotional lift over dashboard density.", score: 8.1 },
+
+        { id: "C2A", name: "Split Core Console", composition: "split", anchor: "core", headline: "Operate one connected production intelligence loop.", different: "Classic split keeps narrative on left while core topology dominates the right-side anchor zone.", score: 8.4 },
+        { id: "C2B", name: "Split Artifact Dock", composition: "split", anchor: "object", headline: "Turn drafts into approved premium build assets.", different: "Right-side object dock acts like a release platform, not a metrics panel.", score: 8.7 },
+        { id: "C2C", name: "Split Cinematic Forge", composition: "split", anchor: "scene", headline: "Run creative production with engineered control.", different: "Split composition paired with cinematic material scene creates a stronger brand-feel than dark UI boxes.", score: 8.5 },
+        { id: "C2D", name: "Split Spectrum Rail", composition: "split", anchor: "field", headline: "Guide every release through a structured light rail.", different: "Field anchor replaces hard modules with atmospheric direction while preserving clear CTA hierarchy.", score: 8.3 },
+
+        { id: "C3A", name: "Immersive Core Atmosphere", composition: "fullscreen", anchor: "core", headline: "Step into the production graph, then launch.", different: "Full-bleed core atmosphere reframes the hero as a branded stage, not an app shell preview.", score: 8.8 },
+        { id: "C3B", name: "Immersive Artifact Drift", composition: "fullscreen", anchor: "object", headline: "Scale one artifact system across every campaign.", different: "Large immersive object creates immediate product memory with minimal supporting UI.", score: 8.9 },
+        { id: "C3C", name: "Immersive Material Storyframe", composition: "fullscreen", anchor: "scene", headline: "Production confidence with cinematic material proof.", different: "Photo-led atmospheric composition reads as premium landing creative while preserving product context.", score: 9.1 },
+        { id: "C3D", name: "Immersive Luminous Gradient", composition: "fullscreen", anchor: "field", headline: "Move from prompt to publish in one build field.", different: "Commercially current, high-energy field-first hero without default pastel SaaS sameness.", score: 8.8 },
+
+        { id: "C4A", name: "Editorial Core Axis", composition: "editorial", anchor: "core", headline: "Narrate the system, then prove the machine.", different: "Asymmetric editorial rails break template symmetry and increase visual rhythm.", score: 8.7 },
+        { id: "C4B", name: "Editorial Object Ledger", composition: "editorial", anchor: "object", headline: "A premium production ledger for digital assets.", different: "Offset text columns plus engineered object anchor feel productized and ownable.", score: 9.0 },
+        { id: "C4C", name: "Editorial Material Chronicle", composition: "editorial", anchor: "scene", headline: "Document every release with cinematic precision.", different: "Editorial composition with material scene gives high-end identity without drifting into admin interface language.", score: 8.9 },
+        { id: "C4D", name: "Editorial Light Essay", composition: "editorial", anchor: "field", headline: "A modern AI brand expression with operational intent.", different: "Magazine-like asymmetry over controlled light field creates premium narrative first-read.", score: 8.6 },
+
+        { id: "C5A", name: "Floating Core Stage", composition: "floating", anchor: "core", headline: "Place your production core on a launch stage.", different: "Floating-stage geometry emphasizes product theater while keeping proof secondary.", score: 8.9 },
+        { id: "C5B", name: "Floating Artifact Theater", composition: "floating", anchor: "object", headline: "Present AI Web Factory as a premium build theater.", different: "Strongest object-stage pairing: immediate signature potential and high commercial trust.", score: 9.2 },
+        { id: "C5C", name: "Floating Material Pavilion", composition: "floating", anchor: "scene", headline: "A curated pavilion for shipping high-end assets.", different: "Combines atmosphere and object-staging for a bold non-dashboard landing structure.", score: 8.8 },
+        { id: "C5D", name: "Floating Aurora Stage", composition: "floating", anchor: "field", headline: "Launch from a luminous platform built for speed.", different: "Stage geometry anchors broad color atmosphere to keep the concept productized.", score: 8.7 },
+      ];
+
+      const gallery = document.getElementById("gallery");
+
+      concepts.forEach((concept) => {
+        const scoreClass = concept.score >= 8.5 ? "high" : "mid";
+        const card = document.createElement("article");
+        card.className = "concept-card";
+        card.innerHTML = `
+          <div class="card-top">
+            <div>
+              <p class="concept-id">${concept.id}</p>
+              <h2 class="concept-name">${concept.name}</h2>
+            </div>
+            <span class="score ${scoreClass}">${concept.score.toFixed(1)} / 10</span>
+          </div>
+          <div class="meta">
+            <span>Composition: ${compositionMap[concept.composition]}</span>
+            <span>Visual anchor: ${anchorMap[concept.anchor]}</span>
+          </div>
+          <p class="headline">${concept.headline}</p>
+          <div class="mini comp-${concept.composition} anchor-${concept.anchor}">
+            <span class="copy-a"></span>
+            <span class="copy-b"></span>
+            <span class="cta-pill"></span>
+            <span class="anchor-shape"></span>
+            <span class="stage-ellipse"></span>
+          </div>
+          <p class="difference">${concept.different}</p>
+        `;
+        gallery.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
