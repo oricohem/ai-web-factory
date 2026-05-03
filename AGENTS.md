@@ -31,6 +31,7 @@ Commands are defined in `package.json`:
 Project-local design skills live in `.agents/skills/` and are documented in `docs/design-skills.md`.
 
 - Before visual UI work, use Taste Skill guidance, especially `design-taste-frontend`, `high-end-visual-design`, and related Taste Skill references.
+- Before AI Web Factory-specific dashboard, catalog, review, card, app shell, or atmosphere work, use `ai-factory-design-intelligence` to choose a product-fit direction and quality gates.
 - Before approving UI, use Impeccable-style review for visual hierarchy, interaction quality, responsive behavior, accessibility, and craft.
 - Do not approve generic SaaS UI or default AI-generated visual patterns.
 - Do not overuse purple gradients, glassmorphism, random glow effects, bounce easing, or cramped padding.
