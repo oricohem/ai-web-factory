@@ -110,6 +110,29 @@ Direction name: Signal-to-Launch Command Surface.
   - empty editorial page without proof density
   - cards-inside-cards layering
 
+## 6.1) Design research corpus selection (before final direction lock)
+
+Selected reference categories (principles only):
+- premium product front-door composition
+- conversion-led service onboarding flows
+- artifact-centered launch output presentations
+
+Selected design genes:
+- composition family: split hero with operational anchor
+- visual anchor type: signal-to-output command surface
+- background system: restrained technical atmosphere
+- typography rhythm: large outcome headline + compact metadata labels
+- proof strategy: artifact excerpt + explicit QA gates
+- CTA strategy: dual path (start brief, preview brief)
+- section flow: outcome -> process -> outputs -> comparison -> action
+- responsive behavior pattern: collapse to single-column with preserved hierarchy
+- content density: moderate, buyer-first scanning
+- motion policy: lightweight, utility-only
+
+Same-family rejection notes:
+- rejected any direction that defaulted to dark admin/dashboard wall.
+- rejected any direction whose hero could be mistaken for generic SaaS text + cards.
+
 ## 7) Selected external UI stack type (principles only)
 
 - Chosen stack mix:
@@ -128,6 +151,19 @@ Direction name: Signal-to-Launch Command Surface.
   - product promise
 
 License/copy status: principle extraction only; no external code or branded assets copied.
+
+## 7.1) Taste engine scoring (materially different candidates)
+
+| Direction candidate | First-read clarity | Memorability | Product relevance | Commercial trust | Total (/10) | Decision |
+| --- | --- | --- | --- | --- | --- | --- |
+| A) Signal-to-Launch Command Surface | 0.94 | 0.86 | 0.95 | 0.90 | 9.1 | Winner |
+| B) Editorial Proof Ledger | 0.88 | 0.79 | 0.86 | 0.89 | 8.6 | Rejected (less product-specific anchor) |
+| C) Campaign Momentum Flow | 0.80 | 0.90 | 0.74 | 0.76 | 8.0 | Rejected (too campaign-heavy for trust-first brief intake) |
+
+Why winner selected:
+- strongest fit for launch-brief differentiation.
+- highest product relevance with clear trust and conversion path.
+- best balance of premium personality without drifting into decorative style.
 
 ## 8) Anti-generic gate results
 
