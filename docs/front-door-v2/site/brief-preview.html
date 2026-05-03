@@ -1,168 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Front Door v2 — Launch Brief Preview</title>
-    <link rel="stylesheet" href="./shared.css" />
-  </head>
-<body data-page="preview">
-    <header class="site-header">
-      <div class="container nav-shell">
-        <a class="brand" href="./index.html">
-          <span class="brand-mark">AWF</span>
-          <span>AI Web Factory</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Brief Preview - AI Web Factory</title>
+  <link rel="stylesheet" href="./shared.css" />
+  <script defer src="./shared.js"></script>
+</head>
+<body data-page="preview" class="frontdoor-light">
+  <div class="fd-shell">
+    <header class="fd-header">
+      <div class="fd-container fd-nav-row">
+        <a class="fd-brand" href="./index.html">
+          <span class="fd-brand-mark">AWF</span>
+          <span class="fd-brand-text">AI Web Factory</span>
         </a>
-        <nav class="nav-links">
+        <nav class="fd-nav-links">
           <a href="./index.html">Home</a>
           <a href="./brief-builder.html">Business Brief</a>
-          <a href="./brief-preview.html">Launch Brief Preview</a>
+          <a class="is-active" href="./brief-preview.html">Launch Brief Preview</a>
         </nav>
-        <a class="btn btn-secondary" href="./brief-builder.html">Edit Brief Inputs</a>
+        <a class="fd-btn fd-btn-secondary" href="./brief-builder.html">Edit Inputs</a>
       </div>
     </header>
 
-    <main class="page-shell">
-      <section class="container page-intro">
-        <span class="eyebrow">Launch Brief Output</span>
-        <h1>This is the structured brief an agent receives.</h1>
-        <p>
-          It combines business context, architecture choices, launch outputs, and quality gates so production can begin with
-          fewer blind spots.
-        </p>
+    <main>
+      <section class="fd-preview-hero">
+        <div class="fd-container fd-preview-hero-grid">
+          <div class="fd-preview-headline">
+            <p class="fd-kicker">Step 2 · Generated Launch Brief</p>
+            <h1>Structured launch intelligence your build agent can execute.</h1>
+            <p class="fd-lead">
+              This artifact combines product positioning, architecture, output scope, anti-generic QA, and production handoff in one
+              decision-ready brief.
+            </p>
+            <div class="fd-preview-top-kpis">
+              <div class="fd-pill-kpi">
+                <span>Brief Confidence</span>
+                <strong>92%</strong>
+              </div>
+              <div class="fd-pill-kpi">
+                <span>Generic Risk</span>
+                <strong>Low</strong>
+              </div>
+              <div class="fd-pill-kpi">
+                <span>Outputs Planned</span>
+                <strong>12</strong>
+              </div>
+            </div>
+          </div>
+          <aside class="fd-executive-summary">
+            <h3>Executive Summary</h3>
+            <div class="fd-summary-row">
+              <span>Business</span>
+              <strong id="preview-business">HarborLane Accounting</strong>
+            </div>
+            <div class="fd-summary-row">
+              <span>Primary Goal</span>
+              <strong id="preview-goal">Start qualified intake calls</strong>
+            </div>
+            <div class="fd-summary-row">
+              <span>Audience</span>
+              <strong id="preview-audience">Founder-led ecommerce teams</strong>
+            </div>
+            <div class="fd-summary-row">
+              <span>Trust Problem</span>
+              <strong id="preview-trust">Fear of generic AI output</strong>
+            </div>
+          </aside>
+        </div>
       </section>
 
-      <section class="container preview-grid">
-        <article class="preview-card">
-          <h2>Product Summary</h2>
-          <p>
-            <span id="preview-business">HarborLane Accounting</span> is launching
-            "<span id="preview-product">Finance Ops in a Week package for founder-led ecommerce teams that need clean books and cashflow visibility before growth campaigns.</span>"
-          </p>
-        </article>
+      <section class="fd-section">
+        <div class="fd-container fd-preview-layout">
+          <article class="fd-preview-card fd-preview-card-wide">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Product Summary</p>
+              <h2>Offer Brief</h2>
+            </div>
+            <p class="fd-preview-paragraph">
+              <strong id="preview-product">Finance Ops in a Week package for founder-led ecommerce teams that need cleaner books and
+              cashflow visibility before paid growth.</strong>
+            </p>
+            <div class="fd-chip-row">
+              <span class="fd-mini-chip">Trust-sensitive purchase</span>
+              <span class="fd-mini-chip">Consultative conversion</span>
+              <span class="fd-mini-chip">Launch-kit first approach</span>
+            </div>
+          </article>
 
-        <article class="preview-card">
-          <h2>Target Audience</h2>
-          <p id="preview-audience">Bootstrapped and early-scale ecommerce founders with 3-15 person teams, $300k-$3M annual revenue, and no in-house CFO.</p>
-        </article>
+          <article class="fd-preview-card">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Architecture</p>
+              <h2>Selected Archetype</h2>
+            </div>
+            <p>Guided intake/productized service with AI/SaaS support cues for credibility.</p>
+            <ul class="fd-check-list">
+              <li>Home with launch engine anchor</li>
+              <li>Guided builder for intake clarity</li>
+              <li>Launch brief artifact for handoff</li>
+            </ul>
+          </article>
 
-        <article class="preview-card">
-          <h2>Primary Conversion Goal</h2>
-          <p id="preview-goal">Start a business brief consult to qualify fit and trigger a launch-kit production run.</p>
-        </article>
+          <article class="fd-preview-card">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Visual Direction</p>
+              <h2>Design System</h2>
+            </div>
+            <p id="preview-visual">Signal-to-Launch Command Surface with premium contrast hierarchy and practical clarity.</p>
+            <div class="fd-detail-rows">
+              <div>
+                <span>Motion policy</span>
+                <strong id="preview-motion">Subtle micro-motion</strong>
+              </div>
+              <div>
+                <span>External stack principle</span>
+                <strong>Component-rich, conversion-first, no code copying</strong>
+              </div>
+            </div>
+          </article>
 
-        <article class="preview-card">
-          <h2>Selected Website Archetype</h2>
-          <p>
-            Guided intake/productized service (primary), with AI/SaaS product support cues for operational credibility and handoff
-            clarity.
-          </p>
-        </article>
+          <article class="fd-preview-card fd-preview-card-wide">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Section Sequence</p>
+              <h2>Recommended Page Architecture</h2>
+            </div>
+            <div class="fd-sequence-grid">
+              <div class="fd-seq-item">
+                <span>01</span>
+                <p>Outcome-first hero with Launch Brief Engine anchor</p>
+              </div>
+              <div class="fd-seq-item">
+                <span>02</span>
+                <p>Business signal -> launch brief -> launch kit process rail</p>
+              </div>
+              <div class="fd-seq-item">
+                <span>03</span>
+                <p>Output scope panel: website, copy, campaign, QA, prompt</p>
+              </div>
+              <div class="fd-seq-item">
+                <span>04</span>
+                <p>Prompt-only comparison and trust proof layer</p>
+              </div>
+              <div class="fd-seq-item">
+                <span>05</span>
+                <p>Artifact preview + conversion CTA band</p>
+              </div>
+            </div>
+          </article>
 
-        <article class="preview-card wide">
-          <h2>Recommended Page Architecture</h2>
-          <ul>
-            <li>Home (promise + launch brief engine + proof artifact + CTA)</li>
-            <li>Business Brief Builder (guided intake with completeness and summary)</li>
-            <li>Launch Brief Preview (agent handoff output)</li>
-          </ul>
-        </article>
+          <article class="fd-preview-card fd-preview-card-wide">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Launch-Kit Deliverables</p>
+              <h2>Output Stack</h2>
+            </div>
+            <div class="fd-deliverables-grid">
+              <div class="fd-deliverable">
+                <h4>Website Direction</h4>
+                <p>Archetype, page architecture, section jobs.</p>
+              </div>
+              <div class="fd-deliverable">
+                <h4>Conversion Structure</h4>
+                <p>Friction handling, trust sequencing, CTA path.</p>
+              </div>
+              <div class="fd-deliverable">
+                <h4>Launch Copy Pack</h4>
+                <p>Headlines, CTA variants, objection handling.</p>
+              </div>
+              <div class="fd-deliverable">
+                <h4>Campaign Angles</h4>
+                <p>Channel-specific hooks and messaging direction.</p>
+              </div>
+              <div class="fd-deliverable">
+                <h4>Proof + QA Notes</h4>
+                <p>Claim discipline and anti-generic checkpoints.</p>
+              </div>
+              <div class="fd-deliverable">
+                <h4>Production Prompt</h4>
+                <p>Agent-ready execution prompt excerpt.</p>
+              </div>
+            </div>
+            <p class="fd-selected-outputs"><strong>Selected outputs:</strong> <span id="preview-outputs">Website direction, conversion structure, launch copy pack, campaign angle matrix, proof and QA notes</span></p>
+          </article>
 
-        <article class="preview-card wide">
-          <h2>Section Sequence</h2>
-          <ol>
-            <li>Outcome-first hero with product-specific anchor</li>
-            <li>How it works path (business brief -> launch brief -> launch kit)</li>
-            <li>What AI Web Factory creates (outputs matrix)</li>
-            <li>Why this beats prompt-only builders</li>
-            <li>Artifact preview + final conversion CTA</li>
-          </ol>
-        </article>
+          <article class="fd-preview-card">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Copy Assets</p>
+              <h2>Generation Plan</h2>
+            </div>
+            <ul class="fd-check-list">
+              <li>Three headline options + one-line positioning</li>
+              <li>Primary and secondary CTA set</li>
+              <li>Offer framing and process microcopy</li>
+              <li>FAQ and objection responses</li>
+            </ul>
+          </article>
 
-        <article class="preview-card">
-          <h2>Visual Direction</h2>
-          <p id="preview-visual">Signal-to-Launch Command Surface: premium dark-neutral foundation, warm action accent, precise hierarchy, composed depth.</p>
-        </article>
+          <article class="fd-preview-card">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Campaign Assets</p>
+              <h2>Activation Plan</h2>
+            </div>
+            <ul class="fd-check-list">
+              <li>Founder launch post sequence</li>
+              <li>Email announcement draft</li>
+              <li>Paid social angle matrix</li>
+              <li>Partner outreach variant</li>
+            </ul>
+          </article>
 
-        <article class="preview-card">
-          <h2>External UI Stack Recommendation</h2>
-          <p>UI/UX reference + component quality patterns + internal anti-loop memory. Principle extraction only, no copied code. Motion preference: <strong id="preview-motion">Subtle micro-motion</strong>.</p>
-        </article>
+          <article class="fd-preview-card fd-qa-block">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Anti-Generic Gates</p>
+              <h2>Gate Evaluation</h2>
+            </div>
+            <div class="fd-gate-list">
+              <div><span>Hero includes product-specific engine</span><strong>Pass</strong></div>
+              <div><span>Outcome visible in first screen</span><strong>Pass</strong></div>
+              <div><span>No prompt-only framing</span><strong>Pass</strong></div>
+              <div><span>Launch scope beyond website</span><strong>Pass</strong></div>
+            </div>
+          </article>
 
-        <article class="preview-card wide">
-          <h2>Launch Kit Outputs</h2>
-          <ul>
-            <li>Website direction and page architecture</li>
-            <li>Conversion structure and section jobs</li>
-            <li>Launch copy pack with CTA and objection handling</li>
-            <li>Campaign angle matrix by channel</li>
-            <li>Proof and QA checklist for claim credibility</li>
-            <li>Agent-ready production prompt excerpt</li>
-          </ul>
-          <p><strong>Builder-selected outputs:</strong> <span id="preview-outputs">Website direction, conversion structure, launch copy pack, campaign angle matrix, proof and QA notes</span></p>
-        </article>
+          <article class="fd-preview-card fd-qa-block">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Proof + QA Notes</p>
+              <h2>Quality Conditions</h2>
+            </div>
+            <div class="fd-gate-list">
+              <div><span>Claims map to deliverables</span><strong>Required</strong></div>
+              <div><span>No fake metrics/logos</span><strong>Required</strong></div>
+              <div><span>Trust language remains concrete</span><strong>Required</strong></div>
+              <div><span>Each CTA has clear expectation</span><strong>Required</strong></div>
+            </div>
+          </article>
 
-        <article class="preview-card">
-          <h2>Copy Assets to Generate</h2>
-          <ul>
-            <li>3 hero headlines + one-line positioning</li>
-            <li>Primary and secondary CTA options</li>
-            <li>Offer and process microcopy</li>
-            <li>FAQ and objection-response copy</li>
-          </ul>
-        </article>
+          <article class="fd-preview-card fd-preview-card-wide fd-prompt-artifact">
+            <div class="fd-card-head">
+              <p class="fd-card-kicker">Agent Handoff</p>
+              <h2>Production Prompt Excerpt</h2>
+            </div>
+            <pre>"Generate a launch-kit prototype for HarborLane Accounting with a founder-facing front door.
+Use guided intake as the primary conversion action.
+Show one concrete launch brief artifact before technical detail.
+Deliver website direction, conversion sequence, launch copy variants, campaign angle matrix, and QA notes.
+Keep tone practical, premium, and non-hype."</pre>
+          </article>
 
-        <article class="preview-card">
-          <h2>Campaign Assets to Generate</h2>
-          <ul>
-            <li>Founder launch post sequence</li>
-            <li>Email announcement draft</li>
-            <li>Paid social creative angles</li>
-            <li>Partner outreach pitch variant</li>
-          </ul>
-        </article>
-
-        <article class="preview-card">
-          <h2>Proof/QA Notes</h2>
-          <ul>
-            <li>Claims must map to documented deliverables and trust risk: <strong id="preview-trust">Fear of generic output that does not fit the business.</strong></li>
-            <li>No fake metrics or synthetic customer logos.</li>
-            <li>Trust language must stay plain and specific.</li>
-            <li>Every CTA has a next-step expectation label.</li>
-          </ul>
-        </article>
-
-        <article class="preview-card">
-          <h2>Anti-Generic Gates</h2>
-          <ul>
-            <li>Hero includes launch brief engine, not text+cards.</li>
-            <li>Workflow outcome is visible in first screen.</li>
-            <li>No dashboard-wall or prompt-to-page framing.</li>
-            <li>Launch outputs include campaign/copy/QA scope.</li>
-          </ul>
-        </article>
-
-        <article class="preview-card wide prompt-block">
-          <h2>Agent Production Prompt Excerpt</h2>
-          <p>
-            "Generate a launch-kit prototype for HarborLane Accounting that begins with a founder-facing front door. Use guided
-            intake as the primary conversion action. Show one concrete launch brief artifact before discussing technical features.
-            Deliver website direction, conversion sequence, launch copy variants, campaign angle matrix, and claim QA notes. Keep
-            tone practical, premium, and non-hype."
-          </p>
-        </article>
-
-        <article class="preview-card wide next-step">
-          <h2>Next-Step Recommendation</h2>
-          <p>
-            Run a production iteration that wires this intake flow to persisted brief data and agent execution states, while keeping
-            this same conversion-first front-door narrative.
-          </p>
-          <a class="btn btn-primary" href="./brief-builder.html">Refine Brief Inputs</a>
-        </article>
+          <article class="fd-preview-card fd-preview-card-wide fd-next-step">
+            <div>
+              <p class="fd-card-kicker">Next-Step Recommendation</p>
+              <h2>Move this artifact into production execution.</h2>
+              <p>Connect intake persistence and agent execution status while preserving this conversion-first front door structure.</p>
+            </div>
+            <a class="fd-btn fd-btn-primary" href="./brief-builder.html">Refine Brief Inputs</a>
+          </article>
+        </div>
       </section>
     </main>
-
-    <script defer src="./shared.js"></script>
-  </body>
+  </div>
+</body>
 </html>

@@ -22,14 +22,15 @@ function getFieldValue(field) {
 }
 
 function attachBuilderLogic() {
-  const form = document.getElementById("brief-form");
+  const form = document.querySelector("[data-role='brief-form']");
   if (!form) return;
 
   const fields = Array.from(form.querySelectorAll("[data-brief-field]"));
-  const progressFill = document.getElementById("progress-fill");
-  const progressText = document.getElementById("progress-text");
-  const scoreText = document.getElementById("completeness-score");
-  const summaryList = document.getElementById("summary-list");
+  const progressFill = document.querySelector("[data-role='progress-bar']");
+  const progressText = document.querySelector("[data-role='progress-label']");
+  const scoreText = document.querySelector("[data-role='score']");
+  const summaryList = document.querySelector("[data-role='summary']");
+  const scoreTrack = document.querySelector("[data-role='score-bar'] span");
 
   function computeState() {
     const values = {};
@@ -90,7 +91,8 @@ function attachBuilderLogic() {
     const state = computeState();
     if (progressFill) progressFill.style.width = `${state.progress}%`;
     if (progressText) progressText.textContent = `${state.progress}% complete`;
-    if (scoreText) scoreText.textContent = `${state.score} / 100`;
+    if (scoreText) scoreText.textContent = `${state.score}%`;
+    if (scoreTrack) scoreTrack.style.width = `${state.score}%`;
     renderSummary(state.values);
     persistSummary(state.values, state.score, state.progress);
   }

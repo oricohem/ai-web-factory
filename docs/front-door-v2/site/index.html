@@ -12,155 +12,176 @@
   <script defer src="./shared.js"></script>
 </head>
 <body>
-  <div class="page">
-    <header class="topbar container">
-      <a class="brand" href="./index.html">
-        <span class="brand-mark"></span>
+  <div class="fd-shell fd-front">
+    <header class="fd-topbar fd-container">
+      <a class="fd-brand" href="./index.html">
+        <span class="fd-brand-mark"></span>
         <span>AI Web Factory</span>
       </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a class="chip-link" href="./brief-builder.html">Business Brief</a>
-        <a class="chip-link" href="./brief-preview.html">Launch Brief Preview</a>
+      <nav class="fd-nav-links" aria-label="Primary">
+        <a href="./brief-builder.html">Business Brief</a>
+        <a href="./brief-preview.html">Launch Brief Preview</a>
       </nav>
-      <a class="btn btn-primary" href="./brief-builder.html">Start Brief</a>
+      <a class="fd-btn fd-btn-primary" href="./brief-builder.html">Start Brief</a>
     </header>
 
-    <main class="container">
-      <section class="hero">
-        <div class="panel hero-copy">
-          <p class="eyebrow">Front Door v2 · Guided launch-kit studio</p>
-          <h1 class="headline">Turn one business brief into a launch plan an agent can ship.</h1>
-          <p class="subhead">
+    <main class="fd-container">
+      <section class="fd-hero">
+        <article class="fd-hero-copy">
+          <p class="fd-kicker">Front Door v2 · Guided launch-kit studio</p>
+          <h1 class="fd-headline">Turn one business brief into a launch plan an agent can ship.</h1>
+          <p class="fd-subhead">
             AI Web Factory does more than generate a homepage. It builds a structured Launch Brief with conversion architecture, copy direction, campaign angles, proof notes, and a next-step production prompt.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="./brief-builder.html">Start your business brief</a>
-            <a class="btn btn-ghost" href="./brief-preview.html">See Launch Brief preview</a>
+          <div class="fd-cta-row">
+            <a class="fd-btn fd-btn-primary" href="./brief-builder.html">Start your business brief</a>
+            <a class="fd-btn fd-btn-ghost" href="./brief-preview.html">See Launch Brief preview</a>
           </div>
-          <div class="hero-utility">
-            <div class="utility-pill">Clear in under 10 minutes</div>
-            <div class="utility-pill">Built for founders and operators</div>
-            <div class="utility-pill">Output designed for real execution</div>
-          </div>
-        </div>
+        </article>
 
-        <aside class="panel engine" aria-label="Launch Brief Engine">
-          <div class="engine-header">
-            <h2 class="engine-title">Launch Brief Engine</h2>
-            <span class="engine-badge">Structured Run</span>
+        <aside class="fd-engine-surface" aria-label="Launch Brief Engine">
+          <div class="fd-engine-top">
+            <h2>Launch Brief Engine</h2>
+            <span class="fd-pill fd-pill-warm">Structured run</span>
           </div>
-          <div class="engine-grid">
-            <div class="engine-card">
-              <h3>Business Signals</h3>
+          <div class="fd-engine-grid">
+            <section class="fd-engine-card">
+              <h3>Business signals</h3>
               <ul>
-                <li>Category: B2B Service</li>
-                <li>Trust issue: "Looks generic"</li>
+                <li>Category: B2B service</li>
+                <li>Trust issue: "Feels generic"</li>
                 <li>Goal: Qualified brief starts</li>
               </ul>
-            </div>
-            <div class="engine-arrow">→</div>
-            <div class="engine-card">
-              <h3>Archetype Core</h3>
+            </section>
+            <section class="fd-engine-card fd-engine-card-focus">
+              <h3>Archetype selection</h3>
               <ul>
                 <li>Guided intake / productized service</li>
-                <li>Visual ambition: Premium practical</li>
-                <li>Proof style: output artifact + QA gates</li>
+                <li>Visual ambition: premium practical</li>
+                <li>Proof style: artifact + QA gate</li>
               </ul>
-            </div>
+            </section>
+            <section class="fd-engine-card">
+              <h3>Generated outputs</h3>
+              <ul>
+                <li>Website direction</li>
+                <li>Copy and campaign assets</li>
+                <li>Agent production prompt</li>
+              </ul>
+            </section>
           </div>
-          <div class="mini-score">
-            <div class="mini-row"><span>Output confidence</span><span>91%</span></div>
-            <div class="mini-bar"><div class="mini-fill" style="--fill: 91%"></div></div>
-            <div class="mini-row"><span>Generic risk</span><span>Low</span></div>
-            <div class="mini-bar"><div class="mini-fill" style="--fill: 23%"></div></div>
-            <div class="mini-row"><span>Includes</span><span>Website + copy + campaigns + QA</span></div>
-          </div>
-          <div style="margin-top: 12px;">
-            <a class="btn btn-ghost" href="./brief-preview.html">Open brief artifact</a>
+          <div class="fd-engine-meter">
+            <div class="fd-meter-row"><span>Output confidence</span><strong>91%</strong></div>
+            <div class="fd-meter-track"><div class="fd-meter-fill" style="--fill: 91%"></div></div>
           </div>
         </aside>
       </section>
 
-      <section class="section">
-        <h2>How it works</h2>
-        <div class="steps">
-          <article class="step">
-            <div class="step-index">1</div>
-            <h3>Business Brief</h3>
-            <p class="muted">Guided intake captures your offer, customer, trust problem, style boundaries, and launch constraints.</p>
+      <section class="fd-trust-strip">
+        <article>
+          <p class="fd-label">Founder-ready</p>
+          <strong>10 min average intake</strong>
+        </article>
+        <article>
+          <p class="fd-label">Structured output</p>
+          <strong>15+ launch brief fields</strong>
+        </article>
+        <article>
+          <p class="fd-label">Beyond pages</p>
+          <strong>Copy + campaigns + QA + prompt</strong>
+        </article>
+        <article>
+          <p class="fd-label">Execution handoff</p>
+          <strong>Agent-ready next step</strong>
+        </article>
+      </section>
+
+      <section class="fd-section">
+        <div class="fd-section-head">
+          <p class="fd-kicker">How it works</p>
+          <h2>Business Signal -> Launch Brief -> Agent-built Launch Kit</h2>
+        </div>
+        <div class="fd-process-rail">
+          <article class="fd-process-step">
+            <span class="fd-step-index">01</span>
+            <h3>Business Signal</h3>
+            <p>Capture offer, audience, conversion target, trust gap, visual ambition, and output expectations.</p>
           </article>
-          <article class="step">
-            <div class="step-index">2</div>
+          <article class="fd-process-step">
+            <span class="fd-step-index">02</span>
             <h3>Launch Brief</h3>
-            <p class="muted">The system translates raw input into architecture, section sequence, copy assets, campaign angles, and QA criteria.</p>
+            <p>Generate archetype, section sequence, proof strategy, copy assets, campaign angles, and QA gates.</p>
           </article>
-          <article class="step">
-            <div class="step-index">3</div>
+          <article class="fd-process-step">
+            <span class="fd-step-index">03</span>
             <h3>Agent-built Launch Kit</h3>
-            <p class="muted">An agent receives the structured brief and builds your first shippable launch kit with less drift and fewer retries.</p>
+            <p>Pass a production prompt and structured plan to an agent for focused, lower-drift execution.</p>
           </article>
         </div>
       </section>
 
-      <section class="section">
-        <h2>What AI Web Factory creates</h2>
-        <div class="section-grid">
-          <article class="card">
-            <h3>Website Direction</h3>
-            <p>Archetype, page architecture, section flow, and visual intent tied to your business model.</p>
-          </article>
-          <article class="card">
-            <h3>Conversion Structure</h3>
-            <p>Clear primary action path, objection handling blocks, and trust sequencing.</p>
-          </article>
-          <article class="card">
-            <h3>Launch Copy System</h3>
-            <p>Hero options, CTA variants, message pillars, and channel-ready starter copy.</p>
-          </article>
-          <article class="card">
-            <h3>Campaign Angles</h3>
-            <p>Audience-specific positioning angles for ads, email, and announcement moments.</p>
-          </article>
-          <article class="card">
-            <h3>Proof + QA Notes</h3>
-            <p>Evidence plan and anti-generic checkpoints so output stays commercially credible.</p>
-          </article>
-          <article class="card">
-            <h3>Production Prompt</h3>
-            <p>Structured handoff prompt ready for a production agent to execute.</p>
-          </article>
+      <section class="fd-section">
+        <div class="fd-section-head">
+          <p class="fd-kicker">Launch-kit scope</p>
+          <h2>What AI Web Factory creates</h2>
+        </div>
+        <div class="fd-output-grid">
+          <article class="fd-output-card"><h3>Website direction</h3><p>Archetype, architecture, section flow, and visual intent tied to business model.</p></article>
+          <article class="fd-output-card"><h3>Conversion structure</h3><p>Primary action path, objection handling blocks, and trust sequencing.</p></article>
+          <article class="fd-output-card"><h3>Copy assets</h3><p>Headline options, CTA variants, message pillars, and FAQ/objection copy.</p></article>
+          <article class="fd-output-card"><h3>Campaign angles</h3><p>Audience-specific channel angles for email, social, and announcement moments.</p></article>
+          <article class="fd-output-card"><h3>Proof + QA notes</h3><p>Evidence requirements and anti-generic quality gates before execution.</p></article>
+          <article class="fd-output-card"><h3>Production prompt</h3><p>Structured handoff prompt that tells an agent exactly what to build next.</p></article>
         </div>
       </section>
 
-      <section class="section">
-        <div class="split">
-          <article class="card">
-            <h2>Why this beats prompt-only builders</h2>
-            <ul class="list">
-              <li><strong>Prompt-only:</strong> Generic page output unless you already know strategy.</li>
-              <li><strong>AI Web Factory:</strong> Builds strategy and structure first, then execution-ready output.</li>
-              <li><strong>Prompt-only:</strong> No transparent intake, weak critique loop.</li>
-              <li><strong>AI Web Factory:</strong> Uses explicit intake fields, quality gates, and production handoff.</li>
-            </ul>
-          </article>
+      <section class="fd-section fd-compare-wrap">
+        <article class="fd-compare">
+          <h2>Why prompt-only builders fail for serious launches</h2>
+          <div class="fd-compare-grid">
+            <div class="fd-compare-col">
+              <h3>Prompt-only builder</h3>
+              <ul>
+                <li>No structured intake</li>
+                <li>Feature-heavy, strategy-light output</li>
+                <li>Weak proof and QA controls</li>
+                <li>No clear agent handoff contract</li>
+              </ul>
+            </div>
+            <div class="fd-compare-col fd-compare-col-win">
+              <h3>AI Web Factory</h3>
+              <ul>
+                <li>Guided business brief first</li>
+                <li>Launch brief with architecture and conversion logic</li>
+                <li>Copy + campaign + QA output scope</li>
+                <li>Agent-ready production prompt</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-          <article class="artifact">
-            <h3>Preview artifact: Launch Brief excerpt</h3>
-            <pre><strong>Selected archetype:</strong> Guided intake / productized service
-<strong>Section sequence:</strong> Promise -> Process -> Output proof -> Differentiation -> CTA
-<strong>Campaign angle:</strong> "From business signal to launch certainty in one guided pass."
-<strong>QA gate:</strong> Reject if hero reads like generic AI SaaS.</pre>
-            <p style="margin-top: 10px;"><a class="chip-link" href="./brief-preview.html">Open full Launch Brief preview →</a></p>
-          </article>
-        </div>
+        <aside class="fd-artifact-panel">
+          <div class="fd-artifact-head">
+            <p class="fd-kicker">Preview artifact</p>
+            <h3>Launch Brief excerpt</h3>
+          </div>
+          <div class="fd-artifact-body">
+            <p><span>Selected archetype</span><strong>Guided intake / productized service</strong></p>
+            <p><span>Section sequence</span><strong>Promise -> Process -> Output proof -> Differentiation -> CTA</strong></p>
+            <p><span>Campaign angle</span><strong>"From business signal to launch certainty in one guided pass."</strong></p>
+            <p><span>QA gate</span><strong>Reject if hero reads like generic AI SaaS.</strong></p>
+          </div>
+          <a class="fd-btn fd-btn-ghost" href="./brief-preview.html">Open full Launch Brief preview</a>
+        </aside>
       </section>
 
-      <section class="footer-cta">
+      <section class="fd-final-cta">
         <div>
-          <p class="eyebrow">Ready to start?</p>
-          <h2 style="margin: 0;">Build your business brief and generate a real launch plan.</h2>
+          <p class="fd-kicker">Ready to start?</p>
+          <h2>Build your business brief and generate a real launch plan.</h2>
+          <p>Start with intake clarity, then move into a launch brief that an agent can execute.</p>
         </div>
-        <a class="btn btn-primary" href="./brief-builder.html">Start business brief</a>
+        <a class="fd-btn fd-btn-primary" href="./brief-builder.html">Start business brief</a>
       </section>
     </main>
   </div>
