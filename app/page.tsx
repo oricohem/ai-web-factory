@@ -1,14 +1,24 @@
 import { HomeDashboard } from "@/components/dashboard/home-dashboard";
-import { PageHeader } from "@/components/dashboard/page-header";
+import { HomePremiumHero } from "@/components/home/home-premium-hero";
 import { pipelines, reviewQueue, uiComponents } from "@/lib/data";
 
 export default function Home() {
+  const pendingReviews = reviewQueue.filter(
+    (r) => r.status === "pending" || r.status === "in_review",
+  ).length;
+  const activePipelines = pipelines.filter((p) => p.status !== "draft").length;
+  const avgComponentScore = Math.round(
+    uiComponents.reduce((total, component) => total + component.score, 0) /
+      uiComponents.length,
+  );
+
   return (
     <>
-      <PageHeader
-        title="Factory overview"
-        description="A single place to browse reusable UI, operationalize AI pipelines, and move work through review with clear quality signals."
-        eyebrow="Production floor"
+      <HomePremiumHero
+        componentsCount={uiComponents.length}
+        activePipelines={activePipelines}
+        pendingReviews={pendingReviews}
+        avgComponentScore={avgComponentScore}
       />
       <HomeDashboard
         components={uiComponents}
