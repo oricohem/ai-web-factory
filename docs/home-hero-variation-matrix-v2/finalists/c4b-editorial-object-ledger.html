@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C4B · Editorial Object Ledger (Viewport-native)</title>
+    <style>
+      :root {
+        --ink-0: #f3f7ff;
+        --ink-1: #c0cbe3;
+        --ink-2: #8c9bbb;
+        --line: rgba(153, 173, 212, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+        color: var(--ink-0);
+        background:
+          linear-gradient(105deg, #0d1017 0 22%, #141a27 22% 48%, #0b111c 48% 100%),
+          radial-gradient(circle at 78% 18%, rgba(199, 157, 97, 0.17), transparent 34%);
+      }
+
+      .hero {
+        min-height: 100dvh;
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+      }
+
+      .copy-zone {
+        padding: 2.2rem 2rem 2rem 2.4rem;
+        border-right: 1px solid rgba(149, 169, 208, 0.24);
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .meta {
+        margin: 0;
+        font-size: 0.67rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--ink-2);
+      }
+
+      .copy-core {
+        align-self: center;
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(3.2rem, 5.7vw, 6rem);
+        line-height: 0.88;
+        letter-spacing: -0.045em;
+        max-width: 8.3ch;
+      }
+
+      .copy-core p {
+        margin: 0;
+        font-size: clamp(1.03rem, 1.2vw, 1.18rem);
+        line-height: 1.6;
+        max-width: 43ch;
+        color: var(--ink-1);
+      }
+
+      .cta-row {
+        margin-top: 1.45rem;
+        display: flex;
+        gap: 0.72rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border-radius: 999px;
+        text-decoration: none;
+        padding: 0.82rem 1.25rem;
+        border: 1px solid transparent;
+        font-weight: 600;
+        font-size: 0.88rem;
+      }
+
+      .btn.primary {
+        background: #ebf1ff;
+        color: #12203e;
+      }
+
+      .btn.secondary {
+        border-color: var(--line);
+        color: var(--ink-0);
+        background: rgba(24, 35, 54, 0.55);
+      }
+
+      .proof-grid {
+        margin-top: 1.25rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+      }
+
+      .proof-item {
+        border: 1px solid rgba(165, 182, 220, 0.3);
+        border-radius: 0.72rem;
+        padding: 0.58rem;
+        background: rgba(27, 38, 59, 0.45);
+      }
+
+      .proof-item span {
+        display: block;
+        font-size: 0.68rem;
+        color: var(--ink-2);
+      }
+
+      .proof-item strong {
+        display: block;
+        margin-top: 0.18rem;
+        font-size: 1rem;
+      }
+
+      .stage-zone {
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(168deg, rgba(41, 31, 22, 0.72), rgba(14, 19, 30, 0.85)),
+          radial-gradient(circle at 84% 18%, rgba(234, 204, 160, 0.2), transparent 38%);
+      }
+
+      .ledger-rail {
+        position: absolute;
+        left: 1.6rem;
+        top: 1.6rem;
+        bottom: 1.6rem;
+        width: min(26%, 250px);
+        border: 1px solid rgba(208, 190, 158, 0.32);
+        border-radius: 0.9rem;
+        background: rgba(17, 23, 33, 0.74);
+        padding: 0.68rem;
+        display: grid;
+        gap: 0.42rem;
+      }
+
+      .line {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(216, 199, 170, 0.36);
+      }
+
+      .object-stage {
+        position: absolute;
+        left: calc(min(26%, 250px) + 3.2rem);
+        right: 1.6rem;
+        top: 1.6rem;
+        bottom: 1.6rem;
+        border: 1px solid rgba(227, 205, 171, 0.34);
+        border-radius: 1.2rem;
+        background:
+          radial-gradient(circle at 73% 20%, rgba(255, 223, 173, 0.28), transparent 36%),
+          linear-gradient(170deg, rgba(69, 52, 34, 0.72), rgba(22, 20, 18, 0.8));
+      }
+
+      .object-stage::before {
+        content: "";
+        position: absolute;
+        inset: 14% 14%;
+        border-radius: 0.95rem;
+        border: 1px solid rgba(232, 214, 184, 0.46);
+      }
+
+      .object-stage::after {
+        content: "";
+        position: absolute;
+        left: 22%;
+        right: 22%;
+        bottom: 11%;
+        height: 13%;
+        border-radius: 0.7rem;
+        border: 1px solid rgba(224, 201, 165, 0.4);
+        background: linear-gradient(120deg, rgba(217, 193, 149, 0.38), rgba(94, 71, 46, 0.45));
+      }
+
+      .stage-proof {
+        position: absolute;
+        right: 1.6rem;
+        bottom: 1.6rem;
+        border: 1px solid rgba(165, 182, 220, 0.3);
+        border-radius: 0.8rem;
+        padding: 0.72rem;
+        min-width: 250px;
+        background: rgba(17, 23, 33, 0.68);
+      }
+
+      .stage-proof p {
+        margin: 0;
+        color: var(--ink-2);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .stage-proof strong {
+        display: block;
+        margin-top: 0.22rem;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 1100px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .copy-zone {
+          border-right: none;
+          border-bottom: 1px solid rgba(149, 169, 208, 0.24);
+        }
+
+        .stage-zone {
+          min-height: 56dvh;
+        }
+
+        .proof-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <section class="copy-zone">
+        <p class="meta">AI Web Factory · Finalist C4B · Editorial asymmetric × premium object artifact · 8.9</p>
+        <div class="copy-core">
+          <h1>Run a premium asset ledger with editorial authority.</h1>
+          <p>
+            Editorial-left narrative and full-height object stage-right now operate across the whole
+            viewport as one integrated homepage hero, not a framed module.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#">Open brand ledger</a>
+            <a class="btn secondary" href="#">Audit release standard</a>
+          </div>
+          <div class="proof-grid">
+            <div class="proof-item"><span>Selected assets</span><strong>182</strong></div>
+            <div class="proof-item"><span>Approval yield</span><strong>94.4%</strong></div>
+            <div class="proof-item"><span>Enterprise clients</span><strong>41</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stage-zone">
+        <div class="ledger-rail">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line" style="width: 82%"></div>
+          <div class="line"></div>
+          <div class="line" style="width: 66%"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <div class="object-stage"></div>
+        <aside class="stage-proof">
+          <p>Stage proof</p>
+          <strong>Editorial release tracks 22 · review latency -29%</strong>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

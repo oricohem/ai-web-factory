@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C9B · Product-first Object Monolith</title>
+    <link rel="stylesheet" href="./shared.css" />
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 78% 24%, rgba(118, 147, 214, 0.3), transparent 44%),
+          linear-gradient(150deg, #0d121a, #10141d);
+      }
+
+      .hero {
+        background: linear-gradient(170deg, rgba(24, 32, 48, 0.92), rgba(14, 20, 31, 0.94));
+      }
+
+      .slab {
+        position: absolute;
+        inset: 16% 12%;
+        border-radius: 1.1rem;
+        border: 1px solid rgba(198, 214, 247, 0.44);
+        background:
+          linear-gradient(160deg, rgba(180, 200, 236, 0.24), rgba(56, 74, 112, 0.35)),
+          rgba(24, 32, 50, 0.7);
+      }
+
+      .slab::before {
+        content: "";
+        position: absolute;
+        width: 56%;
+        height: 56%;
+        right: -10%;
+        top: -11%;
+        border-radius: 1rem;
+        border: 1px solid rgba(198, 215, 246, 0.5);
+        background: rgba(165, 188, 233, 0.18);
+      }
+    </style>
+  </head>
+  <body class="mood-dark">
+    <main class="shell comp-productfirst anchor-object">
+      <header class="topbar">
+        <p class="brand">AI Web Factory · Finalist C9B</p>
+        <p class="meta">Product-first × premium object artifact · 8.9</p>
+      </header>
+      <section class="hero">
+        <section class="visual">
+          <div class="anchor"><div class="slab"></div></div>
+        </section>
+        <section class="copy">
+          <h1>Ship premium website assets from a monolith release object.</h1>
+          <p>
+            Product-first hierarchy is normalized for real hero judging: enlarged object anchor,
+            confident typography, and compact proof that does not steal focus.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#">Enter product stage</a>
+            <a class="btn secondary" href="#">View artifact protocol</a>
+          </div>
+          <div class="proof-grid">
+            <div class="proof-item"><span>Artifact releases</span><strong>401</strong></div>
+            <div class="proof-item"><span>Brand match</span><strong>95.6%</strong></div>
+            <div class="proof-item"><span>Enterprise teams</span><strong>63</strong></div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

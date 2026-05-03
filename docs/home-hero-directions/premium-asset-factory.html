@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Asset Factory Direction</title>
+    <style>
+      :root {
+        --bg: #1a1815;
+        --bg-deep: #12100d;
+        --surface: rgba(42, 37, 31, 0.74);
+        --surface-2: rgba(64, 56, 47, 0.48);
+        --ink-0: #f6efe4;
+        --ink-1: #cbbda9;
+        --ink-2: #9d907f;
+        --line: rgba(196, 176, 147, 0.28);
+        --accent: #d0aa71;
+        --cta-ink: #21190f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Geist", "Segoe UI", sans-serif;
+        color: var(--ink-0);
+        background:
+          radial-gradient(circle at 12% 12%, rgba(177, 136, 78, 0.18), transparent 36%),
+          radial-gradient(circle at 82% 110%, rgba(91, 73, 45, 0.44), transparent 58%),
+          linear-gradient(155deg, var(--bg-deep), var(--bg));
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          -16deg,
+          transparent 0 58px,
+          rgba(173, 146, 109, 0.04) 58px 60px
+        );
+        opacity: 0.6;
+      }
+
+      .hero {
+        min-height: 100dvh;
+        width: min(1240px, 93vw);
+        margin: 0 auto;
+        padding: 2.4rem 0 2rem;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .label {
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-1);
+      }
+
+      .body {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 2.2rem;
+        align-items: center;
+      }
+
+      .copy h1 {
+        margin: 0 0 1.2rem;
+        font-size: clamp(3rem, 5vw, 5rem);
+        line-height: 0.93;
+        letter-spacing: -0.03em;
+        max-width: 13.5ch;
+      }
+
+      .copy p {
+        margin: 0;
+        max-width: 52ch;
+        color: var(--ink-1);
+        line-height: 1.58;
+        font-size: clamp(1rem, 1.35vw, 1.15rem);
+      }
+
+      .cta {
+        margin-top: 2rem;
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        text-decoration: none;
+        border-radius: 999px;
+        padding: 0.88rem 1.35rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      .btn.main {
+        background: var(--accent);
+        color: var(--cta-ink);
+      }
+
+      .btn.alt {
+        border: 1px solid var(--line);
+        color: var(--ink-0);
+        background: rgba(47, 39, 31, 0.52);
+      }
+
+      .anchor {
+        position: relative;
+        min-height: 560px;
+        border-radius: 2rem;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(150deg, rgba(64, 54, 43, 0.62), rgba(26, 22, 17, 0.82)),
+          var(--surface);
+        overflow: hidden;
+      }
+
+      .anchor::before {
+        content: "";
+        position: absolute;
+        inset: 1rem;
+        border-radius: 1.4rem;
+        border: 1px solid rgba(206, 184, 153, 0.24);
+        pointer-events: none;
+      }
+
+      .slab {
+        position: absolute;
+        border: 1px solid rgba(198, 170, 132, 0.24);
+        background: linear-gradient(160deg, rgba(79, 68, 56, 0.55), rgba(44, 37, 30, 0.48));
+      }
+
+      .slab.one {
+        width: 74%;
+        height: 38%;
+        top: 9%;
+        left: 11%;
+        border-radius: 1.3rem;
+        transform: perspective(980px) rotateX(30deg);
+      }
+
+      .slab.two {
+        width: 56%;
+        height: 26%;
+        top: 40%;
+        left: 20%;
+        border-radius: 1rem;
+        transform: perspective(900px) rotateX(35deg);
+      }
+
+      .slab.three {
+        width: 38%;
+        height: 19%;
+        bottom: 12%;
+        left: 30%;
+        border-radius: 0.8rem;
+        transform: perspective(900px) rotateX(39deg);
+      }
+
+      .beam {
+        position: absolute;
+        width: 2px;
+        background: linear-gradient(to bottom, rgba(219, 185, 134, 0.7), transparent);
+      }
+
+      .beam.b1 {
+        height: 46%;
+        left: 24%;
+        top: 5%;
+      }
+
+      .beam.b2 {
+        height: 58%;
+        left: 50%;
+        top: 0;
+      }
+
+      .beam.b3 {
+        height: 44%;
+        left: 76%;
+        top: 8%;
+      }
+
+      .stamp {
+        position: absolute;
+        right: 1.3rem;
+        top: 1.3rem;
+        border: 1px solid rgba(208, 170, 113, 0.45);
+        border-radius: 999px;
+        padding: 0.45rem 0.9rem;
+        color: var(--ink-1);
+        font-size: 0.69rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .proof {
+        position: absolute;
+        left: 1.3rem;
+        right: 1.3rem;
+        bottom: 1.3rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+
+      .proof article {
+        border: 1px solid rgba(203, 183, 154, 0.26);
+        border-radius: 0.8rem;
+        padding: 0.75rem;
+        background: var(--surface-2);
+      }
+
+      .proof h2 {
+        margin: 0 0 0.35rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        font-weight: 500;
+      }
+
+      .proof p {
+        margin: 0;
+        font-size: 1.03rem;
+        color: var(--ink-0);
+      }
+
+      @media (max-width: 1020px) {
+        .body {
+          grid-template-columns: 1fr;
+          gap: 1.8rem;
+        }
+
+        .anchor {
+          min-height: 500px;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .proof {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <header class="top">
+        <div class="label">AI Web Factory</div>
+        <div class="label">Direction 02 · Premium Asset Factory</div>
+      </header>
+
+      <section class="body">
+        <div class="copy">
+          <h1>Build a premium asset line with industrial-grade clarity.</h1>
+          <p>
+            Position AI Web Factory as a serious production brand where assets move
+            through calibrated stages, strict review, and release governance designed
+            for agencies and enterprise teams that buy trust, not experiments.
+          </p>
+          <div class="cta">
+            <a class="btn main" href="#">Enter Asset Factory</a>
+            <a class="btn alt" href="#">View Quality Protocol</a>
+          </div>
+        </div>
+
+        <div class="anchor" aria-hidden="true">
+          <span class="stamp">Certified Production Surface</span>
+          <div class="slab one"></div>
+          <div class="slab two"></div>
+          <div class="slab three"></div>
+          <span class="beam b1"></span>
+          <span class="beam b2"></span>
+          <span class="beam b3"></span>
+
+          <section class="proof">
+            <article>
+              <h2>Assets Approved</h2>
+              <p>312 this cycle</p>
+            </article>
+            <article>
+              <h2>Brand QA Accuracy</h2>
+              <p>96.1%</p>
+            </article>
+            <article>
+              <h2>Client Programs</h2>
+              <p>41 active</p>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

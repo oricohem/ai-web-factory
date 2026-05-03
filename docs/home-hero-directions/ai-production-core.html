@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Production Core Direction</title>
+    <style>
+      :root {
+        --bg-0: #0f1218;
+        --bg-1: #141925;
+        --ink-0: #f4f7ff;
+        --ink-1: #b7c0d7;
+        --ink-2: #8490a9;
+        --line: rgba(140, 157, 193, 0.18);
+        --signal: #9db5ff;
+        --signal-soft: rgba(157, 181, 255, 0.22);
+        --cta: #e4ebff;
+        --cta-ink: #111522;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Inter", sans-serif;
+        color: var(--ink-0);
+        background:
+          radial-gradient(circle at 50% 30%, rgba(77, 98, 160, 0.28), transparent 45%),
+          radial-gradient(circle at 50% 120%, rgba(27, 40, 76, 0.5), transparent 50%),
+          linear-gradient(145deg, var(--bg-0), var(--bg-1));
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(132, 144, 169, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(132, 144, 169, 0.06) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+      }
+
+      .hero {
+        min-height: 100dvh;
+        width: min(1240px, 92vw);
+        margin: 0 auto;
+        padding: 2.4rem 0 2rem;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .brand {
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-1);
+      }
+
+      .status {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+      }
+
+      .hero-body {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .copy h1 {
+        font-size: clamp(3.1rem, 5.6vw, 5.4rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        margin: 0 0 1.2rem;
+        max-width: 14ch;
+      }
+
+      .copy p {
+        margin: 0;
+        max-width: 52ch;
+        color: var(--ink-1);
+        font-size: clamp(1rem, 1.4vw, 1.18rem);
+        line-height: 1.6;
+      }
+
+      .cta-row {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+
+      .btn {
+        border-radius: 999px;
+        border: 1px solid transparent;
+        padding: 0.9rem 1.4rem;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      .btn.primary {
+        background: var(--cta);
+        color: var(--cta-ink);
+      }
+
+      .btn.secondary {
+        border-color: var(--line);
+        color: var(--ink-0);
+        background: rgba(19, 27, 46, 0.52);
+      }
+
+      .engine-zone {
+        position: relative;
+        min-height: 570px;
+      }
+
+      .core {
+        position: absolute;
+        inset: 8% auto auto 50%;
+        width: min(510px, 92%);
+        aspect-ratio: 1;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle, rgba(112, 137, 211, 0.42), rgba(35, 48, 84, 0.18) 38%, transparent 60%),
+          radial-gradient(circle at 50% 35%, rgba(181, 199, 255, 0.26), transparent 52%),
+          rgba(12, 17, 31, 0.72);
+        border: 1px solid var(--line);
+      }
+
+      .ring {
+        position: absolute;
+        inset: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 1px solid rgba(173, 189, 235, 0.3);
+      }
+
+      .ring.a {
+        width: 83%;
+        height: 83%;
+        animation: orbit 18s linear infinite;
+      }
+
+      .ring.b {
+        width: 62%;
+        height: 62%;
+        border-color: rgba(173, 189, 235, 0.5);
+        animation: orbit 11s linear infinite reverse;
+      }
+
+      .ring.c {
+        width: 39%;
+        height: 39%;
+        border-color: rgba(199, 211, 245, 0.56);
+      }
+
+      .node {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #dce6ff;
+        box-shadow: 0 0 0 8px var(--signal-soft);
+      }
+
+      .node.n1 {
+        top: 20%;
+        left: 45%;
+      }
+
+      .node.n2 {
+        top: 47%;
+        right: 14%;
+      }
+
+      .node.n3 {
+        bottom: 22%;
+        left: 29%;
+      }
+
+      .node.n4 {
+        top: 57%;
+        left: 12%;
+      }
+
+      .link {
+        position: absolute;
+        height: 1px;
+        transform-origin: left center;
+        background: linear-gradient(90deg, rgba(206, 220, 255, 0.72), transparent);
+      }
+
+      .l1 {
+        width: 130px;
+        top: 24%;
+        left: 47%;
+        transform: rotate(38deg);
+      }
+
+      .l2 {
+        width: 162px;
+        top: 50%;
+        left: 30%;
+        transform: rotate(-5deg);
+      }
+
+      .l3 {
+        width: 117px;
+        top: 63%;
+        left: 18%;
+        transform: rotate(-52deg);
+      }
+
+      .proof {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: min(340px, 88%);
+        border: 1px solid var(--line);
+        border-radius: 1.1rem;
+        padding: 1rem 1.1rem;
+        background: linear-gradient(170deg, rgba(23, 31, 50, 0.9), rgba(13, 18, 29, 0.88));
+      }
+
+      .proof h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--ink-1);
+      }
+
+      .proof ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .proof li {
+        display: flex;
+        justify-content: space-between;
+        color: var(--ink-1);
+        font-size: 0.89rem;
+      }
+
+      .proof strong {
+        color: var(--ink-0);
+        font-weight: 600;
+      }
+
+      @keyframes orbit {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-body {
+          grid-template-columns: 1fr;
+          gap: 1.8rem;
+        }
+
+        .engine-zone {
+          min-height: 510px;
+        }
+
+        .core {
+          inset: 0 auto auto 50%;
+        }
+
+        .proof {
+          position: static;
+          margin: 1.7rem auto 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <header class="topbar">
+        <div class="brand">AI Web Factory</div>
+        <div class="status">Direction 01 · AI Production Core</div>
+      </header>
+
+      <section class="hero-body">
+        <div class="copy">
+          <h1>Ship premium assets through one AI production core.</h1>
+          <p>
+            Treat components, prompts, and reviews as one connected production graph.
+            Every release moves through a single system engine that keeps quality,
+            provenance, and readiness visible before anything ships.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#">Start Production Pilot</a>
+            <a class="btn secondary" href="#">See Core Architecture</a>
+          </div>
+        </div>
+
+        <div class="engine-zone">
+          <div class="core" aria-hidden="true">
+            <div class="ring a"></div>
+            <div class="ring b"></div>
+            <div class="ring c"></div>
+            <span class="node n1"></span>
+            <span class="node n2"></span>
+            <span class="node n3"></span>
+            <span class="node n4"></span>
+            <span class="link l1"></span>
+            <span class="link l2"></span>
+            <span class="link l3"></span>
+          </div>
+
+          <aside class="proof">
+            <h2>Live Product Proof</h2>
+            <ul>
+              <li><span>Weekly assets promoted</span><strong>148</strong></li>
+              <li><span>Review pass rate</span><strong>93.2%</strong></li>
+              <li><span>Median production cycle</span><strong>11h 24m</strong></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

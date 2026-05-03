@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C5E · Floating Stage Architectural Atrium</title>
+    <style>
+      :root {
+        --ink: #edf3ff;
+        --muted: #b6c7e9;
+        --line: rgba(170, 192, 236, 0.38);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 17% 10%, rgba(119, 149, 219, 0.3), transparent 34%),
+          radial-gradient(circle at 79% 12%, rgba(152, 188, 255, 0.23), transparent 36%),
+          linear-gradient(163deg, #0a1220, #101d2f);
+      }
+
+      .hero {
+        min-height: 100dvh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        padding: 1.2rem 1.4rem 1.6rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hud {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.52rem 0.9rem;
+        background: rgba(24, 39, 65, 0.58);
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8rem;
+        font-size: 0.67rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        z-index: 4;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: center;
+        position: relative;
+      }
+
+      .copy {
+        position: absolute;
+        left: clamp(1.2rem, 5vw, 4.6rem);
+        top: clamp(4.5rem, 15vh, 10rem);
+        max-width: clamp(34ch, 38vw, 48ch);
+        z-index: 4;
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(3.1rem, 5.6vw, 6.2rem);
+        line-height: 0.88;
+        letter-spacing: -0.04em;
+      }
+
+      .copy p {
+        margin: 0;
+        font-size: clamp(1rem, 1.25vw, 1.2rem);
+        color: var(--muted);
+        line-height: 1.58;
+      }
+
+      .cta {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .btn {
+        border-radius: 999px;
+        text-decoration: none;
+        border: 1px solid transparent;
+        padding: 0.85rem 1.3rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .btn.main {
+        background: #eaf2ff;
+        color: #12213f;
+      }
+
+      .btn.alt {
+        border-color: var(--line);
+        color: var(--ink);
+        background: rgba(24, 37, 59, 0.58);
+      }
+
+      .atrium {
+        position: absolute;
+        left: 50%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        width: min(66vw, 980px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 1px solid rgba(186, 206, 245, 0.54);
+        background:
+          radial-gradient(circle at 50% 20%, rgba(191, 215, 255, 0.34), transparent 42%),
+          repeating-linear-gradient(90deg, rgba(204, 221, 255, 0.16) 0 2px, transparent 2px 20px),
+          linear-gradient(170deg, rgba(40, 58, 86, 0.76), rgba(20, 31, 50, 0.8));
+      }
+
+      .ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(198, 216, 252, 0.44);
+      }
+
+      .r1 {
+        inset: 11%;
+      }
+
+      .r2 {
+        inset: 24%;
+      }
+
+      .r3 {
+        inset: 36%;
+      }
+
+      .pillar {
+        position: absolute;
+        width: 2px;
+        top: 8%;
+        bottom: 8%;
+        background: linear-gradient(to bottom, rgba(206, 222, 255, 0.72), transparent 70%);
+      }
+
+      .p1 {
+        left: 27%;
+      }
+
+      .p2 {
+        left: 50%;
+      }
+
+      .p3 {
+        left: 73%;
+      }
+
+      .base {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 4%;
+        width: 70%;
+        height: 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(182, 203, 242, 0.46);
+        background: rgba(170, 192, 234, 0.24);
+      }
+
+      .proof {
+        position: absolute;
+        right: clamp(1rem, 3vw, 2.2rem);
+        bottom: clamp(1rem, 3vw, 2rem);
+        width: min(380px, 28vw);
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: rgba(18, 30, 49, 0.76);
+        padding: 0.8rem;
+        z-index: 4;
+      }
+
+      .proof h2 {
+        margin: 0 0 0.5rem;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+      }
+
+      .proof ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .proof li {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+
+      .proof strong {
+        color: var(--ink);
+      }
+
+      @media (max-width: 1040px) {
+        .copy {
+          position: static;
+          margin: 1.4rem 0 0;
+          max-width: 60ch;
+        }
+
+        .content {
+          align-content: start;
+          padding-top: 1rem;
+        }
+
+        .atrium {
+          position: relative;
+          left: auto;
+          top: auto;
+          transform: none;
+          width: min(88vw, 720px);
+          margin-top: 1.2rem;
+        }
+
+        .proof {
+          position: static;
+          width: min(560px, 92vw);
+          margin-top: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <header class="hud">
+        <span>AI Web Factory · Viewport Recomposition C5E</span>
+        <span>Floating Stage × Architectural Atrium · 9.0</span>
+      </header>
+
+      <section class="content">
+        <article class="copy">
+          <h1>Launch approved assets from one staged architectural atrium.</h1>
+          <p>
+            The full viewport now acts as the atrium itself: architecture, copy, action, and proof
+            are integrated into a single launch-stage composition rather than a centered module.
+          </p>
+          <div class="cta">
+            <a class="btn main" href="#">Enter atrium</a>
+            <a class="btn alt" href="#">View stage logic</a>
+          </div>
+        </article>
+
+        <section class="atrium" aria-hidden="true">
+          <span class="ring r1"></span>
+          <span class="ring r2"></span>
+          <span class="ring r3"></span>
+          <span class="pillar p1"></span>
+          <span class="pillar p2"></span>
+          <span class="pillar p3"></span>
+          <span class="base"></span>
+        </section>
+
+        <aside class="proof">
+          <h2>Spatial proof</h2>
+          <ul>
+            <li><span>Enterprise programs</span><strong>14</strong></li>
+            <li><span>Stage utilization</span><strong>91%</strong></li>
+            <li><span>Review confidence</span><strong>95.4%</strong></li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

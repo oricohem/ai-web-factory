@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C8B · Framed Object Gallery</title>
+    <link rel="stylesheet" href="./shared.css" />
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 70% 15%, rgba(177, 139, 83, 0.2), transparent 35%),
+          linear-gradient(160deg, #15100c, #0f141d);
+      }
+
+      .gallery-grid {
+        position: absolute;
+        inset: 8% 8%;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 0.8rem;
+      }
+
+      .obj {
+        border-radius: 0.9rem;
+        border: 1px solid rgba(224, 197, 155, 0.34);
+        background: linear-gradient(150deg, rgba(212, 176, 120, 0.38), rgba(101, 74, 42, 0.36));
+      }
+    </style>
+  </head>
+  <body class="mood-dark comp-framed anchor-object">
+    <main class="shell">
+      <header class="topbar">
+        <p class="brand">AI Web Factory · Finalist C8B</p>
+        <p class="meta">Framed spotlight × premium object artifact · 8.9</p>
+      </header>
+      <section class="hero">
+        <article class="copy">
+          <h1>Frame premium asset objects as commercial proof.</h1>
+          <p>
+            Enlarged object-gallery framing now reads as a full hero direction with strong
+            viewport presence and clearer top-level hierarchy.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#">Launch gallery pilot</a>
+            <a class="btn secondary" href="#">Read curation spec</a>
+          </div>
+        </article>
+        <section class="visual">
+          <div class="anchor">
+            <div class="gallery-grid">
+              <div class="obj"></div><div class="obj"></div>
+              <div class="obj"></div><div class="obj"></div>
+              <div class="obj"></div><div class="obj"></div>
+            </div>
+          </div>
+          <aside class="proof">
+            <h2>Curation proof</h2>
+            <ul>
+              <li><span>Selected assets</span><strong>182</strong></li>
+              <li><span>Approval yield</span><strong>94.4%</strong></li>
+              <li><span>Variant coverage</span><strong>63</strong></li>
+            </ul>
+          </aside>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
