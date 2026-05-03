@@ -10,34 +10,35 @@ Interaction choice: arrangement assembly on first scroll into hero
 
 | Dimension | Score |
 |---|---:|
-| hero iconic strength | 8 |
-| botanical specificity | 8 |
-| local studio authenticity | 8 |
-| tactile/material quality | 8 |
+| hero iconic strength | 9 |
+| botanical specificity | 9 |
+| local studio authenticity | 9 |
+| tactile/material quality | 9 |
 | booking/service clarity | 8 |
-| typography quality | 7 |
-| section rhythm | 7 |
+| typography quality | 8 |
+| section rhythm | 8 |
 | not-SaaS success | 9 |
-| not-Etsy-flat-lay success | 8 |
+| not-Etsy-flat-lay success | 9 |
 | mobile responsiveness | 8 |
+| visual divergence from Mira | 9 |
 | overall North Star usefulness | 8 |
 
 ## What worked
 
-- The Harbor Table Overhead hero reads as a single, memorable artifact with clear studio-task cues instead of a generic marketing hero.
-- The required paused-mid-work imperfections are visible and support a believable florist-left-the-table moment.
-- The exact single human trace element (pruning shears) adds presence without turning into lifestyle staging.
-- Section flow stays service-led (arrangement, workshops, events, trust, booking) so conversion clarity is maintained.
-- The page avoids dominant SaaS patterns, gradient-as-identity behavior, and equal-feature-card defaults.
+- The hero no longer reads as product-landing split composition; it behaves like a full worktable plane that crosses the page and lets copy cut into the scene.
+- Botanical forms are more stem- and branch-specific rather than rounded floral blobs, and the off-axis stem reads clearly as an intentional imperfection.
+- The pruning shears are now more legible while still remaining a single subtle human trace, which strengthens the "just stepped away" narrative.
+- Mid-page rhythm breaks card-stack behavior using a seasonal ledger, workshop table row, asymmetric event block, and material strip structure.
+- Palette personality now leads with moss/slate structure and uses warm ivory/parchment as support, reducing beige boutique sameness.
 
 ## What is weak
 
-- Typography is strong enough for a candidate but not yet fully ownable; display/body contrast could be more distinctive.
-- Mid-page sections are competent but not as character-rich as the hero artifact and could use sharper rhythm pivots.
-- Proof and offer modules are clear but still slightly conservative relative to a true benchmark-level signature system.
+- While the hero and section rhythm diverge strongly, typography can still become more ownable with one additional distinctive text-system pass.
+- The service and offer clarity remains good, but some transitions still prioritize atmosphere over faster booking scan speed.
+- This is a stronger candidate, but full benchmark confidence still needs a second category-consistent pass proving repeatability.
 
 ## North Star benchmark verdict
 
 **Verdict: revise**
 
-Reason: This build proves transfer into boutique local service with a clear iconic hero and good authenticity, but it does not yet achieve unmistakable benchmark-level typographic signature and section rhythm authority across the full page.
+Reason: The divergence pass successfully separates this page from Mira's visual species and improves transfer confidence, but it still needs one more iteration to fully lock benchmark-grade typography authority and repeatable conversion rhythm.
