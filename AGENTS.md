@@ -30,11 +30,16 @@ Commands are defined in `package.json`:
 
 Project-local design skills live in `.agents/skills/` and are documented in `docs/design-skills.md`.
 
+- Before any new visual UI implementation, read and align with `docs/design-learning-report-v1.md`.
+- Treat `docs/design-learning-report-v1.md` as a mandatory anti-loop quality gate for direction selection and final approval.
 - Before visual UI work, use Taste Skill guidance, especially `design-taste-frontend`, `high-end-visual-design`, and related Taste Skill references.
 - Before AI Web Factory-specific dashboard, catalog, review, card, app shell, or atmosphere work, use `ai-factory-design-intelligence` to choose a product-fit direction and quality gates.
+- Require a brief direction statement before coding for non-trivial visual work: named direction, first-read goal, palette roles, typography hierarchy, anti-patterns intentionally avoided.
+- Require at least one materially different alternative direction during shaping; reject tiny cosmetic-only "new" passes.
 - Before approving UI, use Impeccable-style review for visual hierarchy, interaction quality, responsive behavior, accessibility, and craft.
 - Do not approve generic SaaS UI or default AI-generated visual patterns.
 - Do not overuse purple gradients, glassmorphism, random glow effects, bounce easing, or cramped padding.
+- Reject repeated anti-pattern loops: weak-glow dark dashboards, retro control-room skins, terminal/blueprint mimicry, dense equal-weight admin panels, generic SaaS heroes, and nested cards.
 - Always run `npm run qa` after visual changes.
 - Use Playwright screenshots for both desktop and mobile review before approving visual UI work.
 - The human owner is the only one who can mark something Featured.

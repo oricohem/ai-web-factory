@@ -15,6 +15,9 @@ AI Web Factory keeps design guidance local so agents can improve UI quality with
 - Use `ai-factory-design-intelligence` to choose a product-specific direction before changing AI Web Factory dashboards, catalogs, review surfaces, cards, app shell, or atmosphere.
 - Use it to pick a clear design direction, reduce generic SaaS defaults, and avoid reflexive purple gradients, glassmorphism, random glow, bounce easing, and cramped padding.
 - Use `visual-research-and-atmosphere` when the work changes the app's environmental feel: global backgrounds, page atmosphere, shell framing, lighting, texture, material quality, or route-level visual depth.
+- Before any new visual implementation, read and align with `docs/design-learning-report-v1.md`.
+- For non-trivial UI work, require a short direction brief (named direction, first-read goal, palette roles, typography hierarchy, anti-patterns avoided) before coding.
+- Force at least one materially different alternative direction during shaping; reject tiny cosmetic-only passes that preserve the same old dashboard loop.
 - Do not mark any item or component as Featured. The human owner is the only person who can make that call.
 
 ## Reviewer agents
@@ -23,6 +26,7 @@ AI Web Factory keeps design guidance local so agents can improve UI quality with
 - Review screenshots at desktop and mobile widths with Playwright.
 - Reject UI that looks like a generic AI SaaS template, even if it technically works.
 - Confirm the component is reusable, the purpose is obvious, the typography hierarchy is clear, and spacing is consistent.
+- Reject work that reintroduces known anti-pattern loops from `docs/design-learning-report-v1.md`: weak-glow dark dashboard, retro control room, terminal/blueprint skinning, dense equal-weight admin panels, generic SaaS hero blocks, nested cards, and tiny low-delta visual diffs.
 
 ## Screenshot QA
 
@@ -67,4 +71,7 @@ Premium UI means restrained, durable product design:
 - Component is reusable
 - CTA or purpose is obvious
 - No generic AI SaaS look
+- Direction is named and first-read intent is explicit
+- No repeated anti-pattern loops from `docs/design-learning-report-v1.md`
+- The visual pass is materially different, not a tiny cosmetic-only diff
 - `npm run qa` passed
