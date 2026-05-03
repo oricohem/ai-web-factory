@@ -29,6 +29,19 @@ Conflict precedence for orchestration overlap:
 8. Design Research Corpus principle/reference guidance
 9. Older experiment docs as reference-only
 
+## Pure Visual Execution Mode override (minimal)
+
+When the user explicitly asks for pure visual execution, visual redesign, premium UI pass, North Star page, component recipe extraction, high-end landing page visual craft, or improving visual quality without changing strategy:
+
+- Temporarily suspend blocking emphasis on full-site orchestration artifacts, launch-kit documentation packaging, broad architecture rewrites, matrix/scoring expansion, and docs/prototype-first framing.
+- Active controllers become: `high-end-visual-design`, `design-taste-frontend`, and `ai-factory-taste-engine` anti-generic gates.
+- Strategy/architecture skills remain reference-only unless the user explicitly asks for strategy outputs.
+- Do not create new architecture docs/matrices by default.
+- Do not let launch-kit packaging make the website feel like an internal spec.
+- Start from concrete component composition, type scale, spacing, layout, responsive behavior, and interaction states.
+- Every major section must be implemented as a designed component, not explanatory documentation.
+- Scope safety still applies: this mode does not authorize production UI edits unless the user explicitly requests production work.
+
 Task routing examples:
 
 - "Create a full website" -> run Full Site Builder Workflow first.
