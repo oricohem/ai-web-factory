@@ -12,10 +12,13 @@ const DEFAULT_SUMMARY = {
 
 function getFieldValue(field) {
   if (!field) return "";
-  if (field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement) {
+  if (field instanceof HTMLInputElement) {
+    if (field.type === "checkbox" || field.type === "radio") {
+      return field.checked ? field.value.trim() : "";
+    }
     return field.value.trim();
   }
-  if (field instanceof HTMLInputElement) {
+  if (field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement) {
     return field.value.trim();
   }
   return "";
@@ -31,23 +34,42 @@ function attachBuilderLogic() {
   const scoreText = document.querySelector("[data-role='score']");
   const summaryList = document.querySelector("[data-role='summary']");
   const scoreTrack = document.querySelector("[data-role='score-bar'] span");
+  const workflowSteps = Array.from(document.querySelectorAll(".fd-step"));
+  const outputPills = Array.from(document.querySelectorAll(".fd-check-pill"));
+
+  const fieldGroups = fields.reduce((map, field) => {
+    const key = field.getAttribute("data-brief-field");
+    if (!key) return map;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push(field);
+    return map;
+  }, new Map());
 
   function computeState() {
     const values = {};
     let completed = 0;
 
-    fields.forEach((field) => {
-      const key = field.getAttribute("data-brief-field");
-      if (!key) return;
+    fieldGroups.forEach((group, key) => {
+      const first = group[0];
+      const isMultiChoice =
+        first instanceof HTMLInputElement &&
+        (first.type === "checkbox" || first.type === "radio");
 
-      const value = getFieldValue(field);
+      let value = "";
+      if (isMultiChoice) {
+        const selected = group.map((field) => getFieldValue(field)).filter(Boolean);
+        value = selected.join(", ");
+      } else {
+        value = getFieldValue(first);
+      }
+
       values[key] = value;
       if (value.length > 0) completed += 1;
     });
 
-    const total = fields.length || 1;
+    const total = fieldGroups.size || 1;
     const progress = Math.round((completed / total) * 100);
-    const score = Math.min(100, Math.max(0, Math.round(progress * 0.92 + completed * 1.1)));
+    const score = Math.min(100, Math.max(0, Math.round(progress * 0.88 + completed * 1.5)));
 
     return { values, progress, score };
   }
@@ -87,6 +109,40 @@ function attachBuilderLogic() {
     sessionStorage.setItem("frontDoorV2BriefSummary", JSON.stringify(payload));
   }
 
+  function updateWorkflowSteps(progress) {
+    if (workflowSteps.length === 0) return;
+    workflowSteps.forEach((step) => {
+      step.classList.remove("is-active", "is-complete");
+    });
+
+    if (progress < 34) {
+      workflowSteps[0]?.classList.add("is-active");
+      return;
+    }
+
+    if (progress < 67) {
+      workflowSteps[0]?.classList.add("is-complete");
+      workflowSteps[1]?.classList.add("is-active");
+      return;
+    }
+
+    workflowSteps[0]?.classList.add("is-complete");
+    workflowSteps[1]?.classList.add("is-complete");
+    workflowSteps[2]?.classList.add("is-active");
+    if (progress === 100) {
+      workflowSteps[2]?.classList.add("is-complete");
+      workflowSteps[2]?.classList.remove("is-active");
+    }
+  }
+
+  function updateOutputPills() {
+    outputPills.forEach((pill) => {
+      const input = pill.querySelector("input");
+      if (!input) return;
+      pill.classList.toggle("is-selected", Boolean(input.checked));
+    });
+  }
+
   function update() {
     const state = computeState();
     if (progressFill) progressFill.style.width = `${state.progress}%`;
@@ -95,6 +151,8 @@ function attachBuilderLogic() {
     if (scoreTrack) scoreTrack.style.width = `${state.score}%`;
     renderSummary(state.values);
     persistSummary(state.values, state.score, state.progress);
+    updateWorkflowSteps(state.progress);
+    updateOutputPills();
   }
 
   form.addEventListener("input", update);

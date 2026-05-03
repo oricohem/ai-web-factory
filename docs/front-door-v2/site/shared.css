@@ -737,6 +737,17 @@ a {
   font-size: 0.8rem;
   color: #375983;
   cursor: pointer;
+  transition: border-color 0.16s ease, background-color 0.16s ease, transform 0.16s ease;
+}
+
+.fd-check-pill:hover {
+  transform: translateY(-1px);
+}
+
+.fd-check-pill:has(input:checked) {
+  border-color: rgba(47, 107, 255, 0.42);
+  background: #eaf2ff;
+  color: #1f4fb9;
 }
 
 .fd-check-pill input {
@@ -837,6 +848,44 @@ a {
   margin: 0.45rem 0 0.7rem;
   color: #587095;
   font-size: 0.84rem;
+}
+
+.fd-readiness-grid {
+  margin-top: 0.52rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.fd-readiness-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #d8e4f5;
+  background: #f8fbff;
+  padding: 0.44rem 0.5rem;
+}
+
+.fd-readiness-item span {
+  font-size: 0.8rem;
+  color: #456288;
+}
+
+.fd-readiness-item strong {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8a9fbe;
+}
+
+.fd-readiness-item.is-ready {
+  border-color: rgba(18, 148, 110, 0.32);
+  background: #f2fcf8;
+}
+
+.fd-readiness-item.is-ready strong {
+  color: #1f6f58;
 }
 
 /* Preview page */
