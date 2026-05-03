@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Web Factory - Blueprint Assembly Floor</title>
+    <style>
+      :root {
+        --bg-main: #0d1a26;
+        --bg-deep: #0a141f;
+        --field: #11263a;
+        --field-2: #142d46;
+        --line-major: #2e5d86;
+        --line-minor: #244760;
+        --panel: #133049;
+        --panel-soft: #173a57;
+        --text-main: #d8e5ef;
+        --text-dim: #9db3c4;
+        --cyan: #7fc3de;
+        --amber: #c29c64;
+        --ok: #89b48e;
+        --warn: #c99572;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text-main);
+        font-family: "Consolas", "SF Mono", "Menlo", monospace;
+        background:
+          radial-gradient(1200px 540px at 50% -10%, rgb(23 58 87 / 0.5), transparent 70%),
+          linear-gradient(165deg, var(--bg-main), var(--bg-deep));
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.78;
+        background-image:
+          linear-gradient(var(--line-major) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line-major) 1px, transparent 1px),
+          linear-gradient(var(--line-minor) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line-minor) 1px, transparent 1px);
+        background-size:
+          160px 160px,
+          160px 160px,
+          32px 32px,
+          32px 32px;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(90deg, rgb(5 10 15 / 0.65), transparent 20%, transparent 80%, rgb(5 10 15 / 0.65)),
+          linear-gradient(0deg, rgb(5 10 15 / 0.6), transparent 16%, transparent 84%, rgb(5 10 15 / 0.6));
+      }
+
+      .shell {
+        position: relative;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        max-width: 1460px;
+        min-height: calc(100vh - 54px);
+        margin: 27px auto;
+        border: 1px solid var(--line-major);
+        border-radius: 10px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgb(16 38 58 / 0.94), rgb(11 28 43 / 0.96));
+        box-shadow:
+          0 24px 80px rgb(0 0 0 / 0.45),
+          inset 0 1px 0 rgb(165 207 229 / 0.08);
+      }
+
+      .shell::before {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border: 1px dashed rgb(127 195 222 / 0.25);
+        pointer-events: none;
+      }
+
+      .shell::after {
+        content: "A.I. WEB FACTORY // BLUEPRINT ASSEMBLY FIELD // REV A";
+        position: absolute;
+        right: 20px;
+        bottom: 12px;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        color: rgb(157 179 196 / 0.7);
+      }
+
+      .sidebar {
+        border-right: 1px solid var(--line-major);
+        padding: 18px 14px;
+        background:
+          linear-gradient(180deg, rgb(17 39 59 / 0.95), rgb(13 30 45 / 0.95));
+      }
+
+      .stamp {
+        border: 1px solid var(--line-major);
+        border-radius: 6px;
+        padding: 11px;
+        margin-bottom: 18px;
+        background:
+          linear-gradient(180deg, rgb(18 43 65 / 0.85), rgb(13 33 51 / 0.9));
+      }
+
+      .stamp strong {
+        display: block;
+        font-size: 14px;
+        letter-spacing: 0.09em;
+      }
+
+      .stamp span {
+        display: block;
+        margin-top: 5px;
+        font-size: 11px;
+        color: var(--text-dim);
+        letter-spacing: 0.08em;
+      }
+
+      .rail-title {
+        margin: 12px 0 8px;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+
+      .rail-item {
+        border: 1px solid var(--line-minor);
+        border-radius: 5px;
+        padding: 9px 10px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        color: var(--text-main);
+        background: rgb(20 47 72 / 0.45);
+      }
+
+      .rail-item.active {
+        border-color: var(--cyan);
+        box-shadow: inset 0 0 0 1px rgb(127 195 222 / 0.22);
+      }
+
+      .workspace {
+        padding: 20px 22px 24px;
+      }
+
+      .header {
+        border: 1px solid var(--line-major);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background:
+          linear-gradient(180deg, rgb(18 45 68 / 0.9), rgb(14 34 52 / 0.92));
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+        letter-spacing: 0.03em;
+      }
+
+      .header p {
+        margin: 5px 0 0;
+        font-size: 12px;
+        color: var(--text-dim);
+      }
+
+      .badge {
+        border: 1px solid rgb(194 156 100 / 0.55);
+        border-radius: 4px;
+        padding: 7px 11px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        color: #e1cbac;
+        text-transform: uppercase;
+        background: rgb(194 156 100 / 0.12);
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 12px;
+      }
+
+      .left,
+      .right {
+        display: grid;
+        gap: 12px;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .panel {
+        border: 1px solid var(--line-major);
+        border-radius: 8px;
+        padding: 12px;
+        background:
+          linear-gradient(180deg, rgb(18 46 70 / 0.92), rgb(14 35 53 / 0.94));
+        box-shadow: inset 0 1px 0 rgb(183 219 239 / 0.06);
+      }
+
+      .panel-title {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+
+      .panel-value {
+        margin-top: 7px;
+        font-size: 28px;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .panel-note {
+        margin-top: 6px;
+        font-size: 11px;
+        color: var(--cyan);
+      }
+
+      .matrix-head,
+      .matrix-row {
+        display: grid;
+        grid-template-columns: 1.5fr 0.9fr 0.9fr 0.8fr;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .matrix-head {
+        padding-bottom: 7px;
+        border-bottom: 1px dashed var(--line-minor);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+
+      .matrix-row {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line-minor);
+        font-size: 12px;
+      }
+
+      .status {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .status.ok {
+        color: var(--ok);
+      }
+
+      .status.warn {
+        color: var(--warn);
+      }
+
+      .coord {
+        margin-top: 6px;
+        color: var(--text-dim);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+
+      .event {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 8px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line-minor);
+        font-size: 12px;
+      }
+
+      .tick {
+        color: var(--amber);
+      }
+
+      @media (max-width: 1080px) {
+        .shell {
+          grid-template-columns: 1fr;
+          margin: 0;
+          border-radius: 0;
+          min-height: 100dvh;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--line-major);
+        }
+
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="stamp">
+          <strong>AI WEB FACTORY</strong>
+          <span>BLUEPRINT ASSEMBLY FLOOR</span>
+        </div>
+        <div class="rail-title">Stations</div>
+        <div class="rail-item active">Overview Board</div>
+        <div class="rail-item">Component Plans</div>
+        <div class="rail-item">Pipeline Geometry</div>
+        <div class="rail-item">Review Routing</div>
+        <div class="rail-title">Draft Layers</div>
+        <div class="rail-item">Major Grid</div>
+        <div class="rail-item">Dependency Lines</div>
+        <div class="rail-item">Audit Marks</div>
+      </aside>
+
+      <main class="workspace">
+        <section class="header">
+          <div>
+            <h1>Assembly Plan Dashboard</h1>
+            <p>Structured blueprint field for component and pipeline orchestration.</p>
+          </div>
+          <div class="badge">Draft Surface Locked</div>
+        </section>
+
+        <section class="dashboard">
+          <div class="left">
+            <div class="metrics">
+              <article class="panel">
+                <div class="panel-title">Build Units</div>
+                <div class="panel-value">216</div>
+                <div class="panel-note">+18 mapped to reusable sets</div>
+              </article>
+              <article class="panel">
+                <div class="panel-title">Flow Integrity</div>
+                <div class="panel-value">0.93</div>
+                <div class="panel-note">Trace links validated</div>
+              </article>
+              <article class="panel">
+                <div class="panel-title">Open Checks</div>
+                <div class="panel-value">11</div>
+                <div class="panel-note">7 high, 4 medium</div>
+              </article>
+            </div>
+
+            <article class="panel">
+              <div class="matrix-head">
+                <div>Module</div>
+                <div>Layer</div>
+                <div>Score</div>
+                <div>State</div>
+              </div>
+              <div class="matrix-row">
+                <div>Specimen Hero Grid</div>
+                <div>L2</div>
+                <div>94.1</div>
+                <div class="status ok">Ready</div>
+              </div>
+              <div class="matrix-row">
+                <div>Catalog Tile Matrix</div>
+                <div>L3</div>
+                <div>89.3</div>
+                <div class="status warn">Audit</div>
+              </div>
+              <div class="matrix-row">
+                <div>Pipeline Stage Rail</div>
+                <div>L2</div>
+                <div>92.0</div>
+                <div class="status ok">Ready</div>
+              </div>
+              <div class="matrix-row" style="border-bottom: 0">
+                <div>Review Decision Dock</div>
+                <div>L4</div>
+                <div>86.4</div>
+                <div class="status warn">Revise</div>
+              </div>
+              <div class="coord">COORD: X-14 Y-09 / FIELD: B-2 / REVISION: 17A</div>
+            </article>
+          </div>
+
+          <div class="right">
+            <article class="panel">
+              <div class="panel-title">Assembly Events</div>
+              <div class="event">
+                <div class="tick">[01]</div>
+                <div>Promoted hero blueprint to shared template rail</div>
+                <div>00:42</div>
+              </div>
+              <div class="event">
+                <div class="tick">[02]</div>
+                <div>Resolved annotation overlap in review queue board</div>
+                <div>00:34</div>
+              </div>
+              <div class="event">
+                <div class="tick">[03]</div>
+                <div>Validated pipeline naming schema against catalog IDs</div>
+                <div>00:27</div>
+              </div>
+              <div class="event" style="border-bottom: 0">
+                <div class="tick">[04]</div>
+                <div>Queued dependency graph cleanup for shift handoff</div>
+                <div>00:19</div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title">Inspection Priorities</div>
+              <div class="matrix-row">
+                <div>Layout drift scan</div>
+                <div>S1</div>
+                <div>6</div>
+                <div class="status warn">Now</div>
+              </div>
+              <div class="matrix-row">
+                <div>Typography lock pass</div>
+                <div>S2</div>
+                <div>4</div>
+                <div class="status ok">Next</div>
+              </div>
+              <div class="matrix-row" style="border-bottom: 0">
+                <div>Status color separation</div>
+                <div>S3</div>
+                <div>2</div>
+                <div class="status ok">Later</div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

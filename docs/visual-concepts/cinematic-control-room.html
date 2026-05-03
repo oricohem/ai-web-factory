@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Web Factory - Cinematic Control Room</title>
+    <style>
+      :root {
+        --bg-core: #0f1215;
+        --bg-rail: #151b21;
+        --bg-stage: #1c222a;
+        --panel: #222a32;
+        --panel-soft: #27313b;
+        --line: #323c47;
+        --line-soft: #2a333d;
+        --text: #e7e3d8;
+        --text-dim: #afb7be;
+        --accent: #c4a06a;
+        --accent-soft: #8a724c;
+        --cool: #87a7b7;
+        --ok: #89ab8f;
+        --warn: #c88d73;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+        background:
+          radial-gradient(900px 420px at 12% -6%, rgb(196 160 106 / 0.22), transparent 68%),
+          radial-gradient(1100px 500px at 88% -8%, rgb(135 167 183 / 0.22), transparent 70%),
+          linear-gradient(165deg, #0d1115, #12171d 48%, #10141a);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 50% 40%, transparent 44%, rgb(3 6 10 / 0.35) 100%),
+          linear-gradient(90deg, rgb(0 0 0 / 0.3) 0%, transparent 16%, transparent 84%, rgb(0 0 0 / 0.3) 100%);
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(180deg, transparent 0%, transparent 72%, rgb(0 0 0 / 0.45) 100%),
+          repeating-linear-gradient(
+            0deg,
+            rgb(255 255 255 / 0.014) 0,
+            rgb(255 255 255 / 0.014) 1px,
+            transparent 1px,
+            transparent 4px
+          );
+      }
+
+      .frame {
+        max-width: 1450px;
+        min-height: calc(100vh - 64px);
+        margin: 32px auto;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        background: linear-gradient(180deg, rgb(22 27 33 / 0.96), rgb(15 19 24 / 0.96));
+        box-shadow:
+          0 34px 96px rgb(3 6 10 / 0.58),
+          inset 0 1px 0 rgb(255 255 255 / 0.08),
+          inset 0 -1px 0 rgb(255 255 255 / 0.05);
+        position: relative;
+      }
+
+      .frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(760px 300px at 50% 16%, rgb(196 160 106 / 0.11), transparent 80%),
+          radial-gradient(760px 300px at 50% 90%, rgb(135 167 183 / 0.09), transparent 84%);
+      }
+
+      .sidebar {
+        border-right: 1px solid var(--line-soft);
+        padding: 24px 16px;
+        background:
+          linear-gradient(180deg, rgb(24 30 36 / 0.95), rgb(18 23 29 / 0.95)),
+          linear-gradient(90deg, rgb(196 160 106 / 0.1), transparent 42%);
+      }
+
+      .brand {
+        border: 1px solid rgb(196 160 106 / 0.38);
+        border-radius: 12px;
+        padding: 13px 12px;
+        margin-bottom: 22px;
+        background:
+          linear-gradient(180deg, rgb(196 160 106 / 0.16), rgb(196 160 106 / 0.04)),
+          linear-gradient(160deg, rgb(45 53 62 / 0.72), rgb(28 35 43 / 0.7));
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .brand small {
+        display: block;
+        margin-top: 4px;
+        color: var(--text-dim);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .nav-label {
+        margin: 16px 8px 8px;
+        color: var(--text-dim);
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .nav-item {
+        padding: 11px 12px;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        color: #c0c9d0;
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+
+      .nav-item.active {
+        border-color: rgb(196 160 106 / 0.42);
+        color: var(--text);
+        background:
+          linear-gradient(90deg, rgb(196 160 106 / 0.22), rgb(196 160 106 / 0.05));
+      }
+
+      .workspace {
+        padding: 24px;
+        position: relative;
+      }
+
+      .stage {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        background:
+          linear-gradient(180deg, rgb(33 40 48 / 0.95), rgb(25 31 38 / 0.95)),
+          radial-gradient(900px 330px at 50% -4%, rgb(196 160 106 / 0.16), transparent 72%);
+        box-shadow:
+          inset 0 1px 0 rgb(255 255 255 / 0.07),
+          inset 0 -1px 0 rgb(255 255 255 / 0.05);
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--text-dim);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 32px;
+        letter-spacing: -0.018em;
+      }
+
+      .sub {
+        margin: 9px 0 0;
+        color: #c0c8ce;
+        max-width: 56ch;
+        font-size: 14px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn {
+        border: 1px solid var(--line);
+        background: rgb(35 42 50 / 0.9);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .btn.primary {
+        border-color: rgb(196 160 106 / 0.4);
+        background: linear-gradient(180deg, rgb(196 160 106 / 0.28), rgb(196 160 106 / 0.12));
+      }
+
+      .layout {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 14px;
+      }
+
+      .left,
+      .right {
+        display: grid;
+        gap: 14px;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr 1fr;
+        gap: 12px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background:
+          linear-gradient(180deg, rgb(39 47 56 / 0.95), rgb(30 37 45 / 0.95));
+        padding: 14px;
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+      }
+
+      .kicker {
+        color: var(--text-dim);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .value {
+        margin-top: 8px;
+        font-size: 30px;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .foot {
+        margin-top: 6px;
+        color: var(--accent);
+        font-size: 12px;
+      }
+
+      .table-head,
+      .table-row {
+        display: grid;
+        grid-template-columns: 1.5fr 0.8fr 0.8fr 0.8fr;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .table-head {
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--line-soft);
+        color: var(--text-dim);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .table-row {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line-soft);
+        font-size: 13px;
+      }
+
+      .status {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 4px 8px;
+        border: 1px solid;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .status.ok {
+        color: var(--ok);
+        border-color: rgb(137 171 143 / 0.45);
+      }
+
+      .status.warn {
+        color: var(--warn);
+        border-color: rgb(200 141 115 / 0.45);
+      }
+
+      .event {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+        align-items: center;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .dot.cool {
+        background: var(--cool);
+      }
+
+      .event small {
+        color: var(--text-dim);
+        font-size: 12px;
+      }
+
+      .signal {
+        color: var(--cool);
+      }
+
+      @media (max-width: 1120px) {
+        .frame {
+          margin: 0;
+          min-height: 100dvh;
+          border-radius: 0;
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--line-soft);
+        }
+
+        .layout,
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <aside class="sidebar">
+        <div class="brand">
+          <strong>AI Web Factory</strong>
+          <small>Cinematic Control Room</small>
+        </div>
+        <div class="nav-label">Primary Routes</div>
+        <div class="nav-item active">Dashboard</div>
+        <div class="nav-item">Components</div>
+        <div class="nav-item">Pipelines</div>
+        <div class="nav-item">Review Queue</div>
+        <div class="nav-label">Command Layers</div>
+        <div class="nav-item">Decision Feed</div>
+        <div class="nav-item">Signal Integrity</div>
+      </aside>
+
+      <main class="workspace">
+        <section class="stage">
+          <header class="top">
+            <div>
+              <p class="eyebrow">Command Theater / Night Shift</p>
+              <h1>Cinematic Operations Overview</h1>
+              <p class="sub">
+                Stage-framed control room concept with strong depth, restrained warm/cool
+                lighting, and production-grade readability for high-density decision work.
+              </p>
+            </div>
+            <div class="actions">
+              <button class="btn">Open Briefing</button>
+              <button class="btn primary">Execute Promotion Sweep</button>
+            </div>
+          </header>
+
+          <section class="layout">
+            <div class="left">
+              <div class="metrics">
+                <article class="panel">
+                  <div class="kicker">Promotion Velocity</div>
+                  <div class="value">31.2/h</div>
+                  <div class="foot">+8.1% vs prior window</div>
+                </article>
+                <article class="panel">
+                  <div class="kicker">Queue Risk</div>
+                  <div class="value">07</div>
+                  <div class="foot signal">Contained in stage B</div>
+                </article>
+                <article class="panel">
+                  <div class="kicker">Signal Fidelity</div>
+                  <div class="value">96.3</div>
+                  <div class="foot">Telemetry confidence index</div>
+                </article>
+              </div>
+
+              <article class="panel">
+                <div class="table-head">
+                  <div>Pipeline</div>
+                  <div>Mode</div>
+                  <div>Score</div>
+                  <div>Status</div>
+                </div>
+                <div class="table-row">
+                  <div>Executive Hero Composition</div>
+                  <div>Audit</div>
+                  <div>94.2</div>
+                  <div><span class="status ok">Ready</span></div>
+                </div>
+                <div class="table-row">
+                  <div>Catalog Rhythm Optimizer</div>
+                  <div>Refine</div>
+                  <div>89.8</div>
+                  <div><span class="status warn">Review</span></div>
+                </div>
+                <div class="table-row">
+                  <div>Pipeline Legibility Pass</div>
+                  <div>Stage</div>
+                  <div>91.1</div>
+                  <div><span class="status ok">Stable</span></div>
+                </div>
+                <div class="table-row" style="border-bottom: 0">
+                  <div>Review Queue Consolidator</div>
+                  <div>Triage</div>
+                  <div>87.0</div>
+                  <div><span class="status warn">Inspect</span></div>
+                </div>
+              </article>
+            </div>
+
+            <div class="right">
+              <article class="panel">
+                <div class="kicker">Decision Feed</div>
+                <div class="event">
+                  <div class="dot"></div>
+                  <div>Promoted "Assembly Header v6" to shared catalog</div>
+                  <small>22:37</small>
+                </div>
+                <div class="event">
+                  <div class="dot cool"></div>
+                  <div>Queued cinematic score audit for landing variants</div>
+                  <small>22:08</small>
+                </div>
+                <div class="event">
+                  <div class="dot"></div>
+                  <div>Reduced review queue dwell time by 14 minutes</div>
+                  <small>21:42</small>
+                </div>
+                <div class="event" style="border-bottom: 0">
+                  <div class="dot cool"></div>
+                  <div>Validated sidebar hierarchy coherence across routes</div>
+                  <small>21:10</small>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="kicker">Command Priorities</div>
+                <div class="table-row">
+                  <div>Review queue split</div>
+                  <div>High</div>
+                  <div>10</div>
+                  <div class="signal">First</div>
+                </div>
+                <div class="table-row">
+                  <div>Artifact consistency</div>
+                  <div>Med</div>
+                  <div>6</div>
+                  <div class="signal">Next</div>
+                </div>
+                <div class="table-row" style="border-bottom: 0">
+                  <div>Pipeline handoff docs</div>
+                  <div>Low</div>
+                  <div>2</div>
+                  <div class="signal">Later</div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
