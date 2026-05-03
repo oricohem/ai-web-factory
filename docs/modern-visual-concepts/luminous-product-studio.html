@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminous Product Studio</title>
+  <style>
+    :root {
+      --bg-top: #f6f9ff;
+      --bg-mid: #e6eefc;
+      --bg-deep: #131c2d;
+      --surface: rgba(247, 250, 255, 0.82);
+      --surface-soft: rgba(241, 246, 255, 0.62);
+      --surface-dark: #1a2436;
+      --line: rgba(71, 98, 142, 0.2);
+      --text: #11203a;
+      --muted: #50607a;
+      --dark-text: #f3f7ff;
+      --accent: #2ea8df;
+      --accent-soft: #9be5ff;
+      --success: #4ea377;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: "Geist", "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(90% 80% at 12% 20%, rgba(255, 255, 255, 0.85), transparent 70%),
+        radial-gradient(65% 75% at 88% 18%, rgba(142, 211, 255, 0.4), transparent 66%),
+        radial-gradient(90% 90% at 82% 90%, rgba(95, 141, 222, 0.3), transparent 70%),
+        linear-gradient(160deg, var(--bg-top), var(--bg-mid) 55%, #d4e1f8 100%);
+      letter-spacing: 0.01em;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      padding: 1.5rem 0 4.5rem;
+      position: relative;
+    }
+
+    .halo {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(55% 40% at 50% 8%, rgba(159, 225, 255, 0.5), transparent 75%),
+        radial-gradient(45% 33% at 20% 70%, rgba(255, 255, 255, 0.36), transparent 80%);
+      mix-blend-mode: screen;
+      opacity: 0.85;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid rgba(146, 171, 214, 0.48);
+      border-radius: 1rem;
+      padding: 0.85rem 1rem;
+      background: rgba(250, 253, 255, 0.76);
+      box-shadow: 0 20px 45px rgba(20, 45, 89, 0.14);
+      backdrop-filter: blur(7px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.58rem;
+      font-weight: 620;
+    }
+
+    .mark {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--accent), #70ceff);
+      box-shadow: 0 0 0 6px rgba(74, 177, 226, 0.16);
+    }
+
+    .menu {
+      display: inline-flex;
+      gap: 1.2rem;
+      color: #4d5f7d;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      margin-top: 2.25rem;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .panel {
+      border: 1px solid rgba(153, 176, 216, 0.42);
+      border-radius: 1.2rem;
+      background: var(--surface);
+      box-shadow: 0 25px 50px rgba(23, 52, 102, 0.16);
+      padding: 2.25rem;
+    }
+
+    .label {
+      font-size: 0.74rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: #52617d;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0.8rem 0 1rem;
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -0.033em;
+      text-wrap: balance;
+    }
+
+    .summary {
+      margin: 0;
+      max-width: 57ch;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.04rem;
+    }
+
+    .cta {
+      margin-top: 1.65rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.76rem;
+    }
+
+    .button {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 0.82rem 1.15rem;
+      font-size: 0.9rem;
+      font-weight: 620;
+      transition: transform 0.24s ease, opacity 0.24s ease, background 0.24s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      color: #052636;
+      background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+      box-shadow: 0 11px 22px rgba(46, 168, 223, 0.26);
+    }
+
+    .button-secondary {
+      color: #2f4468;
+      border: 1px solid rgba(122, 148, 188, 0.42);
+      background: rgba(248, 252, 255, 0.72);
+    }
+
+    .studio {
+      border: 1px solid rgba(136, 162, 206, 0.42);
+      border-radius: 1.2rem;
+      background:
+        radial-gradient(80% 65% at 75% 22%, rgba(151, 227, 255, 0.55), transparent 67%),
+        linear-gradient(160deg, #eef4ff, #d8e3f9 65%, #c9d8f3);
+      box-shadow: 0 28px 55px rgba(28, 62, 120, 0.2);
+      padding: 1.15rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .studio-top {
+      display: flex;
+      justify-content: space-between;
+      color: #4f6387;
+      font-size: 0.79rem;
+      padding: 0.15rem 0.2rem;
+    }
+
+    .canvas {
+      min-height: 170px;
+      border-radius: 0.92rem;
+      border: 1px solid rgba(140, 161, 197, 0.42);
+      background:
+        radial-gradient(75% 60% at 20% 15%, rgba(255, 255, 255, 0.95), transparent 70%),
+        linear-gradient(135deg, rgba(237, 244, 255, 0.88), rgba(221, 232, 252, 0.9));
+      position: relative;
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .canvas::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(138, 166, 214, 0.14));
+      pointer-events: none;
+    }
+
+    .canvas strong {
+      position: relative;
+      font-size: 1.14rem;
+      letter-spacing: -0.01em;
+    }
+
+    .canvas span {
+      position: relative;
+      margin-top: 0.35rem;
+      font-size: 0.82rem;
+      color: #4f6287;
+    }
+
+    .signals {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .signal {
+      border: 1px solid rgba(126, 151, 190, 0.35);
+      border-radius: 0.82rem;
+      background: rgba(242, 248, 255, 0.82);
+      padding: 0.72rem 0.78rem;
+    }
+
+    .signal label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #607394;
+    }
+
+    .signal strong {
+      display: block;
+      margin-top: 0.42rem;
+      font-size: 1rem;
+      color: #1d365f;
+    }
+
+    .proofs {
+      margin-top: 1.1rem;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .proof {
+      border-radius: 0.88rem;
+      border: 1px solid rgba(138, 165, 206, 0.34);
+      background: var(--surface-soft);
+      padding: 0.78rem;
+    }
+
+    .proof h3 {
+      margin: 0;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.085em;
+      color: #5f7192;
+      font-weight: 620;
+    }
+
+    .proof p {
+      margin: 0.46rem 0 0;
+      font-size: 0.96rem;
+      font-weight: 630;
+      color: #1e355c;
+      letter-spacing: -0.01em;
+    }
+
+    .stage {
+      margin-top: 2.8rem;
+      border-radius: 1.3rem;
+      border: 1px solid rgba(129, 150, 188, 0.34);
+      background: linear-gradient(150deg, #202b3e, #141d2d 72%);
+      color: var(--dark-text);
+      padding: 1.25rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 0.82rem;
+      box-shadow: 0 24px 50px rgba(17, 35, 69, 0.4);
+    }
+
+    .stage-card {
+      border: 1px solid rgba(168, 190, 231, 0.22);
+      border-radius: 0.95rem;
+      background: rgba(20, 33, 52, 0.76);
+      padding: 0.98rem;
+    }
+
+    .stage-card h2 {
+      margin: 0;
+      font-size: 0.98rem;
+      letter-spacing: 0.01em;
+    }
+
+    .stage-card p {
+      margin: 0.56rem 0 0;
+      color: #adc0de;
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    .ok { color: var(--success); }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .proofs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stage { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(1180px, calc(100% - 1.25rem));
+        padding-top: 0.95rem;
+      }
+
+      .menu { display: none; }
+      .panel { padding: 1.35rem; }
+      .signals { grid-template-columns: 1fr; }
+      .proofs { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="halo"></div>
+  <main class="page">
+    <header class="nav">
+      <div class="brand">
+        <span class="mark"></span>
+        <span>AI Web Factory Studio</span>
+      </div>
+      <nav class="menu" aria-label="Main navigation">
+        <span>Platform</span>
+        <span>Use Cases</span>
+        <span>Resources</span>
+        <span>Enterprise</span>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <article class="panel">
+        <span class="label">Luminous Product Studio</span>
+        <h1>Design-grade AI production with studio-level clarity and trust.</h1>
+        <p class="summary">
+          Turn raw AI output into launch-ready web systems with guided craft controls, quality gates,
+          and premium brand consistency. This direction emphasizes product confidence over dashboard density.
+        </p>
+        <div class="cta">
+          <a class="button button-primary" href="#">Book a strategy demo</a>
+          <a class="button button-secondary" href="#">Explore studio capabilities</a>
+        </div>
+      </article>
+
+      <aside class="studio" aria-label="Studio product preview">
+        <div class="studio-top">
+          <span>Product Stage</span>
+          <span>Modern Direction v2</span>
+        </div>
+        <div class="canvas">
+          <strong>Visual Intelligence Composer</strong>
+          <span>Refined palettes, hierarchy confidence, and conversion-safe layout synthesis.</span>
+        </div>
+        <div class="signals">
+          <article class="signal">
+            <label>Brand fidelity</label>
+            <strong>96 / 100</strong>
+          </article>
+          <article class="signal">
+            <label>Premium confidence</label>
+            <strong>High</strong>
+          </article>
+          <article class="signal">
+            <label>QA readiness</label>
+            <strong class="ok">Verified</strong>
+          </article>
+        </div>
+        <section class="proofs" aria-label="Product proof modules">
+          <article class="proof">
+            <h3>Time to first draft</h3>
+            <p>24 min average</p>
+          </article>
+          <article class="proof">
+            <h3>Iteration quality</h3>
+            <p>3.1x cleaner revisions</p>
+          </article>
+          <article class="proof">
+            <h3>Team alignment</h3>
+            <p>89% fewer handoff gaps</p>
+          </article>
+          <article class="proof">
+            <h3>Conversion confidence</h3>
+            <p>+32% hero clarity</p>
+          </article>
+          <article class="proof">
+            <h3>Launch trust</h3>
+            <p>Enterprise-grade checks</p>
+          </article>
+        </section>
+      </aside>
+    </section>
+
+    <section class="stage" aria-label="Curated product overview">
+      <article class="stage-card">
+        <h2>Curated release tracks</h2>
+        <p>Studio tracks organize design systems, AI modules, and quality checkpoints into coherent launch paths.</p>
+      </article>
+      <article class="stage-card">
+        <h2>High-fidelity approval flow</h2>
+        <p>Review decisions combine quality evidence, visual fit, and conversion impact before promotion.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
