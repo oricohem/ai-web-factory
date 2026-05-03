@@ -6,12 +6,12 @@ Selected iconic moment: **Option 3 — Refill Ritual Cutaway**
 
 | Criterion | Score |
 | --- | --- |
-| hero iconic strength | 8 |
+| hero iconic strength | 9 |
 | product specificity | 8 |
-| tactile/material quality | 8 |
+| tactile/material quality | 9 |
 | boutique ecommerce credibility | 8 |
-| typography quality | 7 |
-| section rhythm | 7 |
+| typography quality | 8 |
+| section rhythm | 8 |
 | not-SaaS success | 9 |
 | mobile responsiveness | 8 |
 | overall North Star usefulness | 8 |
@@ -19,18 +19,20 @@ Selected iconic moment: **Option 3 — Refill Ritual Cutaway**
 ## What worked
 
 - The hero is clearly dominated by one silent cutaway artifact, with no callouts or diagram language.
-- Warmth proof is visible through matte ceramic grain, warm cast shadow, and shelf/surface cue.
+- Warmth proof is visible through matte ceramic grain, warm cast shadow, and a more intentional shelf/surface plane.
+- Ceramic shell and insert now read with stronger object depth, making the refill relationship feel more believable.
+- Typography hierarchy now has better contrast across eyebrow labels, hero line pairing, body text width, and product naming.
 - Copy, CTA labels, and section naming stay ecommerce-specific for Mira and avoid startup/SaaS phrasing.
-- Layout rhythm is asymmetric in the hero and varied across sections, avoiding equal-weight card-wall behavior.
+- Section spacing transitions now carry a smoother boutique journey from hero to ritual, proof, and conversion.
 
 ## What is weak
 
-- Typography is solid but not yet unmistakably ownable at brand-signature level.
-- Mid-page sections are credible but still conservative; they do not yet carry the same visual memory as the hero.
-- The final CTA band is good but not a definitive benchmark-level conversion chamber.
+- Typography is improved but still one refinement away from a truly ownable brand-signature type system.
+- Mid-page sections are more cohesive, but the strongest memory still sits primarily in the hero artifact.
+- The final CTA band is stronger, yet still not a definitive benchmark-level conversion chamber.
 
 ## North Star benchmark verdict
 
 **Decision: revise**
 
-This build is stronger than a generic “nice” boutique template and should outperform a HarborLane-level baseline on product specificity and anti-SaaS control. It is not yet the final benchmark because only the hero reaches true iconic territory; supporting sections need one more refinement pass to match that level of memorability and premium tension.
+This build now clearly outperforms a HarborLane-level baseline on hero material quality, typography quality, and section rhythm while preserving anti-SaaS control. It is still not the final benchmark because the hero is North-Star strong but supporting sections, while improved, are not yet equally iconic.
