@@ -33,6 +33,7 @@ Project-local design skills live in `.agents/skills/` and are documented in `doc
 - Before any new visual UI implementation, read and align with `docs/design-learning-report-v1.md`.
 - Treat `docs/design-learning-report-v1.md` as a mandatory anti-loop quality gate for direction selection and final approval.
 - Before non-trivial visual UI implementation, use `ai-factory-taste-engine` as the mandatory taste and quality gate (anchors, anti-pattern checks, scoring rubric, and direction selection) before coding.
+- Before major website generation, full-site visual direction, broad landing-page concepting, or hero direction work that risks repeating the same dark geometric/product-object style family, use `ai-factory-design-research-corpus` and `docs/design-research-corpus-v1.md` to select diverse reference categories, design genes, originality transformations, and same-family rejection criteria before implementation.
 - Before visual UI work, use Taste Skill guidance, especially `design-taste-frontend`, `high-end-visual-design`, and related Taste Skill references.
 - Before AI Web Factory-specific dashboard, catalog, review, card, app shell, or atmosphere work, use `ai-factory-design-intelligence` to choose a product-fit direction and quality gates.
 - Require a brief direction statement before coding for non-trivial visual work: named direction, first-read goal, palette roles, typography hierarchy, anti-patterns intentionally avoided.
