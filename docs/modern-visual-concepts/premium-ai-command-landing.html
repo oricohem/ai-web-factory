@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium AI Command Landing</title>
+  <style>
+    :root {
+      --bg: #0b0f16;
+      --bg-2: #111827;
+      --surface: rgba(18, 27, 43, 0.7);
+      --surface-strong: #162236;
+      --line: rgba(165, 187, 224, 0.2);
+      --text: #f5f7fb;
+      --muted: #a7b2c8;
+      --accent: #69d2ff;
+      --accent-2: #9fe8ff;
+      --success: #7ecf9f;
+      --warn: #ffd18b;
+      --shadow: 0 24px 60px rgba(3, 8, 20, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: "Geist", "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(140% 90% at 50% -10%, rgba(108, 183, 255, 0.26), transparent 60%),
+        radial-gradient(80% 60% at 90% 90%, rgba(89, 156, 233, 0.18), transparent 70%),
+        linear-gradient(160deg, var(--bg), var(--bg-2));
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.07;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.22) 1px, transparent 0);
+      background-size: 3px 3px;
+      mix-blend-mode: soft-light;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 3rem));
+      margin: 0 auto;
+      padding: 1.5rem 0 4.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(11, 17, 30, 0.72);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 640;
+      letter-spacing: 0.02em;
+    }
+
+    .dot {
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 5px rgba(105, 210, 255, 0.14);
+    }
+
+    .nav {
+      display: inline-flex;
+      gap: 1.4rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5.2rem 1rem 2.6rem;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 0.36rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c8d4ea;
+      background: rgba(16, 24, 39, 0.55);
+    }
+
+    h1 {
+      margin: 1.2rem 0 0.9rem;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+
+    .hero p {
+      margin: 0 auto 2rem;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.7;
+    }
+
+    .cta {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.84rem 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      font-weight: 580;
+      font-size: 0.92rem;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #062034;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 25px rgba(96, 200, 255, 0.28);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(17, 26, 42, 0.72);
+      color: #d6e0f4;
+    }
+
+    .preview-shell {
+      margin-top: 2.4rem;
+      padding: 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 1.3rem;
+      background: linear-gradient(180deg, rgba(15, 22, 36, 0.92), rgba(14, 21, 34, 0.78));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .preview-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #9eb1ce;
+      font-size: 0.78rem;
+      margin-bottom: 0.8rem;
+      padding: 0 0.2rem;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .artifact {
+      border: 1px solid rgba(149, 170, 211, 0.21);
+      border-radius: 0.95rem;
+      background: linear-gradient(130deg, rgba(29, 47, 74, 0.8), rgba(13, 20, 33, 0.9));
+      min-height: 215px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .artifact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(95% 80% at 65% 8%, rgba(122, 197, 255, 0.32), transparent 60%);
+      pointer-events: none;
+    }
+
+    .artifact h3 {
+      margin: 0;
+      position: relative;
+      font-size: 1.32rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .artifact small {
+      position: relative;
+      margin-top: 0.45rem;
+      color: #aac8eb;
+      font-size: 0.82rem;
+    }
+
+    .side {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .stat {
+      border: 1px solid rgba(143, 164, 198, 0.22);
+      border-radius: 0.92rem;
+      background: rgba(13, 20, 33, 0.82);
+      padding: 0.85rem;
+    }
+
+    .stat label {
+      display: block;
+      color: #8fa4c8;
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .proofs {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .proof {
+      border-radius: 0.95rem;
+      border: 1px solid rgba(146, 169, 207, 0.18);
+      background: rgba(14, 20, 33, 0.75);
+      padding: 0.95rem;
+    }
+
+    .proof h4 {
+      margin: 0;
+      font-size: 0.84rem;
+      font-weight: 540;
+      color: #a9bddf;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .proof p {
+      margin: 0.5rem 0 0;
+      font-size: 1.04rem;
+      font-weight: 620;
+      letter-spacing: -0.01em;
+    }
+
+    .success { color: var(--success); }
+    .warn { color: var(--warn); }
+    .accent { color: #bbecff; }
+
+    @media (max-width: 980px) {
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proofs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(1160px, calc(100% - 1.25rem));
+        padding-top: 0.95rem;
+      }
+
+      .topbar {
+        border-radius: 0.95rem;
+        padding: 0.8rem;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 3.8rem;
+      }
+
+      .proofs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <main class="wrap">
+    <header class="topbar">
+      <div class="logo">
+        <span class="dot"></span>
+        <span>AI Web Factory</span>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <span>Product</span>
+        <span>Solutions</span>
+        <span>Customers</span>
+        <span>Pricing</span>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">Premium AI Command Landing</span>
+      <h1>Build trusted AI websites with one premium command surface.</h1>
+      <p>
+        Launch, evaluate, and promote high-performing website systems with a clear decision flow.
+        Brand-level quality, operational clarity, and measurable production trust in one unified AI product.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#">Start free workspace</a>
+        <a class="btn btn-secondary" href="#">Watch product walkthrough</a>
+      </div>
+
+      <div class="preview-shell" aria-label="Product artifact preview">
+        <div class="preview-top">
+          <span>Live Factory Artifact</span>
+          <span>v2 Modern Direction</span>
+        </div>
+        <div class="preview-grid">
+          <article class="artifact">
+            <h3>Deployment Confidence Matrix</h3>
+            <small>Quality graph composed from review, runtime, and UX readiness signals.</small>
+          </article>
+          <div class="side">
+            <article class="stat">
+              <label>Launch readiness</label>
+              <strong class="accent">94.2%</strong>
+            </article>
+            <article class="stat">
+              <label>Critical regressions</label>
+              <strong class="warn">0 unresolved</strong>
+            </article>
+            <article class="stat">
+              <label>Component trust score</label>
+              <strong class="success">A+ Verified</strong>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proofs" aria-label="Product proof cards">
+      <article class="proof">
+        <h4>Average ship cycle</h4>
+        <p>From 11.8 days to 3.4 days</p>
+      </article>
+      <article class="proof">
+        <h4>Quality consistency</h4>
+        <p>91% repeatable premium output</p>
+      </article>
+      <article class="proof">
+        <h4>Review efficiency</h4>
+        <p>2.6x faster triage confidence</p>
+      </article>
+      <article class="proof">
+        <h4>Conversion impact</h4>
+        <p>+38% lift on launch pages</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
