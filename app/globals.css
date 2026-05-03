@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #10110f;
-  --foreground: #e6ddc9;
-  --factory-canvas: #10110f;
-  --factory-rail: #161714;
-  --factory-surface: #1d1e1a;
-  --factory-surface-raised: #232520;
-  --factory-border: #33352e;
-  --factory-border-strong: #4a4d41;
-  --factory-text: #e6ddc9;
-  --factory-text-muted: #beb7a3;
-  --factory-text-subtle: #928d7e;
-  --factory-amber: #d39a36;
+  --background: #131512;
+  --foreground: #e4dcc8;
+  --factory-canvas: #131512;
+  --factory-rail: #191c17;
+  --factory-surface: #20231d;
+  --factory-surface-raised: #282c25;
+  --factory-border: #3b4035;
+  --factory-border-strong: #555c4d;
+  --factory-text: #e4dcc8;
+  --factory-text-muted: #c0b9a8;
+  --factory-text-subtle: #969183;
+  --factory-amber: #c99246;
   --factory-amber-soft: #b98932;
-  --factory-green: #7ea56b;
-  --factory-red: #b45a4d;
-  --factory-cyan: #7d989e;
+  --factory-green: #86a576;
+  --factory-red: #b96455;
+  --factory-cyan: #7b9694;
 }
 
 @theme inline {
@@ -30,21 +30,163 @@ html {
   color-scheme: dark;
 }
 
-body {
+.factory-body {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
   background:
-    radial-gradient(
-      circle at 16% -8%,
-      color-mix(in srgb, var(--factory-amber) 20%, transparent),
-      transparent 38%
-    ),
-    radial-gradient(
-      circle at 88% 104%,
-      color-mix(in srgb, var(--factory-cyan) 16%, transparent),
-      transparent 46%
-    ),
-    linear-gradient(180deg, #11120f 0%, var(--factory-canvas) 48%, #0f100d 100%);
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--factory-canvas) 84%, #20241d) 0%,
+      var(--factory-canvas) 52%,
+      color-mix(in srgb, var(--factory-canvas) 88%, #0f120f) 100%
+    );
   color: var(--foreground);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.factory-atmosphere {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+}
+
+.factory-atmosphere > div {
+  position: absolute;
+  inset: 0;
+}
+
+.factory-atmosphere-light {
+  background:
+    radial-gradient(
+      105% 78% at 14% -12%,
+      color-mix(in srgb, var(--factory-amber) 30%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      82% 68% at 84% 112%,
+      color-mix(in srgb, var(--factory-cyan) 18%, transparent),
+      transparent 68%
+    ),
+    linear-gradient(
+      130deg,
+      rgba(227, 216, 188, 0.06) 0%,
+      transparent 34%,
+      rgba(112, 127, 119, 0.055) 100%
+    );
+}
+
+.factory-atmosphere-structure {
+  opacity: 0.62;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 24%, rgba(0, 0, 0, 0.32) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(209, 199, 173, 0.045) 0 1px,
+      transparent 1px 124px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(209, 199, 173, 0.028) 0 1px,
+      transparent 1px 92px
+    );
+}
+
+.factory-atmosphere-grain {
+  opacity: 0.14;
+  background-image: radial-gradient(rgba(234, 224, 197, 0.25) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+  mix-blend-mode: soft-light;
+}
+
+.factory-shell {
+  position: relative;
+  z-index: 2;
+}
+
+.factory-shell-rails {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.factory-shell-rails::before {
+  content: "";
+  position: absolute;
+  inset: 14px 14px 14px 306px;
+  border-radius: 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--factory-border-strong) 42%, transparent);
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--factory-surface-raised) 26%, transparent),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--factory-canvas) 64%, transparent),
+      color-mix(in srgb, var(--factory-canvas) 34%, transparent)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(240, 228, 200, 0.06),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.factory-shell-rails::after {
+  content: "";
+  position: absolute;
+  inset: 15px 15px 15px 307px;
+  border-radius: 1.05rem;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+}
+
+.factory-main-frame {
+  position: relative;
+  z-index: 2;
+}
+
+.factory-main-stage {
+  min-height: 100%;
+}
+
+@media (min-width: 1024px) {
+  .factory-main-frame {
+    padding: 0.85rem 0.95rem 1rem 0.7rem;
+  }
+
+  .factory-main-stage {
+    border-radius: 1.05rem;
+    border: 1px solid color-mix(in srgb, var(--factory-border) 78%, transparent);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--factory-surface) 56%, transparent),
+        color-mix(in srgb, var(--factory-canvas) 62%, transparent)
+      );
+    box-shadow:
+      inset 0 1px 0 rgba(240, 228, 199, 0.045),
+      0 36px 55px -48px rgba(0, 0, 0, 0.82);
+  }
+}
+
+@media (max-width: 1023px) {
+  .factory-atmosphere-structure {
+    opacity: 0.28;
+    background:
+      linear-gradient(180deg, rgba(228, 210, 177, 0.055), rgba(0, 0, 0, 0.18)),
+      repeating-linear-gradient(
+        90deg,
+        rgba(209, 199, 173, 0.024) 0 1px,
+        transparent 1px 120px
+      );
+  }
+
+  .factory-atmosphere-grain {
+    opacity: 0.08;
+  }
 }
 
 ::selection {
@@ -57,13 +199,13 @@ body {
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--factory-surface-raised) 84%, transparent),
-      color-mix(in srgb, var(--factory-surface) 88%, transparent)
+      color-mix(in srgb, var(--factory-surface-raised) 88%, transparent),
+      color-mix(in srgb, var(--factory-surface) 78%, transparent)
     );
   box-shadow:
-    inset 0 1px 0 rgba(240, 229, 203, 0.05),
+    inset 0 1px 0 rgba(240, 229, 203, 0.06),
     inset 0 0 0 1px rgba(0, 0, 0, 0.2),
-    0 20px 50px -36px rgba(0, 0, 0, 0.7);
+    0 24px 45px -38px rgba(0, 0, 0, 0.68);
 }
 
 .factory-panel-hover {

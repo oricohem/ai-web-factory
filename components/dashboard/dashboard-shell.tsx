@@ -55,7 +55,8 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex min-h-full flex-1 bg-[color:var(--factory-canvas)] text-[color:var(--factory-text)]">
+    <div className="factory-shell flex min-h-full flex-1 text-[color:var(--factory-text)]">
+      <div aria-hidden className="factory-shell-rails hidden lg:block" />
       {/* Mobile overlay */}
       {open ? (
         <button
@@ -68,7 +69,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
       <aside
         id="sidebar"
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--factory-rail)_94%,black),color-mix(in_srgb,var(--factory-rail)_88%,transparent))] px-4 py-5 transition-transform duration-200 lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--factory-rail)_96%,black),color-mix(in_srgb,var(--factory-rail)_90%,transparent))] px-4 py-5 shadow-[16px_0_48px_-40px_rgba(0,0,0,0.9)] transition-transform duration-200 lg:static lg:translate-x-0 lg:rounded-r-2xl lg:border-r-[color:color-mix(in_srgb,var(--factory-border-strong)_40%,transparent)] ${
           open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
@@ -132,7 +133,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="factory-main-frame flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-[color:color-mix(in_srgb,var(--factory-border)_78%,transparent)] bg-[color:color-mix(in_srgb,var(--factory-canvas)_95%,black)] px-4 lg:hidden">
           <button
             type="button"
@@ -162,7 +163,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <div className="flex-1">{children}</div>
+        <div className="factory-main-stage flex-1">{children}</div>
       </div>
     </div>
   );

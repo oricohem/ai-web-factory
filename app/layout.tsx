@@ -32,7 +32,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[color:var(--factory-canvas)] text-[color:var(--factory-text)]">
+      <body className="factory-body min-h-full flex flex-col text-[color:var(--factory-text)]">
+        <div aria-hidden className="factory-atmosphere">
+          <div className="factory-atmosphere-light" />
+          <div className="factory-atmosphere-structure" />
+          <div className="factory-atmosphere-grain" />
+        </div>
         <DashboardShell>{children}</DashboardShell>
       </body>
     </html>
