@@ -3,98 +3,270 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C5B · Floating Stage Object Theater</title>
-    <link rel="stylesheet" href="./shared.css" />
+    <title>C5B · Viewport Native Floating Object Theater</title>
     <style>
+      :root {
+        --bg-0: #120f0c;
+        --bg-1: #19140f;
+        --bg-2: #0d1118;
+        --ink-0: #f7f2ea;
+        --ink-1: #d3c4ae;
+        --ink-2: #a5947b;
+        --line: rgba(224, 195, 150, 0.28);
+        --cta-0: #f2ddbc;
+        --cta-ink: #2a1d11;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
+        margin: 0;
+        min-height: 100dvh;
+        color: var(--ink-0);
+        font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
         background:
-          radial-gradient(circle at 16% 10%, rgba(220, 170, 102, 0.24), transparent 34%),
-          linear-gradient(156deg, #17120d, #1d1812 48%, #12141a);
+          radial-gradient(circle at 12% 16%, rgba(255, 194, 120, 0.22), transparent 34%),
+          radial-gradient(circle at 86% 10%, rgba(122, 101, 71, 0.2), transparent 38%),
+          linear-gradient(155deg, var(--bg-0), var(--bg-1) 44%, var(--bg-2));
       }
 
       .hero {
-        background: linear-gradient(164deg, rgba(39, 31, 23, 0.9), rgba(15, 19, 28, 0.9));
+        min-height: 100dvh;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        position: relative;
+        overflow: hidden;
       }
 
-      .anchor {
-        border: 1px solid rgba(218, 184, 132, 0.38);
-      }
-
-      .stage-plane {
+      .hero::before {
+        content: "";
         position: absolute;
-        left: 50%;
-        top: 60%;
-        transform: translate(-50%, -50%);
-        width: 82%;
-        height: 40%;
-        border-radius: 1.2rem;
-        border: 1px solid rgba(217, 184, 133, 0.35);
-        background: linear-gradient(165deg, rgba(114, 88, 54, 0.45), rgba(45, 37, 29, 0.3));
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(90deg, rgba(255, 233, 195, 0.05) 1px, transparent 1px),
+          linear-gradient(rgba(255, 233, 195, 0.05) 1px, transparent 1px);
+        background-size: 62px 62px;
+        opacity: 0.4;
+      }
+
+      .left {
+        position: relative;
+        z-index: 2;
+        padding: clamp(1.4rem, 2.4vw, 2.1rem) clamp(1.2rem, 2vw, 2rem) clamp(1.6rem, 2.8vw, 2.6rem) clamp(1.1rem, 2.2vw, 2rem);
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        border-right: 1px solid var(--line);
+        background: linear-gradient(170deg, rgba(29, 23, 17, 0.76), rgba(15, 17, 23, 0.64));
+      }
+
+      .meta {
+        margin: 0;
+        font-size: 0.7rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+      }
+
+      .copy {
+        align-self: center;
+      }
+
+      h1 {
+        margin: 0 0 1.1rem;
+        font-size: clamp(3.2rem, 6vw, 7.2rem);
+        line-height: 0.86;
+        letter-spacing: -0.04em;
+        max-width: 8.2ch;
+      }
+
+      .copy p {
+        margin: 0;
+        color: var(--ink-1);
+        font-size: clamp(1.02rem, 1.3vw, 1.2rem);
+        line-height: 1.58;
+        max-width: 47ch;
+      }
+
+      .cta-row {
+        margin-top: 1.7rem;
+        display: flex;
+        gap: 0.78rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border-radius: 999px;
+        text-decoration: none;
+        padding: 0.84rem 1.28rem;
+        font-weight: 600;
+        font-size: 0.88rem;
+      }
+
+      .btn.primary {
+        background: var(--cta-0);
+        color: var(--cta-ink);
+      }
+
+      .btn.secondary {
+        border: 1px solid var(--line);
+        color: var(--ink-0);
+        background: rgba(52, 41, 31, 0.48);
+      }
+
+      .proof-strip {
+        align-self: end;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+      }
+
+      .proof-item {
+        border: 1px solid rgba(223, 193, 149, 0.26);
+        border-radius: 0.72rem;
+        padding: 0.58rem;
+        background: rgba(35, 29, 22, 0.62);
+      }
+
+      .proof-item span {
+        display: block;
+        font-size: 0.68rem;
+        color: var(--ink-2);
+      }
+
+      .proof-item strong {
+        display: block;
+        margin-top: 0.15rem;
+        font-size: 1rem;
+      }
+
+      .right {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .stage-grid {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(244, 215, 171, 0.08) 1px, transparent 1px),
+          linear-gradient(rgba(244, 215, 171, 0.08) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: linear-gradient(to bottom, black 5%, rgba(0, 0, 0, 0.2) 95%);
+      }
+
+      .stage-slab {
+        position: absolute;
+        left: 6%;
+        right: 6%;
+        bottom: 8%;
+        height: 34%;
+        border-radius: 1.1rem;
+        border: 1px solid rgba(224, 193, 149, 0.34);
+        background: linear-gradient(168deg, rgba(114, 87, 53, 0.5), rgba(44, 36, 28, 0.34));
       }
 
       .block {
         position: absolute;
-        border-radius: 0.9rem;
-        border: 1px solid rgba(233, 206, 165, 0.5);
-        background: linear-gradient(150deg, rgba(227, 198, 153, 0.76), rgba(127, 94, 54, 0.62));
+        border-radius: 0.95rem;
+        border: 1px solid rgba(236, 208, 166, 0.52);
+        background: linear-gradient(146deg, rgba(229, 200, 154, 0.78), rgba(127, 92, 53, 0.64));
       }
 
       .b1 {
-        width: 40%;
+        width: 35%;
         height: 40%;
-        left: 22%;
-        top: 23%;
+        left: 16%;
+        top: 18%;
       }
 
       .b2 {
-        width: 28%;
+        width: 25%;
         height: 26%;
         right: 18%;
-        top: 35%;
+        top: 29%;
       }
 
-      .comp-floating .anchor {
-        width: min(760px, 92%);
+      .b3 {
+        width: 30%;
+        height: 22%;
+        left: 33%;
+        bottom: 18%;
       }
 
-      .comp-floating .proof {
-        width: min(500px, 92%);
+      .beam {
+        position: absolute;
+        width: 2px;
+        top: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(240, 213, 169, 0.62), transparent 72%);
+      }
+
+      .bm1 {
+        left: 24%;
+      }
+
+      .bm2 {
+        left: 52%;
+      }
+
+      .bm3 {
+        left: 79%;
+      }
+
+      @media (max-width: 1080px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .left {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .right {
+          min-height: 54vh;
+        }
+
+        .proof-strip {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
-  <body class="mood-dark">
-    <main class="shell comp-floating anchor-object">
-      <header class="topbar">
-        <p class="brand">AI Web Factory · Finalist C5B</p>
-        <p class="meta">Floating stage × premium object · 9.0</p>
-      </header>
-      <section class="hero">
+  <body>
+    <main class="hero">
+      <section class="left">
+        <p class="meta">AI Web Factory · C5B · Floating Stage × Object Artifact</p>
         <article class="copy">
-          <h1>Ship premium AI assets from a true launch-stage object theater.</h1>
+          <h1>Ship premium assets from a viewport-scale launch theater.</h1>
           <p>
-            The hero treats artifact release as a high-trust event with strong product presence,
-            large-scale spatial staging, and compact proof that supports the narrative.
+            This hero is recomposed as a full screen production stage: headline and action own the left,
+            while the object-launch system occupies the right as the primary trust and memory anchor.
           </p>
           <div class="cta-row">
             <a class="btn primary" href="#">Launch production stage</a>
             <a class="btn secondary" href="#">Review object protocol</a>
           </div>
         </article>
-        <section class="visual">
-          <div class="anchor">
-            <div class="stage-plane"></div>
-            <div class="block b1"></div>
-            <div class="block b2"></div>
-          </div>
-          <aside class="proof">
-            <h2>Proof layer</h2>
-            <ul>
-              <li><span>Approval confidence</span><strong>96.2%</strong></li>
-              <li><span>Median release cycle</span><strong>8h 42m</strong></li>
-              <li><span>Enterprise programs</span><strong>58</strong></li>
-            </ul>
-          </aside>
+        <section class="proof-strip">
+          <article class="proof-item"><span>Approval confidence</span><strong>96.2%</strong></article>
+          <article class="proof-item"><span>Median release cycle</span><strong>8h 42m</strong></article>
+          <article class="proof-item"><span>Enterprise programs</span><strong>58</strong></article>
         </section>
+      </section>
+      <section class="right" aria-hidden="true">
+        <div class="stage-grid"></div>
+        <span class="beam bm1"></span>
+        <span class="beam bm2"></span>
+        <span class="beam bm3"></span>
+        <div class="block b1"></div>
+        <div class="block b2"></div>
+        <div class="block b3"></div>
+        <div class="stage-slab"></div>
       </section>
     </main>
   </body>

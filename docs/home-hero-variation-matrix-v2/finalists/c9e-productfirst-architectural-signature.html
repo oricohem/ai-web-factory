@@ -4,88 +4,252 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C9E · Product-first Architectural Signature</title>
-    <link rel="stylesheet" href="./shared.css" />
     <style>
+      :root {
+        --ink-0: #eff4ff;
+        --ink-1: #becae3;
+        --ink-2: #8b9cbe;
+        --line: rgba(156, 177, 219, 0.34);
+        --cta: #e7efff;
+        --cta-ink: #10213e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+        color: var(--ink-0);
         background:
-          radial-gradient(circle at 78% 24%, rgba(118, 147, 214, 0.3), transparent 44%),
-          linear-gradient(150deg, #0d121a, #10141d);
+          radial-gradient(circle at 80% 24%, rgba(116, 148, 222, 0.34), transparent 44%),
+          radial-gradient(circle at 11% 78%, rgba(82, 119, 205, 0.24), transparent 40%),
+          linear-gradient(154deg, #0c121a, #101722);
       }
 
       .hero {
-        background: linear-gradient(170deg, rgba(24, 32, 48, 0.92), rgba(14, 20, 31, 0.94));
+        min-height: 100dvh;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
       }
 
-      .anchor {
+      .object-zone {
+        position: relative;
+        overflow: hidden;
+        border-right: 1px solid rgba(165, 185, 228, 0.2);
         background:
-          repeating-linear-gradient(90deg, rgba(214, 228, 255, 0.24) 0 2px, transparent 2px 14px),
-          linear-gradient(170deg, rgba(44, 60, 86, 0.9), rgba(27, 38, 56, 0.9));
+          repeating-linear-gradient(90deg, rgba(208, 224, 255, 0.14) 0 2px, transparent 2px 18px),
+          linear-gradient(170deg, rgba(40, 57, 85, 0.92), rgba(23, 34, 52, 0.96));
       }
 
-      .space-frame {
+      .level {
         position: absolute;
-        border-radius: 0.9rem;
-        border: 1px solid rgba(198, 214, 247, 0.44);
-        background: rgba(165, 188, 233, 0.12);
+        border-radius: 1rem;
+        border: 1px solid rgba(199, 217, 255, 0.48);
+        background: rgba(168, 191, 236, 0.12);
       }
 
-      .a {
-        inset: 14% 14%;
-      }
-      .b {
-        inset: 24% 23%;
-      }
-      .c {
-        inset: 34% 32%;
+      .l1 {
+        inset: 9% 10%;
       }
 
-      .light-path {
+      .l2 {
+        inset: 18% 18%;
+      }
+
+      .l3 {
+        inset: 28% 28%;
+      }
+
+      .beam {
         position: absolute;
         width: 2px;
         top: 0;
         bottom: 0;
-        background: linear-gradient(to bottom, rgba(203, 219, 255, 0.56), transparent 62%);
+        background: linear-gradient(to bottom, rgba(207, 223, 255, 0.56), transparent 64%);
       }
 
-      .one {
-        left: 31%;
+      .b1 {
+        left: 23%;
       }
-      .two {
-        left: 64%;
+
+      .b2 {
+        left: 52%;
+      }
+
+      .b3 {
+        left: 77%;
+      }
+
+      .stage-foot {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 2.2rem;
+        width: 62%;
+        height: 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(177, 198, 242, 0.35);
+        background: rgba(178, 198, 242, 0.24);
+      }
+
+      .content-zone {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        padding: 1.2rem 1.25rem 1.25rem;
+      }
+
+      .topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.45rem 0.75rem;
+        background: rgba(26, 37, 56, 0.56);
+      }
+
+      .topline p {
+        margin: 0;
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-1);
+      }
+
+      .copy {
+        align-self: center;
+        padding: 0 0.3rem;
+      }
+
+      .copy h1 {
+        margin: 0 0 0.95rem;
+        font-size: clamp(2.7rem, 4.6vw, 5.2rem);
+        line-height: 0.92;
+        letter-spacing: -0.04em;
+        max-width: 9.5ch;
+      }
+
+      .copy p {
+        margin: 0;
+        font-size: 1.06rem;
+        color: var(--ink-1);
+        line-height: 1.56;
+        max-width: 40ch;
+      }
+
+      .cta-row {
+        margin-top: 1.4rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.68rem;
+      }
+
+      .btn {
+        text-decoration: none;
+        border-radius: 999px;
+        padding: 0.82rem 1.24rem;
+        font-size: 0.87rem;
+        font-weight: 600;
+      }
+
+      .btn.main {
+        background: var(--cta);
+        color: var(--cta-ink);
+      }
+
+      .btn.alt {
+        border: 1px solid var(--line);
+        color: var(--ink-0);
+        background: rgba(28, 42, 65, 0.62);
+      }
+
+      .proof {
+        border: 1px solid var(--line);
+        border-radius: 0.95rem;
+        background: rgba(24, 35, 53, 0.74);
+        padding: 0.76rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.48rem;
+      }
+
+      .proof-item {
+        border: 1px solid rgba(160, 181, 218, 0.3);
+        border-radius: 0.62rem;
+        padding: 0.48rem;
+        background: rgba(26, 38, 58, 0.48);
+      }
+
+      .proof-item span {
+        display: block;
+        font-size: 0.66rem;
+        color: var(--ink-2);
+      }
+
+      .proof-item strong {
+        display: block;
+        margin-top: 0.2rem;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 1080px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .object-zone {
+          min-height: 48dvh;
+          border-right: none;
+          border-bottom: 1px solid rgba(165, 185, 228, 0.2);
+        }
+
+        .copy h1 {
+          max-width: 12ch;
+        }
+
+        .proof {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
-  <body class="mood-dark">
-    <main class="shell comp-productfirst anchor-architecture">
-      <header class="topbar">
-        <p class="brand">AI Web Factory · Finalist C9E</p>
-        <p class="meta">Product-first × architectural staged space · 9.0</p>
-      </header>
-      <section class="hero">
-        <section class="visual">
-          <div class="anchor">
-            <div class="space-frame a"></div>
-            <div class="space-frame b"></div>
-            <div class="space-frame c"></div>
-            <div class="light-path one"></div>
-            <div class="light-path two"></div>
-          </div>
-        </section>
-        <section class="copy">
+  <body>
+    <main class="hero">
+      <section class="object-zone" aria-hidden="true">
+        <div class="level l1"></div>
+        <div class="level l2"></div>
+        <div class="level l3"></div>
+        <div class="beam b1"></div>
+        <div class="beam b2"></div>
+        <div class="beam b3"></div>
+        <div class="stage-foot"></div>
+      </section>
+
+      <section class="content-zone">
+        <header class="topline">
+          <p>AI Web Factory · Finalist C9E</p>
+          <p>Product-first × Architectural · 9.0</p>
+        </header>
+
+        <article class="copy">
           <h1>A product-world architecture for enterprise AI asset delivery.</h1>
           <p>
-            Product-first composition elevates the object environment to primary hero identity,
-            with CTA and proof intentionally secondary for commercial clarity.
+            This viewport-native product-first hero assigns most of the screen to a staged architectural
+            anchor while keeping messaging and actions integrated as a deliberate right-side command rail.
           </p>
           <div class="cta-row">
-            <a class="btn primary" href="#">Explore product world</a>
-            <a class="btn secondary" href="#">Read system brief</a>
+            <a class="btn main" href="#">Explore product world</a>
+            <a class="btn alt" href="#">Read system brief</a>
           </div>
-          <div class="proof-grid">
-            <div class="proof-item"><span>Launch programs</span><strong>58</strong></div>
-            <div class="proof-item"><span>Asset consistency</span><strong>95.8%</strong></div>
-            <div class="proof-item"><span>Decision latency</span><strong>-33%</strong></div>
-          </div>
+        </article>
+
+        <section class="proof">
+          <div class="proof-item"><span>Launch programs</span><strong>58</strong></div>
+          <div class="proof-item"><span>Asset consistency</span><strong>95.8%</strong></div>
+          <div class="proof-item"><span>Decision latency</span><strong>-33%</strong></div>
         </section>
       </section>
     </main>

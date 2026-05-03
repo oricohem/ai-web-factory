@@ -4,76 +4,222 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C8E · Framed Architectural Spotlight</title>
-    <link rel="stylesheet" href="./shared.css" />
     <style>
+      :root {
+        --ink-0: #16284a;
+        --ink-1: #2e4268;
+        --ink-2: #566f9d;
+        --line: rgba(42, 67, 113, 0.26);
+        --panel: rgba(248, 252, 255, 0.72);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+        color: var(--ink-0);
+        background:
+          radial-gradient(circle at 16% 14%, rgba(118, 154, 255, 0.34), transparent 34%),
+          radial-gradient(circle at 86% 16%, rgba(147, 229, 206, 0.32), transparent 34%),
+          linear-gradient(165deg, #f3f7ff, #e8f7f1 52%, #fff4e0);
+      }
+
       .hero {
-        background: rgba(250, 252, 255, 0.72);
+        min-height: 100dvh;
+        display: grid;
+        grid-template-columns: minmax(360px, 0.9fr) minmax(560px, 1.1fr);
+        grid-template-rows: 1fr;
       }
 
-      .copy h1 {
-        color: #17284a;
+      .copy-pane {
+        padding: 2.1rem 2.4rem 2.3rem;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        border-right: 1px solid rgba(61, 86, 133, 0.18);
+        background: linear-gradient(170deg, rgba(248, 252, 255, 0.9), rgba(239, 247, 255, 0.82));
       }
 
-      .visual {
-        border: 1px solid rgba(35, 56, 94, 0.28);
-        border-radius: 1.55rem;
-        padding: 1.06rem;
-        background: linear-gradient(170deg, rgba(242, 247, 255, 0.82), rgba(225, 235, 250, 0.74));
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 1.25rem;
       }
 
-      .anchor {
-        border: 1px solid rgba(38, 60, 100, 0.28);
+      .meta span {
+        font-size: 0.69rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-2);
       }
 
-      .anchor::before {
+      .copy-main {
+        display: grid;
+        align-content: center;
+      }
+
+      h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(3.1rem, 4.9vw, 5.8rem);
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+        max-width: 8.8ch;
+      }
+
+      .lede {
+        margin: 0;
+        color: var(--ink-1);
+        line-height: 1.58;
+        max-width: 46ch;
+        font-size: clamp(1.04rem, 1.2vw, 1.18rem);
+      }
+
+      .cta-row {
+        margin-top: 1.45rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.72rem;
+      }
+
+      .btn {
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        padding: 0.84rem 1.3rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+
+      .btn.primary {
+        border-color: transparent;
+        background: #17335f;
+        color: #f6f9ff;
+      }
+
+      .btn.secondary {
+        color: #17335f;
+        background: rgba(246, 251, 255, 0.85);
+      }
+
+      .stage-pane {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 38% 24%, rgba(197, 219, 255, 0.5), transparent 36%),
+          linear-gradient(168deg, rgba(233, 244, 255, 0.92), rgba(214, 230, 252, 0.9));
+      }
+
+      .frame {
+        position: absolute;
+        inset: 6% 5%;
+        border: 1px solid rgba(42, 67, 113, 0.28);
+        border-radius: 1.8rem;
+        background: linear-gradient(170deg, rgba(246, 251, 255, 0.86), rgba(229, 239, 255, 0.8));
+      }
+
+      .frame::before {
         content: "";
         position: absolute;
-        inset: 7%;
-        border: 1px dashed rgba(40, 63, 101, 0.22);
-        border-radius: 0.8rem;
+        inset: 1.1rem;
+        border-radius: 1.25rem;
+        border: 1px dashed rgba(52, 78, 123, 0.26);
       }
 
       .spot {
         position: absolute;
-        inset: 20% 14% 16%;
-        border: 1px solid rgba(39, 59, 98, 0.35);
-        border-radius: 0.95rem;
+        inset: 22% 15% 18%;
+        border-radius: 1.05rem;
+        border: 1px solid rgba(42, 67, 113, 0.34);
+        background:
+          repeating-linear-gradient(90deg, rgba(58, 85, 131, 0.12) 0 2px, transparent 2px 16px),
+          linear-gradient(160deg, rgba(243, 249, 255, 0.7), rgba(223, 235, 252, 0.72));
       }
 
       .proof {
-        background: rgba(239, 246, 255, 0.9);
+        position: absolute;
+        left: 1.35rem;
+        right: 1.35rem;
+        bottom: 1.3rem;
+        border: 1px solid rgba(42, 67, 113, 0.3);
+        border-radius: 0.85rem;
+        background: rgba(241, 248, 255, 0.9);
+        padding: 0.72rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+      }
+
+      .proof div {
+        border: 1px solid rgba(64, 91, 139, 0.2);
+        border-radius: 0.65rem;
+        padding: 0.5rem;
+      }
+
+      .proof p {
+        margin: 0;
+        font-size: 0.67rem;
+        color: var(--ink-2);
+      }
+
+      .proof strong {
+        font-size: 0.95rem;
+        color: var(--ink-0);
+      }
+
+      @media (max-width: 1100px) {
+        .hero {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+        }
+
+        .copy-pane {
+          border-right: none;
+          border-bottom: 1px solid rgba(61, 86, 133, 0.18);
+        }
+
+        .stage-pane {
+          min-height: 62dvh;
+        }
+
+        .proof {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
-  <body class="mood-light comp-framed anchor-architecture">
-    <main class="shell">
-      <header class="topbar">
-        <p class="brand">AI Web Factory · Finalist C8E</p>
-        <p class="meta">Framed spotlight × architectural staged space · 9.0</p>
-      </header>
-      <section class="hero">
-        <article class="copy">
+  <body>
+    <main class="hero">
+      <section class="copy-pane">
+        <div class="meta">
+          <span>AI Web Factory · Finalist C8E</span>
+          <span>Framed spotlight × architectural space · 9.0</span>
+        </div>
+        <article class="copy-main">
           <h1>Frame every release inside a trusted architectural spotlight.</h1>
-          <p>
-            Exhibition-grade framing and enlarged architectural anchor make this concept read
-            as a premium homepage hero, not a utility module.
+          <p class="lede">
+            The frame itself is the viewport-native product concept: it structures hierarchy, proof, and CTA
+            as one integrated hero surface, not a card sitting inside a background.
           </p>
           <div class="cta-row">
             <a class="btn primary" href="#">Open spotlight mode</a>
             <a class="btn secondary" href="#">See trust controls</a>
           </div>
         </article>
-        <section class="visual">
-          <div class="anchor"><div class="spot"></div></div>
+      </section>
+      <section class="stage-pane">
+        <div class="frame">
+          <div class="spot"></div>
           <aside class="proof">
-            <h2>Trust proof</h2>
-            <ul>
-              <li><span>Audit visibility</span><strong>+31%</strong></li>
-              <li><span>Decision confidence</span><strong>High</strong></li>
-              <li><span>Launch control zones</span><strong>5</strong></li>
-            </ul>
+            <div><p>Audit visibility</p><strong>+31%</strong></div>
+            <div><p>Decision confidence</p><strong>High</strong></div>
+            <div><p>Launch control zones</p><strong>5</strong></div>
           </aside>
-        </section>
+        </div>
       </section>
     </main>
   </body>
