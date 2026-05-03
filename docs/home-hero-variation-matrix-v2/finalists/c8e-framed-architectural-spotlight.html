@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C8E · Framed Architectural Spotlight</title>
+    <link rel="stylesheet" href="./shared.css" />
+    <style>
+      body {
+        background: linear-gradient(160deg, #f1efe8, #dbe8f9);
+        color: #1a2335;
+      }
+      .hero {
+        border: 1px solid rgba(37, 57, 96, 0.18);
+        background: rgba(250, 252, 255, 0.72);
+      }
+      .frame {
+        border: 1px solid rgba(35, 56, 94, 0.28);
+        border-radius: 2rem;
+        padding: 1.3rem;
+        min-height: 430px;
+        background: linear-gradient(170deg, rgba(242, 247, 255, 0.82), rgba(225, 235, 250, 0.74));
+        position: relative;
+        overflow: hidden;
+      }
+      .frame::before {
+        content: "";
+        position: absolute;
+        inset: 1rem;
+        border-radius: 1.3rem;
+        border: 1px dashed rgba(40, 63, 101, 0.24);
+      }
+      .spot {
+        position: absolute;
+        inset: 20% 15% 18%;
+        border-radius: 1.2rem;
+        border: 1px solid rgba(41, 63, 103, 0.28);
+        background:
+          linear-gradient(180deg, rgba(248, 252, 255, 0.72), rgba(222, 233, 249, 0.66)),
+          repeating-linear-gradient(90deg, rgba(50, 74, 116, 0.1) 0 2px, transparent 2px 16px);
+      }
+      .spot::before {
+        content: "";
+        position: absolute;
+        inset: 12% 12%;
+        border: 1px solid rgba(39, 59, 98, 0.34);
+        border-radius: 0.9rem;
+      }
+      .proof {
+        left: 1.2rem;
+        right: 1.2rem;
+        bottom: 1.2rem;
+        background: rgba(239, 246, 255, 0.9);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <div class="topline">
+        <span>C8E · Framed spotlight + architectural staged space · 9.0</span>
+        <span>Finalist 05 / 12</span>
+      </div>
+      <section class="body">
+        <article class="copy">
+          <h1>Frame every release inside a trusted architectural spotlight.</h1>
+          <p>Gallery-grade framing makes AI Web Factory feel premium and controlled, while spatial structure signals production reliability.</p>
+          <div class="cta"><a class="primary" href="#">Open spotlight mode</a><a class="secondary" href="#">See trust controls</a></div>
+        </article>
+        <section class="frame"><div class="spot"></div><aside class="proof"><strong>Proof</strong><span>Audit visibility +31%</span><span>Enterprise trust signal: high</span></aside></section>
+      </section>
+    </main>
+  </body>
+</html>

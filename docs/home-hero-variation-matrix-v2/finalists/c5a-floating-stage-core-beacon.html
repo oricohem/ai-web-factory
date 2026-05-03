@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C5A Finalist · Floating Core Stage</title>
+    <link rel="stylesheet" href="./shared.css" />
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 50% 22%, rgba(126, 162, 250, 0.24), transparent 42%),
+          radial-gradient(circle at 52% 100%, rgba(76, 106, 186, 0.3), transparent 58%),
+          linear-gradient(160deg, #0b111d, #11192a);
+      }
+
+      .core {
+        width: 210px;
+        height: 210px;
+        border-radius: 50%;
+        border: 1px solid rgba(199, 214, 255, 0.58);
+        background: radial-gradient(circle, rgba(157, 184, 250, 0.42), rgba(38, 60, 108, 0.28));
+        position: relative;
+        box-shadow: 0 0 0 26px rgba(114, 140, 205, 0.12);
+      }
+
+      .core::before,
+      .core::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .core::before {
+        inset: 26px;
+        border: 1px solid rgba(220, 231, 255, 0.62);
+      }
+
+      .core::after {
+        inset: 52px;
+        border: 1px solid rgba(220, 231, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="hero">
+      <section class="copy">
+        <p class="eyebrow">C5A · Floating Core Stage</p>
+        <h1>Stage the intelligence core as the product promise.</h1>
+        <p class="body">
+          Make AI production legible through a central floating core that signals connected
+          pipelines, review orchestration, and release confidence.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#">Open Production Stage</a>
+          <a class="btn ghost" href="#">See Core Logic</a>
+        </div>
+      </section>
+
+      <section class="visual">
+        <div class="stage">
+          <div class="core"></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

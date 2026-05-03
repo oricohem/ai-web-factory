@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C8B · Framed Object Gallery</title>
+    <link rel="stylesheet" href="./shared.css" />
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 70% 15%, rgba(177, 139, 83, 0.22), transparent 35%),
+          linear-gradient(160deg, #16110c, #0f141d);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .gallery-frame {
+        border-radius: 1.4rem;
+        border: 1px solid rgba(229, 204, 167, 0.36);
+        padding: 1rem;
+        background: rgba(34, 30, 24, 0.72);
+        display: grid;
+        gap: 0.9rem;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 0.8rem;
+      }
+      .obj {
+        border-radius: 0.95rem;
+        border: 1px solid rgba(224, 197, 155, 0.34);
+        background: linear-gradient(150deg, rgba(212, 176, 120, 0.35), rgba(101, 74, 42, 0.34));
+      }
+      .proof {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.6rem;
+      }
+      .proof div {
+        flex: 1;
+        border: 1px solid rgba(230, 207, 174, 0.32);
+        border-radius: 0.85rem;
+        padding: 0.8rem;
+      }
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <p class="eyebrow">Finalist 08 · C8B · Score 8.9</p>
+      <section class="hero">
+        <section>
+          <h1>Frame premium asset objects as commercial proof.</h1>
+          <p class="lede">
+            Spotlight framing plus object gallery composition to communicate curation, quality gates, and
+            product confidence without fallback dashboard patterns.
+          </p>
+          <div class="ctas">
+            <a class="btn primary" href="#">Launch Gallery Pilot</a>
+            <a class="btn secondary" href="#">Read Curation Spec</a>
+          </div>
+          <section class="proof">
+            <div><small>Selected assets</small><strong>182</strong></div>
+            <div><small>Approval yield</small><strong>94.4%</strong></div>
+          </section>
+        </section>
+        <aside class="gallery-frame">
+          <div class="row"><div class="obj"></div><div class="obj"></div></div>
+          <div class="row"><div class="obj"></div><div class="obj"></div></div>
+          <div class="row"><div class="obj"></div><div class="obj"></div></div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

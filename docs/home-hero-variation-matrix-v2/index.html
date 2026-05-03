@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Web Factory · Home Hero Variation Matrix v2</title>
+    <style>
+      :root {
+        --bg: #0c1118;
+        --surface: #131a24;
+        --surface-2: #1a2231;
+        --line: rgba(145, 164, 205, 0.28);
+        --ink-0: #eef3ff;
+        --ink-1: #b6c2dd;
+        --ink-2: #8e9cb9;
+        --high: #86d7a4;
+        --mid: #d5c07f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Inter", sans-serif;
+        color: var(--ink-0);
+        background:
+          radial-gradient(circle at 12% 0%, rgba(77, 111, 185, 0.19), transparent 34%),
+          radial-gradient(circle at 88% 6%, rgba(92, 70, 134, 0.16), transparent 38%),
+          linear-gradient(160deg, #0a0f16, var(--bg));
+      }
+
+      .page {
+        width: min(1420px, 95vw);
+        margin: 0 auto;
+        padding: 2.1rem 0 2.6rem;
+      }
+
+      .intro {
+        border: 1px solid var(--line);
+        border-radius: 1.1rem;
+        padding: 1.2rem 1.25rem;
+        background: rgba(21, 28, 41, 0.74);
+        margin-bottom: 1rem;
+      }
+
+      .intro h1 {
+        margin: 0 0 0.4rem;
+        font-size: clamp(1.5rem, 2.9vw, 2.35rem);
+        letter-spacing: -0.02em;
+      }
+
+      .intro p {
+        margin: 0;
+        color: var(--ink-1);
+        line-height: 1.54;
+      }
+
+      .chips {
+        display: flex;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+        margin-top: 0.78rem;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.32rem 0.7rem;
+        font-size: 0.66rem;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--ink-1);
+        background: rgba(40, 52, 73, 0.46);
+      }
+
+      .anchor-head {
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        padding: 0.72rem;
+        margin-bottom: 0.75rem;
+        display: grid;
+        grid-template-columns: 220px repeat(5, minmax(0, 1fr));
+        gap: 0.6rem;
+        background: rgba(17, 24, 37, 0.7);
+      }
+
+      .anchor-head span {
+        display: block;
+        border: 1px dashed rgba(142, 159, 197, 0.35);
+        border-radius: 0.65rem;
+        padding: 0.5rem;
+        font-size: 0.66rem;
+        color: var(--ink-2);
+        line-height: 1.36;
+      }
+
+      .anchor-head .stub {
+        border-style: solid;
+        color: var(--ink-1);
+        background: rgba(47, 61, 86, 0.34);
+      }
+
+      .matrix {
+        display: grid;
+        gap: 0.72rem;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 220px repeat(5, minmax(0, 1fr));
+        gap: 0.6rem;
+      }
+
+      .row-label {
+        border: 1px solid var(--line);
+        border-radius: 0.9rem;
+        padding: 0.7rem;
+        background: linear-gradient(170deg, rgba(25, 33, 48, 0.9), rgba(17, 23, 35, 0.96));
+      }
+
+      .row-label p {
+        margin: 0;
+      }
+
+      .row-label .code {
+        font-size: 0.64rem;
+        color: var(--ink-2);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .row-label .name {
+        margin-top: 0.35rem;
+        font-size: 0.85rem;
+        line-height: 1.28;
+        color: var(--ink-0);
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 0.95rem;
+        background: linear-gradient(175deg, rgba(24, 33, 50, 0.94), rgba(16, 22, 33, 0.96));
+        padding: 0.58rem;
+        display: grid;
+        gap: 0.44rem;
+      }
+
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.4rem;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 0.76rem;
+        line-height: 1.27;
+      }
+
+      .id {
+        margin: 0 0 0.16rem;
+        color: var(--ink-2);
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .score {
+        border-radius: 999px;
+        border: 1px solid;
+        padding: 0.2rem 0.45rem;
+        font-size: 0.63rem;
+        white-space: nowrap;
+        align-self: start;
+      }
+
+      .score.high {
+        color: var(--high);
+        border-color: rgba(134, 215, 164, 0.44);
+      }
+
+      .score.mid {
+        color: var(--mid);
+        border-color: rgba(213, 192, 127, 0.44);
+      }
+
+      .meta {
+        margin: 0;
+        color: var(--ink-2);
+        font-size: 0.61rem;
+        line-height: 1.35;
+      }
+
+      .headline {
+        margin: 0;
+        font-size: 0.69rem;
+        color: var(--ink-0);
+        line-height: 1.33;
+      }
+
+      .different {
+        margin: 0;
+        font-size: 0.66rem;
+        color: var(--ink-1);
+        line-height: 1.36;
+      }
+
+      .mini {
+        position: relative;
+        height: 78px;
+        border-radius: 0.62rem;
+        border: 1px solid rgba(154, 173, 214, 0.24);
+        overflow: hidden;
+      }
+
+      .mini::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      }
+
+      .mood-dark {
+        background: linear-gradient(150deg, #151d2d, #101520);
+      }
+
+      .mood-light {
+        background: linear-gradient(150deg, #eef3ff, #dff6ef);
+      }
+
+      .mood-mixed {
+        background: linear-gradient(150deg, #1e2740, #f4ecde);
+      }
+
+      .mood-bold {
+        background: linear-gradient(150deg, #2a1d38, #11253f);
+      }
+
+      .mood-soft {
+        background: linear-gradient(150deg, #f4efe6, #dde8f8);
+      }
+
+      .mood-energetic {
+        background: linear-gradient(150deg, #232c48, #203a57);
+      }
+
+      .copy-a,
+      .copy-b,
+      .cta {
+        position: absolute;
+        border-radius: 999px;
+        background: rgba(229, 238, 255, 0.76);
+      }
+
+      .mood-light .copy-a,
+      .mood-light .copy-b,
+      .mood-soft .copy-a,
+      .mood-soft .copy-b {
+        background: rgba(24, 39, 71, 0.44);
+      }
+
+      .mood-light .cta,
+      .mood-soft .cta {
+        background: rgba(19, 32, 58, 0.75);
+      }
+
+      .anchor {
+        position: absolute;
+      }
+
+      .proof {
+        position: absolute;
+        border-radius: 6px;
+        border: 1px solid rgba(184, 201, 235, 0.34);
+        background: rgba(27, 39, 59, 0.3);
+      }
+
+      .comp-centered .copy-a {
+        top: 8px;
+        left: 22%;
+        width: 56%;
+        height: 5px;
+      }
+      .comp-centered .copy-b {
+        top: 16px;
+        left: 29%;
+        width: 42%;
+        height: 4px;
+      }
+      .comp-centered .cta {
+        top: 23px;
+        left: 40%;
+        width: 20%;
+        height: 5px;
+      }
+      .comp-centered .anchor {
+        left: 50%;
+        top: 60%;
+        width: 32px;
+        height: 32px;
+        transform: translate(-50%, -50%);
+      }
+      .comp-centered .proof {
+        right: 7px;
+        bottom: 7px;
+        width: 26%;
+        height: 18%;
+      }
+
+      .comp-split .copy-a {
+        top: 10px;
+        left: 6px;
+        width: 42%;
+        height: 5px;
+      }
+      .comp-split .copy-b {
+        top: 18px;
+        left: 6px;
+        width: 30%;
+        height: 4px;
+      }
+      .comp-split .cta {
+        top: 25px;
+        left: 6px;
+        width: 20%;
+        height: 5px;
+      }
+      .comp-split .anchor {
+        right: 8px;
+        top: 10px;
+        width: 40%;
+        height: 70%;
+      }
+      .comp-split .proof {
+        right: 9px;
+        bottom: 8px;
+        width: 30%;
+        height: 16%;
+      }
+
+      .comp-immersive .copy-a {
+        bottom: 24px;
+        left: 7px;
+        width: 45%;
+        height: 5px;
+      }
+      .comp-immersive .copy-b {
+        bottom: 16px;
+        left: 7px;
+        width: 33%;
+        height: 4px;
+      }
+      .comp-immersive .cta {
+        bottom: 9px;
+        left: 7px;
+        width: 21%;
+        height: 5px;
+      }
+      .comp-immersive .anchor {
+        inset: 0;
+      }
+      .comp-immersive .proof {
+        right: 8px;
+        top: 8px;
+        width: 28%;
+        height: 16%;
+      }
+
+      .comp-editorial .copy-a {
+        top: 8px;
+        left: 6px;
+        width: 30%;
+        height: 5px;
+      }
+      .comp-editorial .copy-b {
+        top: 16px;
+        left: 6px;
+        width: 20%;
+        height: 4px;
+      }
+      .comp-editorial .cta {
+        top: 23px;
+        left: 6px;
+        width: 15%;
+        height: 5px;
+      }
+      .comp-editorial .anchor {
+        right: 7px;
+        top: 6px;
+        width: 56%;
+        height: 82%;
+      }
+      .comp-editorial .proof {
+        right: 10px;
+        bottom: 8px;
+        width: 30%;
+        height: 16%;
+      }
+
+      .comp-floating .copy-a {
+        top: 9px;
+        left: 10px;
+        width: 38%;
+        height: 5px;
+      }
+      .comp-floating .copy-b {
+        top: 17px;
+        left: 10px;
+        width: 29%;
+        height: 4px;
+      }
+      .comp-floating .cta {
+        top: 24px;
+        left: 10px;
+        width: 18%;
+        height: 5px;
+      }
+      .comp-floating .anchor {
+        left: 50%;
+        top: 56%;
+        width: 34px;
+        height: 34px;
+        transform: translate(-50%, -50%);
+      }
+      .comp-floating .proof {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 5px;
+        width: 52%;
+        height: 10px;
+        border-radius: 999px;
+      }
+
+      .comp-stacked .copy-a {
+        top: 7px;
+        left: 9px;
+        width: 55%;
+        height: 5px;
+      }
+      .comp-stacked .copy-b {
+        top: 15px;
+        left: 9px;
+        width: 40%;
+        height: 4px;
+      }
+      .comp-stacked .cta {
+        top: 22px;
+        left: 9px;
+        width: 23%;
+        height: 5px;
+      }
+      .comp-stacked .anchor {
+        left: 9px;
+        right: 9px;
+        top: 34px;
+        height: 28px;
+      }
+      .comp-stacked .proof {
+        right: 8px;
+        bottom: 7px;
+        width: 28%;
+        height: 17%;
+      }
+
+      .comp-poster .copy-a {
+        top: 7px;
+        left: 7px;
+        width: 65%;
+        height: 6px;
+      }
+      .comp-poster .copy-b {
+        top: 15px;
+        left: 7px;
+        width: 50%;
+        height: 5px;
+      }
+      .comp-poster .cta {
+        bottom: 8px;
+        left: 7px;
+        width: 20%;
+        height: 5px;
+      }
+      .comp-poster .anchor {
+        right: -10%;
+        top: 8%;
+        width: 70%;
+        height: 74%;
+      }
+      .comp-poster .proof {
+        right: 8px;
+        bottom: 8px;
+        width: 24%;
+        height: 15%;
+      }
+
+      .comp-framed .copy-a {
+        top: 11px;
+        left: 11px;
+        width: 42%;
+        height: 5px;
+      }
+      .comp-framed .copy-b {
+        top: 19px;
+        left: 11px;
+        width: 30%;
+        height: 4px;
+      }
+      .comp-framed .cta {
+        top: 26px;
+        left: 11px;
+        width: 18%;
+        height: 5px;
+      }
+      .comp-framed .anchor {
+        inset: 8px 8px 8px 8px;
+      }
+      .comp-framed .proof {
+        right: 10px;
+        bottom: 10px;
+        width: 26%;
+        height: 14%;
+      }
+
+      .comp-productfirst .copy-a {
+        top: 8px;
+        right: 8px;
+        width: 36%;
+        height: 5px;
+      }
+      .comp-productfirst .copy-b {
+        top: 16px;
+        right: 8px;
+        width: 25%;
+        height: 4px;
+      }
+      .comp-productfirst .cta {
+        top: 23px;
+        right: 8px;
+        width: 17%;
+        height: 5px;
+      }
+      .comp-productfirst .anchor {
+        left: 8px;
+        top: 8px;
+        width: 58%;
+        height: 74%;
+      }
+      .comp-productfirst .proof {
+        left: 8px;
+        bottom: 8px;
+        width: 30%;
+        height: 15%;
+      }
+
+      .comp-diagonal .copy-a {
+        top: 10px;
+        left: 9px;
+        width: 40%;
+        height: 5px;
+        transform: rotate(-10deg);
+      }
+      .comp-diagonal .copy-b {
+        top: 18px;
+        left: 12px;
+        width: 28%;
+        height: 4px;
+        transform: rotate(-10deg);
+      }
+      .comp-diagonal .cta {
+        top: 26px;
+        left: 16px;
+        width: 17%;
+        height: 5px;
+        transform: rotate(-10deg);
+      }
+      .comp-diagonal .anchor {
+        right: 8px;
+        bottom: 8px;
+        width: 48%;
+        height: 68%;
+        transform: rotate(8deg);
+      }
+      .comp-diagonal .proof {
+        right: 8px;
+        top: 8px;
+        width: 22%;
+        height: 15%;
+      }
+
+      .anchor-core .anchor {
+        border-radius: 50%;
+        border: 1px solid rgba(209, 221, 252, 0.58);
+        box-shadow: inset 0 0 0 8px rgba(128, 156, 221, 0.25);
+      }
+
+      .anchor-core .anchor::before {
+        content: "";
+        position: absolute;
+        inset: 8px;
+        border-radius: 50%;
+        border: 1px solid rgba(209, 221, 252, 0.52);
+      }
+
+      .anchor-object .anchor {
+        border-radius: 8px;
+        border: 1px solid rgba(226, 198, 154, 0.6);
+        background: linear-gradient(150deg, rgba(230, 208, 171, 0.68), rgba(116, 84, 44, 0.48));
+      }
+
+      .anchor-object .anchor::before {
+        content: "";
+        position: absolute;
+        width: 46%;
+        height: 46%;
+        right: -9%;
+        top: -10%;
+        border-radius: 6px;
+        border: 1px solid rgba(238, 210, 165, 0.5);
+        background: rgba(223, 193, 152, 0.25);
+      }
+
+      .anchor-scene .anchor {
+        border-radius: 8px;
+        border: 1px solid rgba(227, 204, 168, 0.46);
+        background:
+          radial-gradient(circle at 72% 28%, rgba(248, 221, 167, 0.48), transparent 35%),
+          linear-gradient(170deg, rgba(34, 50, 74, 0.9), rgba(75, 55, 36, 0.9));
+      }
+
+      .anchor-scene .anchor::before {
+        content: "";
+        position: absolute;
+        inset: auto 7px 7px 7px;
+        height: 24%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, rgba(215, 187, 145, 0.64), rgba(106, 76, 46, 0.45));
+      }
+
+      .anchor-field .anchor {
+        border-radius: 50%;
+        border: 1px solid rgba(130, 151, 196, 0.36);
+        background:
+          radial-gradient(circle at 28% 30%, rgba(126, 161, 255, 0.64), transparent 46%),
+          radial-gradient(circle at 73% 35%, rgba(119, 220, 198, 0.58), transparent 52%),
+          radial-gradient(circle at 49% 74%, rgba(255, 192, 118, 0.54), transparent 58%);
+      }
+
+      .anchor-architecture .anchor {
+        border-radius: 10px;
+        border: 1px solid rgba(196, 214, 244, 0.46);
+        background:
+          repeating-linear-gradient(90deg, rgba(217, 230, 255, 0.24) 0 2px, transparent 2px 12px),
+          linear-gradient(170deg, rgba(44, 61, 88, 0.87), rgba(28, 37, 54, 0.88));
+      }
+
+      .anchor-architecture .anchor::before {
+        content: "";
+        position: absolute;
+        inset: 9% 12%;
+        border: 1px solid rgba(208, 223, 255, 0.48);
+        border-radius: 6px;
+      }
+
+      .mood-light .proof,
+      .mood-soft .proof,
+      .mood-light .anchor-architecture .anchor,
+      .mood-soft .anchor-architecture .anchor {
+        background-color: rgba(22, 37, 69, 0.12);
+      }
+
+      .links {
+        margin-top: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        padding: 0.8rem;
+        background: rgba(19, 26, 38, 0.74);
+      }
+
+      .links h2 {
+        margin: 0 0 0.45rem;
+        font-size: 0.9rem;
+      }
+
+      .links p {
+        margin: 0;
+        color: var(--ink-1);
+        font-size: 0.78rem;
+      }
+
+      @media (max-width: 1280px) {
+        .anchor-head {
+          grid-template-columns: 1fr;
+        }
+        .row {
+          grid-template-columns: 1fr 1fr;
+        }
+        .row-label {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <h1>Home Hero Variation Matrix v2</h1>
+        <p>
+          50 direction discovery set for AI Web Factory using a strict 10 composition families x 5 visual anchor
+          families matrix, scored with the taste-engine rubric and filtered against dashboard/admin anti-patterns.
+        </p>
+        <div class="chips">
+          <span class="chip">50 Unique Directions</span>
+          <span class="chip">10 Composition Families</span>
+          <span class="chip">5 Anchor Families</span>
+          <span class="chip">Breadth-first exploration</span>
+          <span class="chip">No production UI changes</span>
+        </div>
+      </section>
+
+      <section class="anchor-head" id="anchorHead"></section>
+      <section class="matrix" id="matrix"></section>
+
+      <section class="links">
+        <h2>Companion artifacts</h2>
+        <p>
+          Evaluation document: <code>docs/home-hero-variation-matrix-v2.md</code><br />
+          Full-size finalists: <code>docs/home-hero-variation-matrix-v2/finalists/</code>
+        </p>
+      </section>
+    </main>
+
+    <script>
+      const rubricOrder = [
+        "clarity",
+        "memorability",
+        "modernity",
+        "premium",
+        "relevance",
+        "type",
+        "atmosphere",
+        "cta",
+        "originality",
+        "trust",
+      ];
+
+      const compositions = [
+        {
+          key: "centered",
+          code: "C1",
+          family: "Centered hero",
+          name: "Centered command beacon",
+          headline: "Concentrate attention on one decisive hero command.",
+          differentiator: "Single-axis hierarchy prioritizes instant first-read clarity.",
+          scores: [0.88, 0.78, 0.82, 0.84, 0.83, 0.85, 0.79, 0.88, 0.74, 0.86],
+          mood: "soft",
+        },
+        {
+          key: "split",
+          code: "C2",
+          family: "Split hero",
+          name: "Narrative + anchor split",
+          headline: "Pair conversion copy with a strong visual proof rail.",
+          differentiator: "Controlled two-zone structure improves scanning and action flow.",
+          scores: [0.9, 0.76, 0.81, 0.82, 0.86, 0.84, 0.78, 0.9, 0.7, 0.88],
+          mood: "mixed",
+        },
+        {
+          key: "immersive",
+          code: "C3",
+          family: "Fullscreen immersive",
+          name: "Immersive atmosphere field",
+          headline: "Turn the entire viewport into branded product atmosphere.",
+          differentiator: "Large-scale emotional field drives memorability before detail.",
+          scores: [0.8, 0.91, 0.9, 0.88, 0.8, 0.8, 0.92, 0.82, 0.88, 0.84],
+          mood: "bold",
+        },
+        {
+          key: "editorial",
+          code: "C4",
+          family: "Editorial asymmetric layout",
+          name: "Editorial asymmetry system",
+          headline: "Use offset rhythm and hierarchy to create premium personality.",
+          differentiator: "Asymmetric rails break template sameness while staying readable.",
+          scores: [0.84, 0.88, 0.86, 0.89, 0.82, 0.9, 0.85, 0.84, 0.92, 0.86],
+          mood: "dark",
+        },
+        {
+          key: "floating",
+          code: "C5",
+          family: "Product artifact floating stage",
+          name: "Floating launch stage",
+          headline: "Present hero content as a premium release-stage event.",
+          differentiator: "Stage geometry gives ownable product theater without dashboard density.",
+          scores: [0.86, 0.9, 0.88, 0.91, 0.87, 0.84, 0.86, 0.86, 0.9, 0.9],
+          mood: "mixed",
+        },
+        {
+          key: "stacked",
+          code: "C6",
+          family: "Stacked narrative",
+          name: "Stacked progression storyline",
+          headline: "Show proposition, proof, and action in vertical progression.",
+          differentiator: "Narrative stacking improves decision context and product relevance.",
+          scores: [0.89, 0.8, 0.82, 0.84, 0.9, 0.85, 0.81, 0.87, 0.78, 0.88],
+          mood: "light",
+        },
+        {
+          key: "poster",
+          code: "C7",
+          family: "Poster / campaign layout",
+          name: "Campaign-poster hero",
+          headline: "Treat the hero as a bold campaign-grade statement.",
+          differentiator: "High graphic impact builds memory through shape and scale contrast.",
+          scores: [0.76, 0.93, 0.89, 0.86, 0.74, 0.82, 0.88, 0.78, 0.94, 0.78],
+          mood: "energetic",
+        },
+        {
+          key: "framed",
+          code: "C8",
+          family: "Framed spotlight layout",
+          name: "Spotlight frame composition",
+          headline: "Frame the hero like a premium exhibition spotlight.",
+          differentiator: "Framing language adds trust and polish while keeping visual focus tight.",
+          scores: [0.87, 0.86, 0.85, 0.92, 0.86, 0.87, 0.84, 0.85, 0.86, 0.91],
+          mood: "soft",
+        },
+        {
+          key: "productfirst",
+          code: "C9",
+          family: "Product-first / object-dominant",
+          name: "Object-dominant conversion hero",
+          headline: "Let product artifact presence carry first-read credibility.",
+          differentiator: "Hero starts with product object confidence, copy plays support.",
+          scores: [0.84, 0.9, 0.87, 0.91, 0.92, 0.82, 0.83, 0.83, 0.88, 0.92],
+          mood: "dark",
+        },
+        {
+          key: "diagonal",
+          code: "C10",
+          family: "Diagonal / dynamic composition",
+          name: "Dynamic diagonal thrust",
+          headline: "Inject directional motion into the hero’s spatial hierarchy.",
+          differentiator: "Diagonal geometry creates energetic difference from static SaaS layouts.",
+          scores: [0.77, 0.89, 0.91, 0.84, 0.78, 0.8, 0.87, 0.8, 0.95, 0.8],
+          mood: "bold",
+        },
+      ];
+
+      const anchors = [
+        {
+          key: "core",
+          code: "A",
+          family: "AI core / particle / intelligence system",
+          name: "Intelligence core",
+          headline: "Map every release around a visible intelligence nucleus.",
+          differentiator: "System logic and connectedness feel explicit, not decorative.",
+          scores: [0.01, 0.03, 0.03, 0.0, 0.06, 0.0, 0.01, 0.0, 0.03, 0.01],
+          moodShift: 0,
+        },
+        {
+          key: "object",
+          code: "B",
+          family: "3D product artifact / premium object",
+          name: "Premium object artifact",
+          headline: "Anchor trust with a premium product object focal point.",
+          differentiator: "Object presence signals tangible deliverables and commercial seriousness.",
+          scores: [0.0, 0.04, 0.01, 0.05, 0.04, 0.0, 0.0, 0.0, 0.02, 0.05],
+          moodShift: 1,
+        },
+        {
+          key: "scene",
+          code: "C",
+          family: "Cinematic material / spatial / photo-driven scene",
+          name: "Cinematic material scene",
+          headline: "Use crafted material atmosphere as premium proof language.",
+          differentiator: "Cinematic scene framing increases depth and emotional signal.",
+          scores: [-0.01, 0.05, 0.02, 0.04, -0.01, 0.0, 0.04, -0.01, 0.03, 0.02],
+          moodShift: 2,
+        },
+        {
+          key: "field",
+          code: "D",
+          family: "Abstract light field / gradient atmosphere",
+          name: "Luminous atmosphere field",
+          headline: "Build modern AI energy through controlled light fields.",
+          differentiator: "Field-driven atmosphere creates breadth without dashboard modules.",
+          scores: [-0.02, 0.03, 0.05, 0.01, -0.03, 0.0, 0.06, 0.0, 0.04, -0.01],
+          moodShift: 3,
+        },
+        {
+          key: "architecture",
+          code: "E",
+          family: "Architectural / environmental / staged space",
+          name: "Architectural staged space",
+          headline: "Treat the hero as a designed environment, not UI chrome.",
+          differentiator: "Spatial architecture reinforces premium product-world credibility.",
+          scores: [0.01, 0.04, 0.02, 0.05, 0.02, 0.01, 0.03, 0.0, 0.05, 0.05],
+          moodShift: 4,
+        },
+      ];
+
+      const moodCycle = ["dark", "light", "mixed", "bold", "soft", "energetic"];
+      const ctaCycle = ["left", "center", "right", "low", "inline"];
+      const proofCycle = ["corner", "inline", "floating", "strip", "minimal"];
+
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+      const computeScores = (composition, anchor, cIndex, aIndex) => {
+        return rubricOrder.map((_, idx) => {
+          const variation = (((cIndex + 1) * 7 + (aIndex + 1) * 5 + idx * 3) % 5 - 2) * 0.008;
+          return clamp(composition.scores[idx] + anchor.scores[idx] + variation, 0.62, 0.96);
+        });
+      };
+
+      const makeDirectionName = (composition, anchor) => {
+        return `${composition.name} / ${anchor.name}`;
+      };
+
+      const makeHeadline = (composition, anchor) => {
+        const opening = composition.headline.split(" ")[0];
+        return `${opening} ${anchor.headline.toLowerCase()}`;
+      };
+
+      const makeDifferentiator = (composition, anchor, cta, proof) => {
+        return `${composition.differentiator} ${anchor.differentiator} CTA ${cta}; proof ${proof}.`;
+      };
+
+      const anchorHead = document.getElementById("anchorHead");
+      const matrix = document.getElementById("matrix");
+
+      anchorHead.innerHTML = `
+        <span class="stub">Matrix rows = 10 composition families<br />Matrix columns = 5 anchor families</span>
+        ${anchors.map((anchor) => `<span><strong>${anchor.code}</strong> · ${anchor.family}</span>`).join("")}
+      `;
+
+      compositions.forEach((composition, cIndex) => {
+        const row = document.createElement("section");
+        row.className = "row";
+
+        const rowLabel = document.createElement("article");
+        rowLabel.className = "row-label";
+        rowLabel.innerHTML = `
+          <p class="code">${composition.code}</p>
+          <p class="name">${composition.family}</p>
+        `;
+        row.appendChild(rowLabel);
+
+        anchors.forEach((anchor, aIndex) => {
+          const id = `${composition.code}${anchor.code}`;
+          const scoreVector = computeScores(composition, anchor, cIndex, aIndex);
+          const total = scoreVector.reduce((sum, value) => sum + value, 0);
+          const totalRounded = Math.round(total * 10) / 10;
+          const scoreClass = totalRounded >= 8.5 ? "high" : "mid";
+          const mood = moodCycle[(cIndex + anchor.moodShift) % moodCycle.length];
+          const cta = ctaCycle[(cIndex + aIndex) % ctaCycle.length];
+          const proof = proofCycle[(cIndex * 2 + aIndex) % proofCycle.length];
+
+          const card = document.createElement("article");
+          card.className = "card";
+          card.innerHTML = `
+            <div class="card-top">
+              <div>
+                <p class="id">${id}</p>
+                <h3>${makeDirectionName(composition, anchor)}</h3>
+              </div>
+              <span class="score ${scoreClass}">${totalRounded.toFixed(1)} / 10</span>
+            </div>
+            <p class="meta">Composition: ${composition.family}<br />Anchor: ${anchor.family}</p>
+            <p class="headline">${makeHeadline(composition, anchor)}</p>
+            <div class="mini comp-${composition.key} anchor-${anchor.key} mood-${mood}">
+              <span class="copy-a"></span>
+              <span class="copy-b"></span>
+              <span class="cta"></span>
+              <span class="anchor"></span>
+              <span class="proof"></span>
+            </div>
+            <p class="different">${makeDifferentiator(composition, anchor, cta, proof)}</p>
+          `;
+          row.appendChild(card);
+        });
+
+        matrix.appendChild(row);
+      });
+    </script>
+  </body>
+</html>
