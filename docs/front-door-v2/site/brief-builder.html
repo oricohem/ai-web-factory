@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Web Factory - Guided Business Brief</title>
+  <link rel="stylesheet" href="./shared.css" />
+  <script defer src="./shared.js"></script>
+</head>
+<body class="builder-page">
+  <header class="fd-header">
+    <div class="fd-container fd-header-inner">
+      <a class="fd-brand" href="./index.html">
+        <span class="fd-brand-mark"></span>
+        <span>AI Web Factory</span>
+      </a>
+      <nav class="fd-header-nav" aria-label="Primary">
+        <a href="./index.html">Home</a>
+        <a href="./brief-preview.html">Launch Brief Preview</a>
+      </nav>
+      <a class="fd-btn fd-btn-ghost" href="./brief-preview.html">Preview Brief</a>
+    </div>
+  </header>
+
+  <main class="fd-container fd-builder-main">
+    <section class="fd-builder-top">
+      <div>
+        <p class="fd-eyebrow">Step 1 · Guided Intake</p>
+        <h1>Build a business brief that generates a production-ready launch plan.</h1>
+        <p class="fd-lead">
+          This workflow captures business signals, trust risks, and output scope before any page generation. Better inputs create sharper launch kits.
+        </p>
+      </div>
+      <div class="fd-builder-top-actions">
+        <a class="fd-btn fd-btn-primary" href="./brief-preview.html">View Launch Brief Preview</a>
+      </div>
+    </section>
+
+    <section class="fd-stepper">
+      <article class="fd-step is-active">
+        <span class="fd-step-index">01</span>
+        <div>
+          <h3>Business Signals</h3>
+          <p>Offer, audience, conversion intent</p>
+        </div>
+      </article>
+      <article class="fd-step">
+        <span class="fd-step-index">02</span>
+        <div>
+          <h3>Creative Constraints</h3>
+          <p>Style boundaries and ambition</p>
+        </div>
+      </article>
+      <article class="fd-step">
+        <span class="fd-step-index">03</span>
+        <div>
+          <h3>Launch Brief Output</h3>
+          <p>Agent-ready execution artifact</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="fd-builder-progress">
+      <div class="fd-progress-head">
+        <strong>Workflow Progress</strong>
+        <span data-role="progress-label">0/4 sections complete</span>
+      </div>
+      <div class="fd-progress-track">
+        <div class="fd-progress-fill" data-role="progress-bar" style="--fill:0%;"></div>
+      </div>
+    </section>
+
+    <section class="fd-builder-grid">
+      <form class="fd-brief-form" data-role="brief-form" data-total-points="100">
+        <article class="fd-form-card" data-section="business">
+          <div class="fd-form-card-head">
+            <h2>Business essentials</h2>
+            <p>Define what you sell and who this is for.</p>
+          </div>
+          <div class="fd-field-grid">
+            <label class="fd-field">
+              <span>Business type / category</span>
+              <select data-brief-field="businessType" name="businessType">
+                <option value="">Select one</option>
+                <option>B2B SaaS product</option>
+                <option>Productized service</option>
+                <option>Agency / studio</option>
+                <option>Ecommerce brand</option>
+                <option>Creator / education</option>
+              </select>
+            </label>
+            <label class="fd-field">
+              <span>Budget / urgency level</span>
+              <select data-brief-field="budgetUrgency" name="budgetUrgency">
+                <option value="">Select one</option>
+                <option>Lean + urgent</option>
+                <option>Balanced + near-term</option>
+                <option>Premium + strategic</option>
+              </select>
+            </label>
+          </div>
+          <label class="fd-field">
+            <span>Product or service description</span>
+            <textarea data-brief-field="productDescription" name="productDescription" rows="3" placeholder="Describe the offer and the business outcome buyers care about."></textarea>
+          </label>
+          <label class="fd-field">
+            <span>Target customer</span>
+            <input data-brief-field="targetCustomer" name="targetCustomer" type="text" placeholder="Who is the primary buyer?" />
+          </label>
+        </article>
+
+        <article class="fd-form-card" data-section="conversion">
+          <div class="fd-form-card-head">
+            <h2>Conversion and trust</h2>
+            <p>Capture the action path and hesitation points.</p>
+          </div>
+          <div class="fd-field-grid">
+            <label class="fd-field">
+              <span>Primary conversion goal</span>
+              <select data-brief-field="conversionGoal" name="conversionGoal">
+                <option value="">Select one</option>
+                <option>Start intake call</option>
+                <option>Book consultation</option>
+                <option>Request proposal</option>
+                <option>Join waitlist</option>
+              </select>
+            </label>
+            <label class="fd-field">
+              <span>Offer type</span>
+              <select data-brief-field="offerType" name="offerType">
+                <option value="">Select one</option>
+                <option>Single core offer</option>
+                <option>Tiered packages</option>
+                <option>Custom engagement</option>
+              </select>
+            </label>
+          </div>
+          <label class="fd-field">
+            <span>Trust problem</span>
+            <textarea data-brief-field="trustProblem" name="trustProblem" rows="3" placeholder="What hesitation blocks action today?"></textarea>
+          </label>
+        </article>
+
+        <article class="fd-form-card" data-section="creative">
+          <div class="fd-form-card-head">
+            <h2>Creative direction</h2>
+            <p>Set direction boundaries before output generation.</p>
+          </div>
+          <div class="fd-field-grid">
+            <label class="fd-field">
+              <span>Visual ambition level</span>
+              <select data-brief-field="visualAmbition" name="visualAmbition">
+                <option value="">Select one</option>
+                <option>Level 2 - Premium polish</option>
+                <option>Level 3 - Bold and memorable</option>
+                <option>Level 4 - Campaign-grade</option>
+              </select>
+            </label>
+            <label class="fd-field">
+              <span>Motion / 3D preference</span>
+              <select data-brief-field="motionPreference" name="motionPreference">
+                <option value="">Select one</option>
+                <option>Minimal motion</option>
+                <option>Subtle micro-motion</option>
+                <option>Selective cinematic motion</option>
+              </select>
+            </label>
+          </div>
+          <div class="fd-field-grid">
+            <label class="fd-field">
+              <span>Must-avoid styles</span>
+              <input data-brief-field="avoidStyles" name="avoidStyles" type="text" placeholder="Example: generic SaaS cards, glow-heavy dashboards." />
+            </label>
+            <label class="fd-field">
+              <span>Reference likes / dislikes</span>
+              <input data-brief-field="referenceLikes" name="referenceLikes" type="text" placeholder="Example: likes editorial clarity, dislikes hype copy." />
+            </label>
+          </div>
+        </article>
+
+        <article class="fd-form-card fd-output-card" data-section="outputs">
+          <div class="fd-form-card-head">
+            <h2>Output scope selector</h2>
+            <p>Choose what the generated Launch Brief must include.</p>
+          </div>
+          <div class="fd-output-picks">
+            <label class="fd-check-pill">
+              <input type="checkbox" data-brief-field="desiredOutputs" name="desiredOutputs" value="Website direction" />
+              <span>Website direction</span>
+            </label>
+            <label class="fd-check-pill">
+              <input type="checkbox" data-brief-field="desiredOutputs" name="desiredOutputs" value="Conversion structure" />
+              <span>Conversion structure</span>
+            </label>
+            <label class="fd-check-pill">
+              <input type="checkbox" data-brief-field="desiredOutputs" name="desiredOutputs" value="Launch copy pack" />
+              <span>Launch copy pack</span>
+            </label>
+            <label class="fd-check-pill">
+              <input type="checkbox" data-brief-field="desiredOutputs" name="desiredOutputs" value="Campaign angle matrix" />
+              <span>Campaign angle matrix</span>
+            </label>
+            <label class="fd-check-pill">
+              <input type="checkbox" data-brief-field="desiredOutputs" name="desiredOutputs" value="Proof and QA notes" />
+              <span>Proof and QA notes</span>
+            </label>
+            <label class="fd-check-pill">
+              <input type="checkbox" data-brief-field="desiredOutputs" name="desiredOutputs" value="Production prompt" />
+              <span>Production prompt</span>
+            </label>
+          </div>
+
+          <div class="fd-field-grid">
+            <label class="fd-field">
+              <span>Must-have sections</span>
+              <input data-brief-field="mustHaveSections" name="mustHaveSections" type="text" placeholder="Example: Hero, process rail, output proof, CTA." />
+            </label>
+          </div>
+
+          <p class="fd-microcopy">
+            Microcopy: specific constraints produce stronger architecture and fewer agent retries.
+          </p>
+        </article>
+      </form>
+
+      <aside class="fd-summary-sticky">
+        <div class="fd-score-card">
+          <p>Completeness score</p>
+          <strong data-role="score">0%</strong>
+          <div class="fd-score-track" data-role="score-bar" style="--fill:0%;">
+            <span></span>
+          </div>
+          <p class="fd-score-quality" data-role="score-quality">Low confidence</p>
+        </div>
+
+        <article class="fd-summary-card">
+          <h3>Generated brief summary</h3>
+          <ul class="fd-summary-list" data-role="summary">
+            <li><span>Business</span><strong>Not provided yet</strong></li>
+            <li><span>Audience</span><strong>Not provided yet</strong></li>
+            <li><span>Conversion goal</span><strong>Not provided yet</strong></li>
+            <li><span>Trust risk</span><strong>Not provided yet</strong></li>
+            <li><span>Visual ambition</span><strong>Not provided yet</strong></li>
+          </ul>
+        </article>
+
+        <article class="fd-summary-handoff">
+          <h4>Handoff readiness</h4>
+          <p>The preview converts this intake into architecture, copy assets, campaign scope, QA gates, and production prompt guidance.</p>
+          <a class="fd-btn fd-btn-primary" data-role="preview-link" href="./brief-preview.html">Generate / View Launch Brief Preview</a>
+        </article>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
