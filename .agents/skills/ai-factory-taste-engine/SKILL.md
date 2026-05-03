@@ -169,3 +169,81 @@ Human PR reviewers can use this quick gate:
 For the next UI implementation pass, use:
 
 Reference-informed, taste-engine-scored, one-route pilot only.
+
+## 13. Concrete taste anchors and translation rules
+
+Future agents should learn from these reference qualities and apply them with product-fit judgment.
+
+### 13.1 Modern gradient AI product landing pages
+
+Take:
+
+- bold simple hero
+- clear CTA
+- large atmospheric color field
+- minimal proof artifact
+
+Do not take:
+
+- generic pastel SaaS sameness
+- empty marketing copy
+
+### 13.2 Cinematic particle or AI-core hero pages
+
+Take:
+
+- one memorable visual centerpiece
+- depth
+- restrained text
+- strong focus
+
+Do not take:
+
+- sci-fi cliche
+- random glowing dots
+- gaming neon
+
+### 13.3 Premium industrial or architectural brand sites
+
+Take:
+
+- material depth
+- confident spacing
+- strong atmosphere
+- brand presence
+
+Do not take:
+
+- literal vehicles, interiors, or unrelated imagery
+
+### 13.4 Dark sculptural agency heroes
+
+Take:
+
+- large typography over a tactile dimensional background
+
+Do not take:
+
+- generic agency purple
+- decorative waves without product meaning
+
+### 13.5 Photo-led hero systems
+
+Take:
+
+- human-scale emotional impact
+- cinematic lighting
+
+Do not take:
+
+- random stock-photo decoration unless the image directly supports the product story
+
+### 13.6 AI Web Factory translation rules
+
+Translate all reference learning into:
+
+- a signature AI production visual anchor
+- a hero that sells the product before showing the dashboard
+- dashboard/proof UI as a supporting artifact only
+- fewer boxes and more composition
+- memorable background system with product meaning
